@@ -141,7 +141,6 @@ void Berry::OnTurnIntoEgg(Player& player)
 
 void Berry::UpdateModelTransform()
 {
-	// model.mat4x3 = Matrix4x3::RotationY(ang.y);
 	model.mat4x3.c3.x = (pos.x + berryOffsetX) >> 3;
 	model.mat4x3.c3.y = pos.y >> 3;
 	model.mat4x3.c3.z = (pos.z + berryOffsetZ) >> 3;

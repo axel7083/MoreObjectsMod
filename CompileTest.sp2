@@ -5,3 +5,4 @@ compile clean "Code"
 
 # Compile DLs
 compile dl "data/dynamic/berry.dylb" "Code" "source/O_Berry"
+compile dl "data/dynamic/galaxy_shrink_platform.dylb" "Code" "source/P_GalaxyShrinkPlatform"

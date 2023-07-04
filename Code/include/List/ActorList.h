@@ -394,6 +394,7 @@ enum ActorIDs
 	PSYCHEOUT_PSYCHEOUT_ACTOR_ID                   = 389,
 	LOVESME_LOVESME_ACTOR_ID                       = 390,
 	BERRY_ACTOR_ID                                 = 391,
+	GALAXY_SHRINK_PLATFORM_ACTOR_ID                = 392,
 };
 
 enum ObjectIDs
@@ -725,5 +726,6 @@ enum ObjectIDs
 	MUGEN_BGM_OBJECT_ID                             = 324,
 	SOUND_OBJ_OBJECT_ID                             = 325,
 	BERRY_OBJECT_ID                                 = 326,
+	GALAXY_SHRINK_PLATFORM_OBJECT_ID                = 327,
 	MPCHANGE_OBJECT_ID                              = 511,
 };
