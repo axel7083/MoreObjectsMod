@@ -1,0 +1,9 @@
+# General
+add_dir "data/" "dynamic"
+add_dir "data/" "custom_obj"
+
+# Berry
+add_or_replace "data/dynamic/" "berry.dylb" empty_file
+add_dir "data/custom_obj/" "berry"
+add_or_replace "data/custom_obj/berry/" "berry.bmd" "Assets/Berry/berry.bmd"
+add_or_replace "data/custom_obj/berry/" "berry_stem.bmd" "Assets/Berry/berry_stem.bmd"

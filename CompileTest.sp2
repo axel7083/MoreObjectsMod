@@ -1,0 +1,7 @@
+# Generate headers, clean Code directory
+generate_file_list  "Code/include/List/FileList.h"
+generate_sound_list "Code/include/List/SoundList.h"
+compile clean "Code"
+
+# Compile DLs
+compile dl "data/dynamic/berry.dylb" "Code" "source/O_Berry"
