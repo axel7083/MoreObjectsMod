@@ -1,40 +1,37 @@
-#ifndef COLORED_COIN_INCLUDED
-#define COLORED_COIN_INCLUDED
+#pragma once
 
-#include "include/SM64DS_2.h"
-
-struct ColoredCoin : public Platform
-{	
-	void UpdateModelTransform();
-
-	static ColoredCoin* Spawn();
-	virtual int InitResources() override;
-	virtual int CleanupResources() override;
-	virtual int Behavior() override;
-	virtual int Render() override;
-	void HandleClsn();
-	void Kill();
-	virtual unsigned OnYoshiTryEat() override;
-	virtual void OnTurnIntoEgg(Player& player) override;
-	virtual ~ColoredCoin();
-	
-	static SharedFilePtr modelFile;
-	CylinderClsn cylClsn;
-	ShadowVolume shadow;
+struct ColoredCoin : Actor
+{
+	Model model;
+	MovingCylinderClsn cylClsn;
+	ShadowModel shadow;
 	Matrix4x3 shadowMat;
+	Player* killer;
 	Actor* spawnedStar;
-	bool killable = true;
+	bool killable;
 	bool fake;
 	bool hurt;
 	bool deathCoin;
 	bool deathStarted;
-	int deathFrames;
-	int frameCounter;
-	int health;
-	int value;
-	uint8_t starID;
+	u8 health;
+	u8 starID;
+	s32 deathFrames;
+	s32 frameCounter;
+	s32 value;
 
-	static SpawnInfo<ColoredCoin> spawnData;
+	static SpawnInfo spawnData;
+	static SharedFilePtr modelFile;
+	
+	ColoredCoin();
+	virtual s32 InitResources() override;
+	virtual s32 CleanupResources() override;
+	virtual s32 Behavior() override;
+	virtual s32 Render() override;
+	virtual u32 OnYoshiTryEat() override;
+	virtual void OnTurnIntoEgg(Player& player) override;
+	virtual ~ColoredCoin();
+	
+	void UpdateModelTransform();
+	void CheckCylClsn();
+	void Kill(Player& player);
 };
-
-#endif

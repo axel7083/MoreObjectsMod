@@ -395,6 +395,8 @@ enum ActorIDs
 	LOVESME_LOVESME_ACTOR_ID                       = 390,
 	BERRY_ACTOR_ID                                 = 391,
 	GALAXY_SHRINK_PLATFORM_ACTOR_ID                = 392,
+	SILVER_COIN_ACTOR_ID                           = 393,
+	COLORED_COIN_ACTOR_ID                          = 394,
 };
 
 enum ObjectIDs
@@ -727,5 +729,7 @@ enum ObjectIDs
 	SOUND_OBJ_OBJECT_ID                             = 325,
 	BERRY_OBJECT_ID                                 = 326,
 	GALAXY_SHRINK_PLATFORM_OBJECT_ID                = 327,
+	SILVER_COIN_OBJECT_ID                           = 328,
+	COLORED_COIN_OBJECT_ID                          = 329,
 	MPCHANGE_OBJECT_ID                              = 511,
 };

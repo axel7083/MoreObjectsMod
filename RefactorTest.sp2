@@ -15,3 +15,7 @@ add_or_replace "data/custom_obj/galaxy_shrink_platform/" "galaxy_shrink_platform
 add_or_replace "data/custom_obj/galaxy_shrink_platform/" "galaxy_shrink_platform.kcl" "Assets/GalaxyShrinkPlatform/galaxy_shrink_platform.kcl"
 add_or_replace "data/custom_obj/galaxy_shrink_platform/" "galaxy_shrink_platform_frame.bmd" "Assets/GalaxyShrinkPlatform/galaxy_shrink_platform_frame.bmd"
 
+# Colored Coin
+add_or_replace "data/dynamic/" "colored_coin.dylb" empty_file
+add_dir "data/custom_obj/" "colored_coin"
+add_or_replace "data/custom_obj/colored_coin/" "colored_coin.bmd" "Assets/ColoredCoin/colored_coin.bmd"

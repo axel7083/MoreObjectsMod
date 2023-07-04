@@ -31,7 +31,7 @@ export LD      := $(PREFIX)ld
 #---------------------------------------------------------------------------------
 TARGET   := newcode
 BUILD    := build
-SOURCES  :=  Code source/P_GalaxyShrinkPlatform
+SOURCES  :=  Code source/O_ColoredCoin
 INCLUDES := include
 
 #---------------------------------------------------------------------------------
