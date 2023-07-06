@@ -1,22 +1,14 @@
-#ifndef INVISIBLEWALL_INCLUDED
-#define INVISIBLEWALL_INCLUDED
+#pragma once
 
-#include "include/SM64DS_2.h"
-
-struct InvisibleWall : public Platform
-{	
-	void UpdateModelTransform();
-
-	static InvisibleWall* Spawn();
-	virtual int InitResources() override;
-	virtual int CleanupResources() override;
-	virtual int Behavior() override;
-	virtual int Render() override;
-	virtual ~InvisibleWall();
-	
+struct InvisibleWall : Platform
+{
+	static SpawnInfo spawnData;
 	static SharedFilePtr clsnFile;
-
-	static SpawnInfo<InvisibleWall> spawnData;
+	
+	InvisibleWall();
+	virtual s32 InitResources() override;
+	virtual s32 CleanupResources() override;
+	virtual s32 Behavior() override;
+	virtual s32 Render() override;
+	virtual ~InvisibleWall();
 };
-
-#endif
