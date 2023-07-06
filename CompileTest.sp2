@@ -4,7 +4,8 @@ generate_sound_list "Code/include/List/SoundList.h"
 compile clean "Code"
 
 # Compile DLs
-# compile dl "data/dynamic/berry.dylb"                  "Code" "source/O_Berry"
-# compile dl "data/dynamic/galaxy_shrink_platform.dylb" "Code" "source/P_GalaxyShrinkPlatform"
-# compile dl "data/dynamic/colored_coin.dylb"           "Code" "source/O_ColoredCoin"
+compile dl "data/dynamic/berry.dylb"                  "Code" "source/O_Berry"
+compile dl "data/dynamic/galaxy_shrink_platform.dylb" "Code" "source/P_GalaxyShrinkPlatform"
+compile dl "data/dynamic/colored_coin.dylb"           "Code" "source/O_ColoredCoin"
 compile dl "data/dynamic/invisible_wall.dylb"         "Code" "source/P_InvisibleWall"
+compile dl "data/dynamic/rideable_yoshi.dylb"         "Code" "source/M_RideableYoshi"

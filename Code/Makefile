@@ -31,7 +31,7 @@ export LD      := $(PREFIX)ld
 #---------------------------------------------------------------------------------
 TARGET   := newcode
 BUILD    := build
-SOURCES  :=  Code source/P_InvisibleWall
+SOURCES  :=  Code source/M_RideableYoshi
 INCLUDES := include
 
 #---------------------------------------------------------------------------------

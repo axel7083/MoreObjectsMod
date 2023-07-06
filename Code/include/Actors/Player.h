@@ -80,7 +80,7 @@ struct Player : Actor
 		ST_THROW              = 0x021105d4,
 		
 		
-		
+		ST_SWEEP_KICK         = 0x0211061c,
 		ST_SLIDE_KICK         = 0x02110634,
 		
 		

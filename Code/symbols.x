@@ -538,7 +538,7 @@ _ZTV10ModelAnim2                                                                
 _ZN10ModelAnim2C1Ev                                                               = 0x020163A0;
 _ZN10ModelAnim2D0Ev                                                               = 0x02016320;
 _ZN10ModelAnim2D1Ev                                                               = 0x02016364;
-_ZN10ModelAnim24CopyERKS_Pcj                                                      = 0x02016254;
+_ZN10ModelAnim24CopyERKS_P8BCA_Filej                                              = 0x02016254;
 _ZN10ModelAnim213Func_020162C4Eji5Fix12IiEt                                       = 0x020162C4;
 
 _ZTV11ShadowModel                                                                 = 0x0208E868;
