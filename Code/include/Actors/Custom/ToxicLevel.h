@@ -1,22 +1,16 @@
-#ifndef TOXIC_LEVEL_INCLUDED
-#define TOXIC_LEVEL_INCLUDED
+#pragma once
 
-#include "include/SM64DS_2.h"
-
-struct ToxicLevel : public Actor
+struct ToxicLevel : Actor
 {
-	static ToxicLevel* Spawn();
-	virtual int InitResources() override;
-	virtual int CleanupResources() override;
-	virtual int Behavior() override;
-	virtual int Render() override;
+	u32 toxicCounter;
+	u32 frameForDamage;
+	
+	static SpawnInfo spawnData;
+	
+	ToxicLevel();
+	virtual s32 InitResources() override;
+	virtual s32 CleanupResources() override;
+	virtual s32 Behavior() override;
+	virtual s32 Render() override;
 	virtual ~ToxicLevel() override;
-
-	unsigned toxicCounter = 0;
-	unsigned frameForDamage = 79;
-	
-	static SpawnInfo<ToxicLevel> spawnData;
-	
 };
-
-#endif

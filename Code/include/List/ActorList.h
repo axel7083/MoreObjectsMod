@@ -400,6 +400,7 @@ enum ActorIDs
 	INVISIBLE_WALL_ACTOR_ID                        = 395,
 	RIDEABLE_YOSHI_ACTOR_ID                        = 396,
 	OBJECT_LIGHTING_MODIFIER_ACTOR_ID              = 397,
+	TOXIC_LEVEL_ACTOR_ID                           = 398,
 };
 
 enum ObjectIDs
@@ -737,5 +738,6 @@ enum ObjectIDs
 	INVISIBLE_WALL_OBJECT_ID                        = 330,
 	RIDEABLE_YOSHI_OBJECT_ID                        = 331,
 	OBJECT_LIGHTING_MODIFIER_OBJECT_ID              = 332,
+	TOXIC_LEVEL_OBJECT_ID                           = 333,
 	MPCHANGE_OBJECT_ID                              = 511,
 };

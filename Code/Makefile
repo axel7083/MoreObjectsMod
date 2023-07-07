@@ -31,7 +31,7 @@ export LD      := $(PREFIX)ld
 #---------------------------------------------------------------------------------
 TARGET   := newcode
 BUILD    := build
-SOURCES  :=  Code source/O_ObjectLightingModifier
+SOURCES  :=  Code source/O_ToxicLevel
 INCLUDES := include
 
 #---------------------------------------------------------------------------------

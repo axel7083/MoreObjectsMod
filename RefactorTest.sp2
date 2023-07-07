@@ -31,3 +31,6 @@ add_or_replace "data/player/" "ride_yoshi.bca" "Assets/RideableYoshi/ride_yoshi.
 
 # Object Lighting Modifier
 add_or_replace "data/dynamic/" "object_lighting_modifier.dylb" empty_file
+
+# Toxic Level
+add_or_replace "data/dynamic/" "toxic_level.dylb" empty_file

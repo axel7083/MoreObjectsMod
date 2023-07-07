@@ -10,3 +10,4 @@ compile dl "data/dynamic/colored_coin.dylb"             "Code" "source/O_Colored
 compile dl "data/dynamic/invisible_wall.dylb"           "Code" "source/P_InvisibleWall"
 compile dl "data/dynamic/rideable_yoshi.dylb"           "Code" "source/M_RideableYoshi"
 compile dl "data/dynamic/object_lighting_modifier.dylb" "Code" "source/O_ObjectLightingModifier"
+compile dl "data/dynamic/toxic_level.dylb"              "Code" "source/O_ToxicLevel"
