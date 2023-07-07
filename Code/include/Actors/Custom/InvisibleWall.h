@@ -10,5 +10,5 @@ struct InvisibleWall : Platform
 	virtual s32 CleanupResources() override;
 	virtual s32 Behavior() override;
 	virtual s32 Render() override;
-	virtual ~InvisibleWall();
+	virtual ~InvisibleWall() override;
 };

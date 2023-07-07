@@ -14,7 +14,7 @@ struct SaveBlock : public Platform
 	virtual int CleanupResources() override;
 	virtual int Behavior() override;
 	virtual int Render() override;
-	virtual ~SaveBlock();
+	virtual ~SaveBlock() override;
 	
 	int stage;
 	bool saveable;

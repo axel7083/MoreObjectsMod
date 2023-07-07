@@ -29,7 +29,7 @@ struct ColoredCoin : Actor
 	virtual s32 Render() override;
 	virtual u32 OnYoshiTryEat() override;
 	virtual void OnTurnIntoEgg(Player& player) override;
-	virtual ~ColoredCoin();
+	virtual ~ColoredCoin() override;
 	
 	void UpdateModelTransform();
 	void CheckCylClsn();

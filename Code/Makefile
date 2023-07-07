@@ -31,7 +31,7 @@ export LD      := $(PREFIX)ld
 #---------------------------------------------------------------------------------
 TARGET   := newcode
 BUILD    := build
-SOURCES  :=  Code source/M_RideableYoshi
+SOURCES  :=  Code source/O_ObjectLightingModifier
 INCLUDES := include
 
 #---------------------------------------------------------------------------------

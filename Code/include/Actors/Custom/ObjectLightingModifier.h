@@ -1,20 +1,15 @@
-#ifndef OBJECTLIGHTINGMODIFIER_INCLUDED
-#define OBJECTLIGHTINGMODIFIER_INCLUDED
+#pragma once
 
-#include "include/SM64DS_2.h"
-
-struct ObjectLightingModifier : public Actor
-{	
+struct ObjectLightingModifier : Actor
+{
+	static SpawnInfo spawnData;
+	
 	void UpdateModelTransform();
-
-	static ObjectLightingModifier* Spawn();
-	virtual int InitResources() override;
-	virtual int CleanupResources() override;
-	virtual int Behavior() override;
-	virtual int Render() override;
-	virtual ~ObjectLightingModifier();
-
-	static SpawnInfo<ObjectLightingModifier> spawnData;
+	
+	ObjectLightingModifier();
+	virtual s32 InitResources() override;
+	virtual s32 CleanupResources() override;
+	virtual s32 Behavior() override;
+	virtual s32 Render() override;
+	virtual ~ObjectLightingModifier() override;
 };
-
-#endif
