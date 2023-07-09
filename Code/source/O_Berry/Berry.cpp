@@ -42,9 +42,7 @@ s32 Berry::InitResources()
 	
 	model.data.materials[0].difAmb = ((param1 & 0x7fff) << 16) | 0x8000;
 	
-	Model::LoadFile(COIN_YELLOW_POLY4_MODEL_PTR);
-	Model::LoadFile(COIN_BLUE_POLY32_MODEL_PTR);
-	Model::LoadFile(COIN_BLUE_POLY4_MODEL_PTR);
+	LoadBlueCoinModel();
 	
 	cylClsn.Init(this, RADIUS, RADIUS * 2, CylinderClsn::ENEMY, CylinderClsn::HIT_BY_YOSHI_TONGUE);
 	
@@ -61,6 +59,8 @@ s32 Berry::CleanupResources()
 {
 	modelFile.Release();
 	stemModelFile.Release();
+	
+	UnloadBlueCoinModel();
 	
 	berryCount = 0;
 	berryMaxCount = 0;
