@@ -31,7 +31,7 @@ export LD      := $(PREFIX)ld
 #---------------------------------------------------------------------------------
 TARGET   := newcode
 BUILD    := build
-SOURCES  :=  Code source/O_ToxicLevel
+SOURCES  :=  Code source/P_NoteBlock
 INCLUDES := include
 
 #---------------------------------------------------------------------------------

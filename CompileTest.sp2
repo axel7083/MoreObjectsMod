@@ -11,3 +11,4 @@ compile dl "data/dynamic/invisible_wall.dylb"           "Code" "source/P_Invisib
 compile dl "data/dynamic/rideable_yoshi.dylb"           "Code" "source/M_RideableYoshi"
 compile dl "data/dynamic/object_lighting_modifier.dylb" "Code" "source/O_ObjectLightingModifier"
 compile dl "data/dynamic/toxic_level.dylb"              "Code" "source/O_ToxicLevel"
+compile dl "data/dynamic/note_block.dylb"               "Code" "source/P_NoteBlock"

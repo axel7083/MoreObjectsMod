@@ -34,3 +34,9 @@ add_or_replace "data/dynamic/" "object_lighting_modifier.dylb" empty_file
 
 # Toxic Level
 add_or_replace "data/dynamic/" "toxic_level.dylb" empty_file
+
+# Note Block
+add_or_replace "data/dynamic/" "note_block.dylb" empty_file
+add_dir "data/custom_obj/" "note_block"
+add_or_replace "data/custom_obj/note_block/" "note_block.bmd" "Assets/NoteBlock/note_block.bmd"
+add_or_replace "data/custom_obj/note_block/" "note_block.kcl" "Assets/NoteBlock/note_block.kcl"
