@@ -60,10 +60,15 @@ s32 ColoredCoin::InitResources()
 	
 	UpdateModelTransform();
 	
-	shadowMat = model.mat4x3;
-	shadowMat.c3.y -= 1.3125_f;
-	
 	cylClsn.Init(this, RADIUS, HEIGHT, CylinderClsn::INTANGIBLE | CylinderClsn::COLLECTABLE, CylinderClsn::HIT_BY_YOSHI_TONGUE);
+	
+	shadowMat = Matrix4x3
+	{
+		{ 1._f, 0._f, 0._f },
+		{ 0._f, 1._f, 0._f },
+		{ 0._f, 0._f, 1._f },
+		{ 0._f, 0._f, 0._f },
+	};
 	
 	return 1;
 }
@@ -80,10 +85,15 @@ s32 ColoredCoin::Behavior()
 	ang.y += ROT_SPEED;
 	
 	UpdateModelTransform();
-	CheckCylClsn();
+	DropShadow();
+	
+	bool updateCylClsn = !deathStarted && !IsInYoshiMouth();
+	
+	if (updateCylClsn)
+		CheckCylClsn();
 	
 	cylClsn.Clear();
-	if (!deathStarted)
+	if (updateCylClsn)
 		cylClsn.Update();
 	
 	if (deathStarted)
@@ -116,19 +126,39 @@ s32 ColoredCoin::Behavior()
 
 s32 ColoredCoin::Render()
 {
-	if (!deathStarted)
-		model.Render(nullptr);
+	if (deathStarted || (flags & Actor::IN_YOSHI_MOUTH))
+		return 1;
+	
+	model.Render();
 	
 	return 1;
+}
+
+void ColoredCoin::OnTurnIntoEgg(Player& player)
+{
+	Kill(player);
+}
+
+u32 ColoredCoin::OnYoshiTryEat()
+{
+	return Actor::YE_SWALLOW;
 }
 
 void ColoredCoin::UpdateModelTransform()
 {
 	model.mat4x3 = Matrix4x3::RotationY(ang.y);
 	model.mat4x3.c3 = pos >> 3;
+}
+
+void ColoredCoin::DropShadow()
+{
+	if (deathStarted || (flags & Actor::IN_YOSHI_MOUTH))
+		return;
 	
-	if (!deathStarted)
-		DropShadowRadHeight(shadow, shadowMat, RADIUS, 512._f, 15);
+	shadowMat.c3 = pos >> 3;
+	shadowMat.c3.y -= 1.3125_f;
+	
+	DropShadowRadHeight(shadow, shadowMat, RADIUS, 512._f, 15);
 }
 
 void ColoredCoin::CheckCylClsn()
@@ -142,16 +172,6 @@ void ColoredCoin::CheckCylClsn()
 	
 	if (!(cylClsn.hitFlags & CylinderClsn::HIT_BY_YOSHI_TONGUE))
 		Kill(player);
-}
-
-void ColoredCoin::OnTurnIntoEgg(Player& player)
-{
-	Kill(player);
-}
-
-u32 ColoredCoin::OnYoshiTryEat()
-{
-	return Actor::YE_SWALLOW;
 }
 
 void ColoredCoin::Kill(Player& player)
@@ -200,6 +220,16 @@ void ColoredCoin::Kill(Player& player)
 		player.Heal(health << 8);
 	
 	GiveCoins(player.playerID, value);
+}
+
+bool ColoredCoin::IsInYoshiMouth()
+{
+	if (flags & (Actor::GOING_TO_YOSHI_MOUTH | Actor::IN_YOSHI_MOUTH | Actor::BEING_SPIT))
+		return true;
+	
+	flags &= ~(Actor::GOING_TO_YOSHI_MOUTH | Actor::IN_YOSHI_MOUTH | Actor::BEING_SPIT);
+	
+	return false;
 }
 
 ColoredCoin::ColoredCoin() {}

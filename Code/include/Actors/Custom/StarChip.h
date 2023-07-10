@@ -1,34 +1,43 @@
-#ifndef STAR_CHIP_INCLUDED
-#define STAR_CHIP_INCLUDED
+#pragma once
 
-#include "include/SM64DS_2.h"
-
-struct StarChip : public Platform
-{	
-	void UpdateModelTransform();
-
-	static StarChip* Spawn();
+struct StarChip : Actor
+{
+	struct Counter
+	{
+		u8 count = 0;
+		u8 eventID = 0xff;
+	};
+	
+	static constexpr s32 NUM_COUNTERS = 1;
+	
+	Model model;
+	MovingCylinderClsn cylClsn;
+	ShadowModel shadow;
+	Matrix4x3 shadowMat;
+	Fix12i floorPosY;
+	u8 eventID;
+	bool killable;
+	
+	static SpawnInfo spawnData;
+	static SharedFilePtr modelFile;
+	
+	static Counter chipCounters[NUM_COUNTERS];
+	
+	StarChip();
 	virtual int InitResources() override;
 	virtual int CleanupResources() override;
 	virtual int Behavior() override;
 	virtual int Render() override;
-	void HandleClsn();
-	void Kill();
-	virtual unsigned OnYoshiTryEat() override;
+	virtual ~StarChip() override;
+	virtual u32 OnYoshiTryEat() override;
 	virtual void OnTurnIntoEgg(Player& player) override;
-	virtual ~StarChip();
 	
-	uint8_t eventID;
-	bool killable = true;
+	void UpdateModelTransform();
+	void DropShadow();
+	void CheckCylClsn();
+	void Kill();
+	bool IsInYoshiMouth();
 	
-	CylinderClsn cylClsn;
-	ShadowVolume shadow;
-	Matrix4x3 shadowMat;
-	
-	static SharedFilePtr modelFile;
-	static int chipCounter;
-
-	static SpawnInfo<StarChip> spawnData;
+	void RegisterEventID();
+	Counter& GetCounter();
 };
-
-#endif

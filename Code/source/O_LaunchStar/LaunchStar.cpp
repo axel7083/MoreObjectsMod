@@ -26,7 +26,7 @@ s32 LaunchStar::InitResources()
 	
 	modelAnim.SetAnim(animFiles[WAIT].BCA(), Animation::LOOP, 1._f, 0);
 	
-	cylClsn.Init(this, 160._f, 320._f, 0x00100002, 0x00008000);
+	cylClsn.Init(this, 160._f, 320._f, CylinderClsn::INTANGIBLE | CylinderClsn::COLLECTABLE, CylinderClsn::HIT_BY_YOSHI_TONGUE);
 	
 	launchSpeed = Fix12i(ang.x);
 	eventID = (param1 >> 8) & 0xff;
@@ -75,27 +75,29 @@ s32 LaunchStar::Behavior()
 		
 		Camera& camera = *CAMERA;
 		
-		if (spawnTimer == 1)
+		if (spawnTimer == 30)
 		{
 			camPos = camera.pos;
 			camLookAt = camera.lookAt;
 		}
 		
-		if (spawnTimer == 60)
+		if (spawnTimer == 90)
 		{
 			eventID = 0xff;
 			
 			NEXT_ACTOR_UPDATE_FLAGS &= ~Actor::UPDATE_DURING_STAR_CUTSCENE;
+			// flags |= Actor::NO_RENDER_IF_OFF_SCREEN;
 			
 			camera.SetLookAt(camLookAt);
 			camera.SetPos(camPos);
 		}
-		else
+		else if (spawnTimer >= 30)
 		{
-			if (spawnTimer == 15)
+			if (spawnTimer == 45)
 				Sound::PlayMsgSound(41, 0x40, 0x7f, 107._f, false);
 			
 			NEXT_ACTOR_UPDATE_FLAGS |= Actor::UPDATE_DURING_STAR_CUTSCENE;
+			// flags &= ~Actor::NO_RENDER_IF_OFF_SCREEN;
 			
 			Vector3 newCamPos = pos;
 			newCamPos.x += Sin(ang.y) * 850._f;
@@ -135,7 +137,7 @@ s32 LaunchStar::Behavior()
 
 s32 LaunchStar::Render()
 {
-	if (eventID != 0xff)
+	if (eventID != 0xff && spawnTimer < 30)
 		return 1;
 	
 	modelAnim.Render();

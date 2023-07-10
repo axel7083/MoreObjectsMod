@@ -32,6 +32,8 @@ struct ColoredCoin : Actor
 	virtual ~ColoredCoin() override;
 	
 	void UpdateModelTransform();
+	void DropShadow();
 	void CheckCylClsn();
 	void Kill(Player& player);
+	bool IsInYoshiMouth();
 };

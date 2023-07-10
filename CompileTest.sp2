@@ -14,3 +14,4 @@ compile dl "data/dynamic/toxic_level.dylb"              "Code" "source/O_ToxicLe
 compile dl "data/dynamic/note_block.dylb"               "Code" "source/P_NoteBlock"
 compile dl "data/dynamic/shy_guy.dylb"                  "Code" "source/E_ShyGuy"
 compile dl "data/dynamic/launch_star.dylb"              "Code" "source/O_LaunchStar"
+compile dl "data/dynamic/star_chip.dylb"                "Code" "source/O_StarChip"

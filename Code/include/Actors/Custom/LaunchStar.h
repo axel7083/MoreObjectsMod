@@ -28,7 +28,7 @@ struct LaunchStar : Actor
 	virtual s32 CleanupResources() override;
 	virtual s32 Behavior() override;
 	virtual s32 Render() override;
-	virtual ~LaunchStar();
+	virtual ~LaunchStar() override;
 	
 	void UpdateModelTransform();
 };
@@ -44,16 +44,6 @@ struct LsPlayerExtension
 	Vector3 lsInitPos;
 	u32 particleID;
 	u16 launchTimer;
-	
-	/*union
-	{
-		BezierPathIter lsPathIt;
-		struct
-		{
-			Vector3_16 lsDiffAng; //0x768
-			Vector3_16 lsInitAng; //0x76e
-		};
-	};*/
 };
 
 extern LsPlayerExtension LS_PLAYER_EXTENSIONS[4];
