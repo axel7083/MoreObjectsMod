@@ -403,6 +403,7 @@ enum ActorIDs
 	TOXIC_LEVEL_ACTOR_ID                           = 398,
 	NOTE_BLOCK_ACTOR_ID                            = 399,
 	SHY_GUY_ACTOR_ID                               = 400,
+	LAUNCH_STAR_ACTOR_ID                           = 401,
 };
 
 enum ObjectIDs
@@ -743,5 +744,6 @@ enum ObjectIDs
 	TOXIC_LEVEL_OBJECT_ID                           = 333,
 	NOTE_BLOCK_OBJECT_ID                            = 334,
 	SHY_GUY_OBJECT_ID                               = 335,
+	LAUNCH_STAR_OBJECT_ID                           = 336,
 	MPCHANGE_OBJECT_ID                              = 511,
 };

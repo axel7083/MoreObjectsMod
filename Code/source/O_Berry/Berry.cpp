@@ -176,10 +176,12 @@ void Berry::Kill()
 						coin->horzSpeed = COIN_SPEED;
 					}
 				}
+				
 				break;
 			default:
 				Vector3 mushroomPos = {pos.x, pos.y + 5._f, pos.z};
 				Actor::Spawn(ONE_UP_MUSHROOM_ACTOR_ID, 0, mushroomPos, nullptr, areaID, -1);
+				
 				break;
 		}
 	}

@@ -226,11 +226,7 @@ struct Player : Actor
 	u32 unk69c;
 	u16 visibilityCounter; // the player is visible when this is even (except when the player is electrocuted the second bit is checked instead)
 	u16 unk6a2;
-	union
-	{
-		u16 sleepTimer;
-		u16 runChargeTimer;
-	};
+	u16 stateTimer;
 	u16 unk6a6;
 	u16 unk6a8;
 	u16 unk6aa;
@@ -334,6 +330,8 @@ struct Player : Actor
 	
 	static SharedFilePtr* ANIM_PTRS[0x308];
 	
+	static State ST_LAUNCH_STAR;
+	
 	Player();
 	virtual s32 InitResources() override;
 	virtual s32 CleanupResources() override;
@@ -379,6 +377,10 @@ struct Player : Actor
 	void InitVanishLuigi();
 	void InitMetalWario();
 	void InitFireYoshi();
+	
+	bool St_LaunchStar_Init();
+	bool St_LaunchStar_Main();
+	bool St_LaunchStar_Cleanup();
 	
 	[[gnu::always_inline]]
 	bool IsWarping() const

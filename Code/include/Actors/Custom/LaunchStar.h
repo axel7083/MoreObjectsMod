@@ -1,49 +1,59 @@
-#ifndef LAUNCH_STAR_INCLUDED
-#define LAUNCH_STAR_INCLUDED
+#pragma once
 
-#include "include/SM64DS_2.h"
-
-struct LaunchStar : public Actor
+struct LaunchStar : Actor
 {
-	ModelAnim rigMdl;
-	CylinderClsn cylClsn;
+	enum Animations
+	{
+		WAIT,
+		LAUNCH,
+		
+		NUM_ANIMS,
+	};
 	
+	ModelAnim modelAnim;
+	MovingCylinderClsn cylClsn;
+	Vector3 camPos;
+	Vector3 camLookAt;
 	Fix12i launchSpeed;
 	PathPtr pathPtr;
-	uint8_t eventID;
-	unsigned particleID;
-	bool camSet;
-	int camFrames;
-	bool usesSave;
+	u8 eventID;
+	u16 spawnTimer;
 	
-	Vector3 camOldPos;
-	Vector3 camOldTarget;
-	Vector3 camNewPos;
-	Vector3 playerOldPos;
-	Vector3 playerNewPos;
-	Vector3_16 playerOldAng;
-	Player::State* playerOldState;
-	Player::State* playerOldPrevState;
-	Player::State* playerOldNextState;
+	static SpawnInfo spawnData;
+	static SharedFilePtr modelFile;
+	static SharedFilePtr animFiles[NUM_ANIMS];
+	
+	LaunchStar();
+	virtual s32 InitResources() override;
+	virtual s32 CleanupResources() override;
+	virtual s32 Behavior() override;
+	virtual s32 Render() override;
+	virtual ~LaunchStar();
 	
 	void UpdateModelTransform();
-
-	static LaunchStar* Spawn();
-	virtual int InitResources() override;
-	virtual int CleanupResources() override;
-	virtual int Behavior() override;
-	virtual int Render() override;
-	virtual ~LaunchStar();
-
-	static SharedFilePtr modelFile;
-	static SharedFilePtr animFiles[2];
-
-	static LaunchStar* ls_ptr;
-	static BezierPathIter bzIt;
-	static Vector3_16 lsDiffAng;
-	static Vector3_16 lsInitAng;
-
-	static SpawnInfo<LaunchStar> spawnData;
 };
 
-#endif
+// these were part of the Player struct
+struct LsPlayerExtension
+{
+	BezierPathIter bzIt;
+	LaunchStar* lsPtr;
+	Vector3_16 lsDiffAng;
+	Vector3_16 lsInitAng;
+	Vector3 lsPos;
+	Vector3 lsInitPos;
+	u32 particleID;
+	u16 launchTimer;
+	
+	/*union
+	{
+		BezierPathIter lsPathIt;
+		struct
+		{
+			Vector3_16 lsDiffAng; //0x768
+			Vector3_16 lsInitAng; //0x76e
+		};
+	};*/
+};
+
+extern LsPlayerExtension LS_PLAYER_EXTENSIONS[4];

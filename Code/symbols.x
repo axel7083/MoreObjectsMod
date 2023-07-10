@@ -243,6 +243,9 @@ PAUSED_DURING_TIMER                                                             
 WATERFALL_SOUNDS_DISABLED                                                         = 0x02110aec;
 MESSAGE_RESULT                                                                    = 0x0209d684;
 
+ACTOR_UPDATE_FLAGS                                                                = 0x0209b464;
+NEXT_ACTOR_UPDATE_FLAGS                                                           = 0x0209b454;
+
 CURRENT_GAMEMODE                                                                  = 0x0209f2d8;
 NUM_VS_STARS_COLLECTED                                                            = 0x0209f208;
 VS_STAR_SPAWN_ORDER                                                               = 0x0209f344;

@@ -26,11 +26,17 @@ extern "C"
 	extern SpawnInfo* ACTOR_SPAWN_TABLE[668];
 }
 
+enum Events
+{
+	
+	NUM_EVENTS = 0x20,
+};
+
 namespace Event
 {
 	void ClearBit(u32 bit);
 	void SetBit(u32 bit);
-	s32  GetBit(u32 bit);
+	bool GetBit(u32 bit);
 }
 
 enum TTC_Speeds : s8
@@ -168,6 +174,9 @@ extern "C"
 	extern bool PAUSED_DURING_TIMER;
 	extern bool WATERFALL_SOUNDS_DISABLED;
 	extern u8 MESSAGE_RESULT;
+	
+	extern u32 ACTOR_UPDATE_FLAGS;
+	extern u32 NEXT_ACTOR_UPDATE_FLAGS;
 	
 	extern u8 CURRENT_GAMEMODE;                // 0 = adventure, 1 = VS, 2 = ending
 	extern u8 NUM_VS_STARS_COLLECTED;          // not counting the stars that have been lost

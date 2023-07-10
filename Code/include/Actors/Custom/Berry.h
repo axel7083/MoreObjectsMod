@@ -13,6 +13,13 @@ struct Berry : Actor
 	bool killed;
 	bool isOnFloor;
 	
+	static SpawnInfo spawnData;
+	static SharedFilePtr modelFile;
+	static SharedFilePtr stemModelFile;
+	
+	static u32 berryCount;
+	static u32 berryMaxCount;
+	
 	Berry();
 	virtual s32 InitResources() override;
 	virtual s32 CleanupResources() override;
@@ -24,12 +31,4 @@ struct Berry : Actor
 	
 	void UpdateModelTransform();
 	void Kill();
-	
-	static SpawnInfo spawnData;
-	
-	static SharedFilePtr modelFile;
-	static SharedFilePtr stemModelFile;
-	
-	static u32 berryCount;
-	static u32 berryMaxCount;
 };

@@ -155,7 +155,7 @@ s32 ShyGuy::InitResources()
 		
 		pathPtr.FromID(param1);
 		numPathNodes = pathPtr.NumNodes();
-		pathPtr.GetNode(pos, 0);
+		pos = pathPtr.GetNode(0);
 		
 		SetTargetPos();
 	}
@@ -323,8 +323,7 @@ void ShyGuy::UpdateModelTransform()
 
 void ShyGuy::SetTargetPos()
 {
-	pathPtr.GetNode(targetPos, nextPathNode);
-	
+	targetPos = pathPtr.GetNode(nextPathNode);
 	targetPos.y = FloorY(targetPos);
 	targetAngle = pos.HorzAngle(targetPos);
 }
@@ -477,12 +476,10 @@ s32 ShyGuy::GetClosestPathNodeID()
 {
 	Fix12i closestDist = Fix12i::max;
 	s32 closestPt = 0;
-	Vector3 pathNode;
 	
 	for (s32 i = 0; i < numPathNodes; ++i)
 	{
-		pathPtr.GetNode(pathNode, i);
-		
+		Vector3 pathNode = pathPtr.GetNode(i);
 		Fix12i dist = pos.Dist(pathNode);
 		
 		if (dist < closestDist)

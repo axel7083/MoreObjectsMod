@@ -49,3 +49,10 @@ add_or_replace "data/custom_obj/shy_guy/" "shy_guy_wait.bca" "Assets/ShyGuy/shy_
 add_or_replace "data/custom_obj/shy_guy/" "shy_guy_walk.bca" "Assets/ShyGuy/shy_guy_walk.bca"
 add_or_replace "data/custom_obj/shy_guy/" "shy_guy_run.bca" "Assets/ShyGuy/shy_guy_run.bca"
 add_or_replace "data/custom_obj/shy_guy/" "shy_guy_freeze.bca" "Assets/ShyGuy/shy_guy_freeze.bca"
+
+# Launch Star
+add_or_replace "data/dynamic/" "launch_star.dylb" empty_file
+add_dir "data/custom_obj/" "launch_star"
+add_or_replace "data/custom_obj/launch_star/" "launch_star.bmd" "Assets/LaunchStar/launch_star.bmd"
+add_or_replace "data/custom_obj/launch_star/" "launch_star_wait.bca" "Assets/LaunchStar/launch_star_wait.bca"
+add_or_replace "data/custom_obj/launch_star/" "launch_star_launch.bca" "Assets/LaunchStar/launch_star_launch.bca"

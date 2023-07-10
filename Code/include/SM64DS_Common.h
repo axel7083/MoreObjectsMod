@@ -325,6 +325,9 @@ extern "C"
 	
 	Fix12i Math_Function_0203b14c(Fix12i& arg1, Fix12i arg2, Fix12i arg3, Fix12i arg4, Fix12i arg5);
 	void Math_Function_0203b0fc(Fix12i& arg1, Fix12i arg2, Fix12i arg3, Fix12i arg4);
+	
+	void Vec3_Interp(Vector3& vF, const Vector3& v1, const Vector3& v2, Fix12i t);
+	void Vec3_InterpCubic(Vector3& vF, const Vector3& v0, const Vector3& v1, const Vector3& v2, const Vector3& v3, Fix12i t);
 }
 
 [[gnu::always_inline]]
