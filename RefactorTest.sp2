@@ -40,3 +40,12 @@ add_or_replace "data/dynamic/" "note_block.dylb" empty_file
 add_dir "data/custom_obj/" "note_block"
 add_or_replace "data/custom_obj/note_block/" "note_block.bmd" "Assets/NoteBlock/note_block.bmd"
 add_or_replace "data/custom_obj/note_block/" "note_block.kcl" "Assets/NoteBlock/note_block.kcl"
+
+# Shy Guy
+add_or_replace "data/dynamic/" "shy_guy.dylb" empty_file
+add_dir "data/custom_obj/" "shy_guy"
+add_or_replace "data/custom_obj/shy_guy/" "shy_guy.bmd" "Assets/ShyGuy/shy_guy.bmd"
+add_or_replace "data/custom_obj/shy_guy/" "shy_guy_wait.bca" "Assets/ShyGuy/shy_guy_wait.bca"
+add_or_replace "data/custom_obj/shy_guy/" "shy_guy_walk.bca" "Assets/ShyGuy/shy_guy_walk.bca"
+add_or_replace "data/custom_obj/shy_guy/" "shy_guy_run.bca" "Assets/ShyGuy/shy_guy_run.bca"
+add_or_replace "data/custom_obj/shy_guy/" "shy_guy_freeze.bca" "Assets/ShyGuy/shy_guy_freeze.bca"

@@ -1,66 +1,75 @@
-#ifndef SHY_GUY_INCLUDED
-#define SHY_GUY_INCLUDED
+#pragma once
 
-#include "include/SM64DS_2.h"
-
-struct ShyGuy : public Enemy
+struct ShyGuy : Enemy
 {
-	CylinderClsn cylClsn;
-	WithMeshClsn wmClsn;
-	ModelAnim rigMdl;
-	ShadowVolume shadow;
-	MaterialChanger matChg;
+	enum Animations
+	{
+		WAIT,
+		WALK,
+		RUN,
+		FREEZE,
+		
+		NUM_ANIMS,
+	};
 	
-	uint8_t state;
-	uint8_t chaseCooldown;
-	short targetAngle;
+	enum States
+	{
+		ST_WAIT,
+		ST_TURN,
+		ST_CHASE,
+		ST_STOP,
+		ST_WARP,
+	};
+	
+	MovingCylinderClsn cylClsn;
+	WithMeshClsn wmClsn;
+	ModelAnim modelAnim;
+	ShadowModel shadow;
+	MaterialChanger matChg;
+	u8 state;
+	u8 chaseCooldown;
+	s16 targetAngle;
 	Player* targetPlayer;
 	Vector3 targetPos;
 	bool offTrack;
-	uint8_t nextPathPt;
-	uint8_t numPathPts;
+	u8 nextPathNode;
+	u8 numPathNodes;
 	bool alarmed;
 	bool backAndForth;
 	bool reverse;
 	bool customColor;
 	PathPtr pathPtr;
-	unsigned color;
+	u32 color;
+	
+	static SpawnInfo spawnData;
+	static SharedFilePtr modelFile;
+	static SharedFilePtr animFiles[NUM_ANIMS];
+	
+	ShyGuy();
+	virtual s32 InitResources() override;
+	virtual s32 CleanupResources() override;
+	virtual s32 Behavior() override;
+	virtual s32 Render() override;
+	virtual ~ShyGuy() override;
+	virtual u32 OnYoshiTryEat() override;
+	virtual void OnTurnIntoEgg(Player& player) override;
+	virtual Fix12i OnAimedAtWithEgg() override;
 	
 	void UpdateModelTransform();
-	static Fix12i FloorY(const Vector3& pos);
 	void SetTargetPos();
 	void Kill();
-	void HandleClsn();
+	void CheckCylClsn();
 	Player* PlayerVisibleToThis(Player* player);
 	bool KillIfTouchedBadSurface();
-	int GetClosestPathPtID();
+	s32 GetClosestPathNodeID();
 	void AimAtClosestPathPt();
 	void PlayMovingSoundEffect();
 	
-	static ShyGuy* Spawn();
-	virtual int InitResources() override;
-	virtual int CleanupResources() override;
-	virtual int Behavior() override;
-	virtual int Render() override;
-	virtual void Virtual30() override;
-	virtual ~ShyGuy();
-	virtual unsigned OnYoshiTryEat() override;
-	virtual void OnTurnIntoEgg(Player& player) override;
-	virtual Fix12i OnAimedAtWithEgg() override; //returns egg height
-
 	void State0_Wait();
 	void State1_Turn();
 	void State2_Chase();
 	void State3_Stop();
 	void State4_Warp();
-
-	static SharedFilePtr modelFile;
-	static SharedFilePtr animFiles[4];
-
-	static SpawnInfo<ShyGuy> spawnData;
-
-};
-
 	
-
-#endif
+	static Fix12i FloorY(const Vector3& pos);
+};

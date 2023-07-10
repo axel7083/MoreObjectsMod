@@ -37,7 +37,13 @@ struct Animation	//internal: FrameCtrl; done
 	static void UpdateFileOffsets(BCA_File& file);
 	
 	[[gnu::always_inline]]
-	bool WillHitLastFrame() const { return WillHitFrame((u16)(GetFrameCount() - 1)); }
+	u32 GetNumFrames() const { return (u32)numFramesAndFlags.val << 4 >> 16; }
+	
+	[[gnu::always_inline]]
+	u32 GetCurrFrame() const { return (u32)currFrame.val << 4 >> 16; }
+	
+	[[gnu::always_inline]]
+	inline bool WillHitLastFrame() const { return WillHitFrame((u16)(GetFrameCount() - 1)); }
 	
 	[[gnu::always_inline]]
 	static inline BCA_File* LoadFile(GloballySharedFilePtr& filePtr) { return LoadFile(filePtr.Get()); }

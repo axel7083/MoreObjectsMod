@@ -31,7 +31,7 @@ export LD      := $(PREFIX)ld
 #---------------------------------------------------------------------------------
 TARGET   := newcode
 BUILD    := build
-SOURCES  :=  Code source/P_NoteBlock
+SOURCES  :=  Code source/E_ShyGuy
 INCLUDES := include
 
 #---------------------------------------------------------------------------------

@@ -402,6 +402,7 @@ enum ActorIDs
 	OBJECT_LIGHTING_MODIFIER_ACTOR_ID              = 397,
 	TOXIC_LEVEL_ACTOR_ID                           = 398,
 	NOTE_BLOCK_ACTOR_ID                            = 399,
+	SHY_GUY_ACTOR_ID                               = 400,
 };
 
 enum ObjectIDs
@@ -741,5 +742,6 @@ enum ObjectIDs
 	OBJECT_LIGHTING_MODIFIER_OBJECT_ID              = 332,
 	TOXIC_LEVEL_OBJECT_ID                           = 333,
 	NOTE_BLOCK_OBJECT_ID                            = 334,
+	SHY_GUY_OBJECT_ID                               = 335,
 	MPCHANGE_OBJECT_ID                              = 511,
 };

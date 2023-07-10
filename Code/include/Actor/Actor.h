@@ -133,7 +133,7 @@ struct Actor : public ActorBase				//internal name: dActor
 	
 	bool BumpedUnderneathByPlayer(Player& player); //assumes there is a collision in the first place
 	bool JumpedOnByPlayer(CylinderClsn& cylClsn, Player& player);
-	void Unk_0201061c(Player& player, u32 numCoins, u32 coinType);
+	void GivePlayerCoins(Player& player, u8 numCoins, u32 coinType);
 	
 	Fix12i DistToCPlayer();
 	Player* ClosestPlayer();

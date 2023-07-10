@@ -882,7 +882,7 @@ _ZN5Actor10EarthquakeERK7Vector35Fix12IiE                                       
 _ZN5Actor12ReflectAngleE5Fix12IiES1_s                                             = 0x02010428;
 _ZN5Actor24BumpedUnderneathByPlayerER6Player                                      = 0x02010518;
 _ZN5Actor16JumpedOnByPlayerER12CylinderClsnR6Player                               = 0x0201054c;
-_ZN5Actor12Unk_0201061cER6Playerjj                                                = 0x0201061c;
+_ZN5Actor15GivePlayerCoinsER6Playerhj                                             = 0x0201061c;
 _ZN5Actor13DistToCPlayerEv                                                        = 0x020109e4;
 _ZN5Actor13ClosestPlayerEv                                                        = 0x02010ad8;
 _ZN5Actor18HorzAngleToCPlayerEv                                                   = 0x020109b8;
