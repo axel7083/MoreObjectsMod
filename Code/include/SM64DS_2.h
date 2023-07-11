@@ -215,7 +215,9 @@ extern "C"
 	s8 StarCollectedInCurrLevel(s32 starID);
 	
 	void UnloadBlueCoinModel();
-	void LoadBlueCoinModel();
+	void LoadBlueCoinModel();	
+	void LoadKeyModels(u32 keyID);
+	void UnloadKeyModels(u32 keyID);
 	void UnloadSilverStarAndNumber();
 	void LoadSilverStarAndNumber();
 	void LinkSilverStarAndStarMarker(Actor* starMarker, Actor* silverStar);

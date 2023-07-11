@@ -31,7 +31,7 @@ export LD      := $(PREFIX)ld
 #---------------------------------------------------------------------------------
 TARGET   := newcode
 BUILD    := build
-SOURCES  :=  Code source/O_StarChip
+SOURCES  :=  Code source/E_Magikoopa
 INCLUDES := include
 
 #---------------------------------------------------------------------------------

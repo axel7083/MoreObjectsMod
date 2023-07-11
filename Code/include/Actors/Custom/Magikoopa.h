@@ -1,126 +1,153 @@
-#ifndef MAGIKOOPA_INCLUDED
-#define MAGIKOOPA_INCLUDED
+#pragma once
 
-#include "include/SM64DS_2.h"
+constexpr Fix12i SHOT_RADIUS = 48._f;
 
-struct Magikoopa : public Enemy
+struct Magikoopa : Enemy
 {
-	//This keeps track of all the resources what the Magikoopa spawns needs.
-	//Without this, particle glitches can happen.
+	// this keeps track of all the resources what the Magikoopa spawns needs.
+	// without this, particle glitches can happen.
 	struct Resources
 	{
-		static const int NUM_PER_CHUNK = 16;
-		unsigned files[NUM_PER_CHUNK] = {0};
-		Resources* next = nullptr;
+		static constexpr s32 NUM_PER_CHUNK = 16;
+		
+		u32 files[NUM_PER_CHUNK];
+		Resources* next;
+		
+		~Resources();
 		
 		void Add(SharedFilePtr& sf);
 		void ProcessAdditions();
-		~Resources();
 	};
 	
-	static const int SHOT_LIMIT = 3;
 	struct SharedRes
 	{
-		unsigned numRefs = 1;
-		unsigned spawnActorID;
-		unsigned spawnActorParams;
-		uint8_t isBoss;
-		unsigned shotUniqueIDs[SHOT_LIMIT] = {0xffffffff, 0xffffffff, 0xffffffff};
+		static constexpr s32 SHOT_LIMIT = 3;
+		
+		u32 numRefs = 1;
+		u32 spawnActorID;
+		u32 spawnActorParams;
+		u8 type;
+		u32 shotUniqueIDs[SHOT_LIMIT] = { 0xffffffff, 0xffffffff, 0xffffffff };
 		Resources res;
 		
-		static void OnLoadFile(SharedFilePtr& file);
 		void TrackRes();
 		void StopTracking();
+		
+		static void OnLoadFile(SharedFilePtr& file);
 	};
 	
-	struct Shot : public Enemy
+	enum Animations
 	{
-		CylinderClsn cylClsn;
-		WithMeshClsn wmClsn;
+		APPEAR,
+		WAVE,
+		SHOOT,
+		POOF,
+		WAIT,
+		HURT,
+		DEFEAT,
 		
-		Vector3_16f direction;
-		uint8_t shotState;
-		uint8_t numFireToSpawn;
-		uint8_t* resourceRefCount;
-		SharedRes* res;
-		//unsigned shapesID;
-		
-		Model model;
-		TextureSequence texSeq;
-		
-		static SharedFilePtr magicModelFile;
-		static SharedFilePtr magicTexSeqFile;
-		
-		void UpdateModelTransform();
-		void SetMagikoopa(Magikoopa& magik);
-		
-		static Shot* Spawn();
-		virtual int InitResources() override;
-		virtual int CleanupResources() override;
-		virtual int Behavior() override;
-		virtual int Render() override;
-		virtual void Virtual30() override;
-		virtual ~Shot();
-
-		static SpawnInfo<Shot> spawnData;
+		NUM_ANIMS,
 	};
 	
-	CylinderClsn cylClsn;
-	WithMeshClsn wmClsn;
-	ModelAnim rigMdl;
-	ShadowVolume shadow;
+	enum Types
+	{
+		MAGIKOOPA,
+		KAMELLA,
+		
+		NUM_TYPES,
+	};
 	
-	uint8_t state;
-	uint8_t numPathPts;
-	uint8_t currPathPt;
-	uint8_t nextPathPt;
+	enum States
+	{
+		ST_APPEAR,
+		ST_WAVE,
+		ST_SHOOT,
+		ST_POOF,
+		ST_TELEPORT,
+		ST_HURT,
+		ST_WAIT,
+		ST_DEFEAT,
+		
+		NUM_STATES,
+	};
+	
+	MovingCylinderClsn cylClsn;
+	WithMeshClsn wmClsn;
+	ModelAnim modelAnim;
+	ShadowModel shadow;
+	Vector3 originalPos;
 	PathPtr pathPtr;
-	//unsigned shapesID;
-	uint8_t eventToTrigger;
-	uint8_t starID;
-	uint8_t resourceRefCount;
-	uint8_t shotState;
-	uint8_t health;
-	bool invincible;
-	bool battleStarted;
 	SharedRes* res;
 	Player* listener;
 	Fix12i horzDecel;
-	Vector3 originalPos;
+	u32 particleID;
+	u8 state;
+	u8 numPathPts;
+	u8 currPathPt;
+	u8 nextPathPt;
+	u8 eventID;
+	u8 starID;
+	u8 resourceRefCount;
+	u8 shotState;
+	u8 health;
+	bool invincible;
+	bool battleStarted;
+	
+	static SpawnInfo spawnData[NUM_TYPES];
+	static SharedFilePtr modelFiles[NUM_TYPES];
+	static SharedFilePtr animFiles[NUM_ANIMS];
+	static SharedFilePtr particleResFiles[NUM_TYPES];
+	
+	static Particle::SysDef particleSysDefs[NUM_TYPES];
+
+	Magikoopa();
+	virtual s32 InitResources() override;
+	virtual s32 CleanupResources() override;
+	virtual s32 Behavior() override;
+	virtual s32 Render() override;
+	virtual void OnPendingDestroy() override;
+	virtual ~Magikoopa() override;
+	virtual u32 OnYoshiTryEat() override;
+	virtual void OnTurnIntoEgg(Player& player) override;
+	virtual Fix12i OnAimedAtWithEgg() override; //returns egg height
 	
 	void UpdateModelTransform();
 	void KillMagikoopa();
 	void HandleClsn();
 	Vector3 GetWandTipPos();
-
-	static Magikoopa* Spawn();
-	virtual int InitResources() override;
-	virtual int CleanupResources() override;
-	virtual int Behavior() override;
-	virtual int Render() override;
-	virtual void Virtual30() override;
-	virtual ~Magikoopa();
-	virtual unsigned OnYoshiTryEat() override;
-	virtual void OnTurnIntoEgg(Player& player) override;
-	virtual Fix12i OnAimedAtWithEgg() override; //returns egg height
 	
 	void AttemptTalkStartIfNotStarted();
 	void Talk();
 	
-	void State0_Appear();
-	void State1_Wave();
-	void State2_Shoot();
-	void State3_Poof();
-	void State4_Teleport();
-	void State5_Hurt();
-	void State6_Wait();
-	void State7_Defeat();
-
-	static SharedFilePtr modelFiles[2];
-	static SharedFilePtr animFiles[7];
-	
-	static SpawnInfo<Magikoopa> spawnData;
-	static SpawnInfo<Magikoopa> bossSpawnData;
-
+	void St_Appear();
+	void St_Wave();
+	void St_Shoot();
+	void St_Poof();
+	void St_Teleport();
+	void St_Hurt();
+	void St_Wait();
+	void St_Defeat();
 };
-#endif
+
+struct MagikoopaShot : Enemy
+{
+	MovingCylinderClsn cylClsn;
+	WithMeshClsn wmClsn;
+	Vector3_16f direction;
+	u8* resourceRefCount;
+	Magikoopa::SharedRes* res;
+	u32 particleID;
+	u8 shotState;
+	u8 numFireToSpawn;
+	
+	static SpawnInfo spawnData;
+	
+	MagikoopaShot();
+	virtual s32 InitResources() override;
+	virtual s32 CleanupResources() override;
+	virtual s32 Behavior() override;
+	virtual s32 Render() override;
+	virtual ~MagikoopaShot() override;
+	
+	void SetMagikoopa(Magikoopa& magikoopa);
+};

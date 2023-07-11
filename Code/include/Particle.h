@@ -419,31 +419,39 @@ namespace Particle
 			HAS_EFFECT_RADIUS_CONVERGE = 1 << 29
 		};
 		
-		u32 flags; //0x0c004345 for particle 0x00bc
-		Fix12i rate; //in particles per frame
+		u32 flags; // 0x0c004345 for particle 0x00bc
+		Fix12i rate; // in particles per frame
 		Fix12i startHorzDist;
-		Vector3_16f dir; //0x0c, ???
+		Vector3_16f dir; // 0x0c, ???
 		u16 color;
-		Fix12i horzSpeed; //restart system for effect
-		Fix12i vertSpeed; //positive means go down, for some reason //restart system for effect
-		Fix12i scale; //restart system for effect
-		Fix12s horzScale; //milestone: 0x20
-		u16 unk22; //0x00e7 for particle 0x00bc
-		s16 minAngSpeed; //0x00000000 for particle 0x00bc
+		Fix12i horzSpeed; // restart system for effect
+		Fix12i vertSpeed; // positive means go down, for some reason //restart system for effect
+		Fix12i scale; // restart system for effect
+		Fix12s horzScale; // milestone: 0x20
+		u16 unk22; // 0x00e7 for particle 0x00bc
+		s16 minAngSpeed; // 0x00000000 for particle 0x00bc
 		s16 maxAngSpeed;
-		u16 frames; //of the system, 0 = infinity
-		u16 lifetime; //of the individual particles
+		u16 frames; // of the system, 0 = infinity
+		u16 lifetime; // of the individual particles
 		u8 scaleRand;
 		u8 lifetimeRand;
 		u8 speedRand;
-		u8 unk2f; //0x00 for particle 0x00bc, probably padding
-		u8 spawnPeriod; //number of frames between spawns (WARNING: DENOMINATOR)
-		u8 alpha; //on a scale of 0x00 to 0x1f
-		u8 speedFalloff; //higher means faster and for longer. Below 0x80: slow down, above 0x80: speed up
+		u8 unk2f; // 0x00 for particle 0x00bc, probably padding
+		u8 spawnPeriod; // number of frames between spawns (WARNING: DENOMINATOR)
+		u8 alpha; // on a scale of 0x00 to 0x1f
+		u8 speedFalloff; // higher means faster and for longer. Below 0x80: slow down, above 0x80: speed up
 		u8 spriteID;
-		u8 altLength; //0x01 for particle 0x00bc (WARNING: DENOMINATOR)
-		Fix12s velStretchFactor; //respective flag must be enabled
-		u8 texRepeatFlags; //1, 2, 3: horizontally x 2^n, 4, 8, 0xc: vertically x 2^(n/4)
+		u8 altLength; // 0x01 for particle 0x00bc (WARNING: DENOMINATOR)
+		// Fix12s velStretchFactor; // can't do this or the struct will be 4 bytes too big
+		u8 velStretchFactorPart1; // respective flag must be enabled
+		u8 velStretchFactorPart2;
+		u8 texRepeatFlags; // 1, 2, 3: horizontally x 2^n, 4, 8, 0xc: vertically x 2^(n/4)
+		
+		[[gnu::always_inline]]
+		inline Fix12s GetVelStretchFactor() const
+		{
+			return Fix12s(velStretchFactorPart1 | (velStretchFactorPart2 << 8), as_raw);
+		}
 	};
 
 	struct ScaleTransition
@@ -585,6 +593,9 @@ namespace Particle
 		Glitter* glitter;
 		Effect* effects;
 		u16 numEffects;
+		
+		void LoadAndSetFile(SharedFilePtr& filePtr);
+		void UnloadFile(SharedFilePtr& filePtr);
 	};
 	
 	enum TexFlags
@@ -811,6 +822,7 @@ namespace Particle
 		u16 unk2e;
 		
 		System* AddSystem(s32 particleID, Vector3& posAsr3);
+		
 		static bool LoadTex(u32 fileID, u32 newTexID);
 		static void UnloadNewTexs();
 	};

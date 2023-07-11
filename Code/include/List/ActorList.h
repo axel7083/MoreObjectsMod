@@ -405,6 +405,9 @@ enum ActorIDs
 	SHY_GUY_ACTOR_ID                               = 400,
 	LAUNCH_STAR_ACTOR_ID                           = 401,
 	STAR_CHIP_ACTOR_ID                             = 402,
+	MAGIKOOPA_ACTOR_ID                             = 403,
+	KAMELLA_ACTOR_ID                               = 404,
+	MAGIKOOPA_SHOT_ACTOR_ID                        = 405,
 };
 
 enum ObjectIDs
@@ -747,5 +750,7 @@ enum ObjectIDs
 	SHY_GUY_OBJECT_ID                               = 335,
 	LAUNCH_STAR_OBJECT_ID                           = 336,
 	STAR_CHIP_OBJECT_ID                             = 337,
+	MAGIKOOPA_OBJECT_ID                             = 338,
+	KAMELLA_OBJECT_ID                               = 339,
 	MPCHANGE_OBJECT_ID                              = 511,
 };

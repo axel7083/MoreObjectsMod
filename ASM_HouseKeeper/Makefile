@@ -49,7 +49,7 @@ export LD	:=	$(PREFIX)ld
 TARGET		:=	newcode
 BUILD		:=	build
 SOURCES		:=	source libfat_source
-INCLUDES	:=	include
+INCLUDES	:=	../Code/include
 DATA		:=	data  
 GRAPHICS	:=	gfx  
 
@@ -58,13 +58,12 @@ GRAPHICS	:=	gfx
 #---------------------------------------------------------------------------------
 ARCH	:=	
 
-CFLAGS	:=	-g -Wall -O2\
- 		-march=armv5te -mtune=arm946e-s -fomit-frame-pointer\
-		-ffast-math \
-		$(ARCH)
+CFLAGS := -Wall -Wextra -Werror -Wno-unused-result -Wno-unused-parameter -Wno-parentheses -Wno-literal-suffix \
+          -Os -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -fwrapv \
+          $(INCLUDE) -DARM9 -nodefaultlibs -I. -fno-builtin -c
 
-CFLAGS	+=	$(INCLUDE) -DARM9 -nodefaultlibs -I. -fno-builtin -c
-CXXFLAGS	:= $(CFLAGS) --std=c++11 -fno-rtti -fno-exceptions
+CXXFLAGS := $(CFLAGS) -std=c++20 -fno-exceptions \
+            -fno-rtti -fno-threadsafe-statics -faligned-new=4
 
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	=	-T $(CURDIR)/../symbols.x -T $(CURDIR)/../linker.x -g $(ARCH) -Map newcode.map

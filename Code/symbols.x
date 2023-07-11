@@ -281,6 +281,8 @@ StarCollectedInCurrLevel                                                        
 
 UnloadBlueCoinModel                                                               = 0x0200fe70;
 LoadBlueCoinModel                                                                 = 0x0200fe9c;
+LoadKeyModels                                                                     = 0x02131114;
+UnloadKeyModels                                                                   = 0x021310cc;
 UnloadSilverStarAndNumber                                                         = 0x020e717c;
 LoadSilverStarAndNumber                                                           = 0x020e71a8;
 LinkSilverStarAndStarMarker                                                       = 0x020e71d4;
