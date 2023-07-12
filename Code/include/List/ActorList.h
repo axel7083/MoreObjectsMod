@@ -408,6 +408,7 @@ enum ActorIDs
 	MAGIKOOPA_ACTOR_ID                             = 403,
 	KAMELLA_ACTOR_ID                               = 404,
 	MAGIKOOPA_SHOT_ACTOR_ID                        = 405,
+	YOSHI_NPC_ACTOR_ID                             = 406,
 };
 
 enum ObjectIDs
@@ -752,5 +753,6 @@ enum ObjectIDs
 	STAR_CHIP_OBJECT_ID                             = 337,
 	MAGIKOOPA_OBJECT_ID                             = 338,
 	KAMELLA_OBJECT_ID                               = 339,
+	YOSHI_NPC_OBJECT_ID                             = 340,
 	MPCHANGE_OBJECT_ID                              = 511,
 };

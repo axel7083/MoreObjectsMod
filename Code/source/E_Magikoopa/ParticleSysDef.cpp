@@ -4,7 +4,6 @@ using namespace Particle;
 
 void SysDef::LoadAndSetFile(SharedFilePtr& filePtr)
 {
-	asm("mov r11, r11");
 	filePtr.LoadFile();
 	
 	char* ptrToFile = filePtr.filePtr;

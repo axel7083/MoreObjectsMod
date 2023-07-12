@@ -579,6 +579,7 @@ void Magikoopa::Talk()
 	switch (talkState)
 	{
 		case Player::TK_NOT:
+		{
 			Message::EndTalk();
 			listener = nullptr;
 			
@@ -602,13 +603,16 @@ void Magikoopa::Talk()
 			}
 			
 			break;
+		}
 		case Player::TK_START:
+		{
 			u16 msgID = state == ST_DEFEAT ? defeatMsgIDs[listener->param1] : waitMsgIDs[listener->param1];
 			Vector3 lookAt = { pos.x, pos.y + TALK_HEIGHT, pos.z };
 			
 			listener->ShowMessage(*this, msgID, lookAt, 0, 0);
 			
 			break;
+		}
 	}
 }
 

@@ -36,7 +36,7 @@ namespace Event
 {
 	void ClearBit(u32 bit);
 	void SetBit(u32 bit);
-	bool GetBit(u32 bit);
+	s32 GetBit(u32 bit);
 }
 
 enum TTC_Speeds : s8

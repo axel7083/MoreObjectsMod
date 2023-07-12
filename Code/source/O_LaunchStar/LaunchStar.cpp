@@ -49,8 +49,6 @@ s32 LaunchStar::InitResources()
 	
 	pos.y -= 160._f;
 	
-	//Event::ClearBit(eventID);
-	
 	return 1;
 }
 
@@ -86,7 +84,6 @@ s32 LaunchStar::Behavior()
 			eventID = 0xff;
 			
 			NEXT_ACTOR_UPDATE_FLAGS &= ~Actor::UPDATE_DURING_STAR_CUTSCENE;
-			// flags |= Actor::NO_RENDER_IF_OFF_SCREEN;
 			
 			camera.SetLookAt(camLookAt);
 			camera.SetPos(camPos);
@@ -97,7 +94,6 @@ s32 LaunchStar::Behavior()
 				Sound::PlayMsgSound(41, 0x40, 0x7f, 107._f, false);
 			
 			NEXT_ACTOR_UPDATE_FLAGS |= Actor::UPDATE_DURING_STAR_CUTSCENE;
-			// flags &= ~Actor::NO_RENDER_IF_OFF_SCREEN;
 			
 			Vector3 newCamPos = pos;
 			newCamPos.x += Sin(ang.y) * 850._f;
