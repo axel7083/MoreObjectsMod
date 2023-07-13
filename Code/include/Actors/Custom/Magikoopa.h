@@ -96,9 +96,9 @@ struct Magikoopa : Enemy
 	static SpawnInfo spawnData[NUM_TYPES];
 	static SharedFilePtr modelFiles[NUM_TYPES];
 	static SharedFilePtr animFiles[NUM_ANIMS];
-	static SharedFilePtr particleResFiles[NUM_TYPES];
+	static SharedFilePtr magicParticleFiles[NUM_TYPES];
 	
-	static Particle::SysDef particleSysDefs[NUM_TYPES];
+	static Particle::SysDef magicSysDefs[NUM_TYPES];
 
 	Magikoopa();
 	virtual s32 InitResources() override;

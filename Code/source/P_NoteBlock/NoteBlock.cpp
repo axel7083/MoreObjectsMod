@@ -109,29 +109,34 @@ void NoteBlock::Jiggle()
 	switch (jiggleState)
 	{
 		case JS_NO_JIGGLE:
+		{
 			break;
-			
+		}
 		case JS_JIGGLE_DOWN:
+		{
 			pos.y += JIGGLE_DOWN_VEL;
 			
 			if (pos.y < originalPos.y - MIN_JIGGLE_DOWN_DIST)
 				jiggleState = JS_JIGGLE_UP;
 			
 			break;
-			
+		}
 		case JS_JIGGLE_UP:
+		{
 			pos.y += JIGGLE_UP_VEL;
 			
 			if (pos.y > originalPos.y)
 				jiggleState = JS_JIGGLE_STOP;
 			
 			break;
-			
+		}
 		case JS_JIGGLE_STOP:
+		{
 			pos.y = originalPos.y;
 			jiggleState = JS_NO_JIGGLE;
 			
 			break;
+		}
 	}
 }
 

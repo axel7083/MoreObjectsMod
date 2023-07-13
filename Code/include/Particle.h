@@ -595,7 +595,7 @@ namespace Particle
 		u16 numEffects;
 		
 		void LoadAndSetFile(SharedFilePtr& filePtr);
-		void UnloadFile(SharedFilePtr& filePtr);
+		void Release(SharedFilePtr& filePtr);
 	};
 	
 	enum TexFlags
@@ -762,6 +762,30 @@ namespace Particle
 		static u32 New(u32 uniqueID, u32 effectID, Fix12i x, Fix12i y, Fix12i z, const Vector3_16f* dir, Callback* callback);
 		static u32 NewUnkCallback818(u32 uniqueID, u32 effectID, Fix12i x, Fix12i y, Fix12i z, const Vector3_16f* dir);
 		static void NewSimple(u32 effectID, Fix12i x, Fix12i y, Fix12i z);
+		
+		[[gnu::always_inline]]
+		static inline u32 NewWeather(u32 uniqueID, SysDef& sysdef, u32 effectID, Fix12i x, Fix12i y, Fix12i z, const Vector3_16f* dir, u32 numWeatherEffectsNow)
+		{
+			return NewWeather(uniqueID, (u32)&sysdef, x, y, z, dir, numWeatherEffectsNow);
+		}
+		
+		[[gnu::always_inline]]
+		static inline u32 New(u32 uniqueID, SysDef& sysdef, Fix12i x, Fix12i y, Fix12i z, const Vector3_16f* dir, Callback* callback)
+		{
+			return New(uniqueID, (u32)&sysdef, x, y, z, dir, callback);
+		}
+		
+		[[gnu::always_inline]]
+		static inline u32 NewUnkCallback818(u32 uniqueID, SysDef& sysdef, Fix12i x, Fix12i y, Fix12i z, const Vector3_16f* dir)
+		{
+			return NewUnkCallback818(uniqueID, (u32)&sysdef, x, y, z, dir);
+		}
+		
+		[[gnu::always_inline]]
+		static inline void NewSimple(SysDef& sysdef, Fix12i x, Fix12i y, Fix12i z)
+		{
+			NewSimple((u32)&sysdef, x, y, z);
+		}
 		
 		static System* FromUniqueID(u32 uniqueID);
 	};

@@ -44,7 +44,7 @@ s32 MagikoopaShot::CleanupResources()
 	else
 		res->numRefs--;
 	
-	Magikoopa::particleSysDefs[res->type].UnloadFile(Magikoopa::particleResFiles[res->type]);
+	Magikoopa::magicSysDefs[res->type].Release(Magikoopa::magicParticleFiles[res->type]);
 	
 	return 1;
 }
@@ -54,7 +54,7 @@ s32 MagikoopaShot::Behavior()
 	UpdatePosWithOnlySpeed(nullptr);
 	UpdateWMClsn(wmClsn, 0);
 	
-	particleID = Particle::System::New(particleID, (u32)&Magikoopa::particleSysDefs[res->type], pos.x, pos.y + SHOT_RADIUS, pos.z, &direction, nullptr);
+	particleID = Particle::System::New(particleID, Magikoopa::magicSysDefs[res->type], pos.x, pos.y + SHOT_RADIUS, pos.z, &direction, nullptr);
 	
 	Actor* otherObj = Actor::FindWithID(cylClsn.otherObjID);
 	
@@ -138,7 +138,7 @@ void MagikoopaShot::SetMagikoopa(Magikoopa& magikoopa)
 	speed.y = (Fix12i)direction.y * SHOT_SPEEDS[res->type];
 	speed.z = (Fix12i)direction.z * SHOT_SPEEDS[res->type];
 	
-	Magikoopa::particleSysDefs[res->type].LoadAndSetFile(Magikoopa::particleResFiles[res->type]);
+	Magikoopa::magicSysDefs[res->type].LoadAndSetFile(Magikoopa::magicParticleFiles[res->type]);
 }
 
 MagikoopaShot::MagikoopaShot() {}

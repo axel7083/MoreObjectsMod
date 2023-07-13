@@ -106,9 +106,9 @@ SpawnInfo Magikoopa::spawnData[NUM_TYPES] =
 
 SharedFilePtr Magikoopa::modelFiles[NUM_TYPES];
 SharedFilePtr Magikoopa::animFiles[NUM_ANIMS];
-SharedFilePtr Magikoopa::particleResFiles[NUM_TYPES];
+SharedFilePtr Magikoopa::magicParticleFiles[NUM_TYPES];
 
-Particle::SysDef Magikoopa::particleSysDefs[NUM_TYPES];
+Particle::SysDef Magikoopa::magicSysDefs[NUM_TYPES];
 
 void Magikoopa::Resources::Add(SharedFilePtr& sf)
 {
@@ -203,7 +203,7 @@ s32 Magikoopa::InitResources()
 	for (s32 i = 0; i < NUM_ANIMS; i++)
 		Animation::LoadFile(animFiles[i]);
 	
-	particleSysDefs[res->type].LoadAndSetFile(particleResFiles[res->type]);
+	magicSysDefs[res->type].LoadAndSetFile(magicParticleFiles[res->type]);
 	
 	if (!modelAnim.SetFile(modelFiles[res->type].BMD(), 1, -1))
 		return 0;
@@ -279,7 +279,7 @@ s32 Magikoopa::CleanupResources()
 	for (s32 i = 0; i < NUM_ANIMS; i++)
 		animFiles[i].Release();
 	
-	particleSysDefs[res->type].UnloadFile(particleResFiles[res->type]);
+	magicSysDefs[res->type].Release(magicParticleFiles[res->type]);
 	
 	if (starID - 8 >= 0 && starID - 8 <= 6)
 		UnloadKeyModels(starID - 8);
@@ -390,7 +390,7 @@ s32 Magikoopa::Behavior()
 	UpdateModelTransform();
 	
 	Vector3 wandTip = GetWandTipPos();
-	particleID = Particle::System::New(particleID, (u32)&particleSysDefs[res->type], wandTip.x, wandTip.y, wandTip.z, nullptr, nullptr);
+	particleID = Particle::System::New(particleID, magicSysDefs[res->type], wandTip.x, wandTip.y, wandTip.z, nullptr, nullptr);
 	
 	HandleClsn(); //must be done before clearing collision, of course
 	

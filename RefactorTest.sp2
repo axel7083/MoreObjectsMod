@@ -1,8 +1,112 @@
 # General
 add_dir "data/" "dynamic"
 add_dir "data/" "custom_obj"
+
+# For the particle patches
+rename "data/DSMT/mdst_kira1_spa.bin" "mdst_kira1.spa"
+replace "data/DSMT/" "mdst_kira1.spa"      "Assets/Misc/mdst_kira1.spa"
+add_or_replace "data/" "particle_data.spa" "Assets/Misc/particle_data.spa"
+
+# Berry
+add_or_replace "data/dynamic/" "berry.dylb" empty_file
+add_dir "data/custom_obj/" "berry"
+add_or_replace "data/custom_obj/berry/" "berry.bmd"      "Assets/Berry/berry.bmd"
+add_or_replace "data/custom_obj/berry/" "berry_stem.bmd" "Assets/Berry/berry_stem.bmd"
+
+# Galaxy Shrink Platform
+add_or_replace "data/dynamic/" "galaxy_shrink_platform.dylb" empty_file
+add_dir "data/custom_obj/" "galaxy_shrink_platform"
+add_or_replace "data/custom_obj/galaxy_shrink_platform/" "galaxy_shrink_platform.bmd" "Assets/GalaxyShrinkPlatform/galaxy_shrink_platform.bmd"
+add_or_replace "data/custom_obj/galaxy_shrink_platform/" "galaxy_shrink_platform.kcl" "Assets/GalaxyShrinkPlatform/galaxy_shrink_platform.kcl"
+add_or_replace "data/custom_obj/galaxy_shrink_platform/" "galaxy_shrink_platform_frame.bmd" "Assets/GalaxyShrinkPlatform/galaxy_shrink_platform_frame.bmd"
+
+# Colored Coin
+add_or_replace "data/dynamic/" "colored_coin.dylb" empty_file
+add_dir "data/custom_obj/" "colored_coin"
+add_or_replace "data/custom_obj/colored_coin/" "colored_coin.bmd" "Assets/ColoredCoin/colored_coin.bmd"
+
+# Invisible Wall
+add_or_replace "data/dynamic/" "invisible_wall.dylb" empty_file
+add_dir "data/custom_obj/" "invisible_wall"
+add_or_replace "data/custom_obj/invisible_wall/" "invisible_wall.kcl" "Assets/InvisibleWall/invisible_wall.kcl"
+
+# Rideable Yoshi
+add_or_replace "data/dynamic/" "rideable_yoshi.dylb" empty_file
+add_or_replace "data/player/" "ride_yoshi.bca" "Assets/RideableYoshi/ride_yoshi.bca"
+
+# Object Lighting Modifier
+add_or_replace "data/dynamic/" "object_lighting_modifier.dylb" empty_file
+
+# Toxic Level
+add_or_replace "data/dynamic/" "toxic_level.dylb" empty_file
+
+# Note Block
+add_or_replace "data/dynamic/" "note_block.dylb" empty_file
+add_dir "data/custom_obj/" "note_block"
+add_or_replace "data/custom_obj/note_block/" "note_block.bmd" "Assets/NoteBlock/note_block.bmd"
+add_or_replace "data/custom_obj/note_block/" "note_block.kcl" "Assets/NoteBlock/note_block.kcl"
+
+# Shy Guy
+add_or_replace "data/dynamic/" "shy_guy.dylb" empty_file
+add_dir "data/custom_obj/" "shy_guy"
+add_or_replace "data/custom_obj/shy_guy/" "shy_guy.bmd"        "Assets/ShyGuy/shy_guy.bmd"
+add_or_replace "data/custom_obj/shy_guy/" "shy_guy_wait.bca"   "Assets/ShyGuy/shy_guy_wait.bca"
+add_or_replace "data/custom_obj/shy_guy/" "shy_guy_walk.bca"   "Assets/ShyGuy/shy_guy_walk.bca"
+add_or_replace "data/custom_obj/shy_guy/" "shy_guy_run.bca"    "Assets/ShyGuy/shy_guy_run.bca"
+add_or_replace "data/custom_obj/shy_guy/" "shy_guy_freeze.bca" "Assets/ShyGuy/shy_guy_freeze.bca"
+
+# Launch Star
+add_or_replace "data/dynamic/" "launch_star.dylb" empty_file
+add_dir "data/custom_obj/" "launch_star"
+add_or_replace "data/custom_obj/launch_star/" "launch_star.bmd"        "Assets/LaunchStar/launch_star.bmd"
+add_or_replace "data/custom_obj/launch_star/" "launch_star_wait.bca"   "Assets/LaunchStar/launch_star_wait.bca"
+add_or_replace "data/custom_obj/launch_star/" "launch_star_launch.bca" "Assets/LaunchStar/launch_star_launch.bca"
+
+# Star Chip
+add_or_replace "data/dynamic/" "star_chip.dylb" empty_file
+add_dir "data/custom_obj/" "star_chip"
+add_or_replace "data/custom_obj/star_chip/" "star_chip.bmd" "Assets/StarChip/star_chip.bmd"
+
+# Magikoopa
+add_or_replace "data/dynamic/" "magikoopa.dylb" empty_file
+add_dir "data/custom_obj/" "magikoopa"
+add_or_replace "data/custom_obj/magikoopa/" "magikoopa.bmd"        "Assets/Magikoopa/magikoopa.bmd"
+add_or_replace "data/custom_obj/magikoopa/" "kamella.bmd"          "Assets/Magikoopa/kamella.bmd"
+add_or_replace "data/custom_obj/magikoopa/" "magikoopa_appear.bca" "Assets/Magikoopa/magikoopa_appear.bca"
+add_or_replace "data/custom_obj/magikoopa/" "magikoopa_wave.bca"   "Assets/Magikoopa/magikoopa_wave.bca"
+add_or_replace "data/custom_obj/magikoopa/" "magikoopa_shoot.bca"  "Assets/Magikoopa/magikoopa_shoot.bca"
+add_or_replace "data/custom_obj/magikoopa/" "magikoopa_poof.bca"   "Assets/Magikoopa/magikoopa_poof.bca"
+add_or_replace "data/custom_obj/magikoopa/" "magikoopa_wait.bca"   "Assets/Magikoopa/magikoopa_wait.bca"
+add_or_replace "data/custom_obj/magikoopa/" "magikoopa_hurt.bca"   "Assets/Magikoopa/magikoopa_hurt.bca"
+add_or_replace "data/custom_obj/magikoopa/" "magikoopa_defeat.bca" "Assets/Magikoopa/magikoopa_defeat.bca"
+add_or_replace "data/custom_obj/magikoopa/" "magikoopa_magic.spt"  "Assets/Magikoopa/magikoopa_magic.spt"
+add_or_replace "data/custom_obj/magikoopa/" "magikoopa_magic.spr"  "Assets/Magikoopa/magikoopa_magic.spr"
+add_or_replace "data/custom_obj/magikoopa/" "kamella_magic.spr"    "Assets/Magikoopa/kamella_magic.spr"
+
 # Yoshi NPC
 add_or_replace "data/dynamic/" "yoshi_npc.dylb" empty_file
 add_dir "data/custom_obj/" "yoshi_npc"
 add_or_replace "data/custom_obj/yoshi_npc/" "yoshi_npc.bmd" "Assets/YoshiNPC/yoshi_npc.bmd"
 add_or_replace "data/custom_obj/yoshi_npc/" "yoshi_npc_wait.bca" "Assets/YoshiNPC/yoshi_npc_wait.bca"
+
+# Character Block
+add_or_replace "data/dynamic/" "character_block.dylb" empty_file
+add_dir "data/custom_obj/" "character_block"
+add_or_replace "data/custom_obj/character_block/" "character_block.bmd"       "Assets/CharacterBlock/character_block.bmd"
+add_or_replace "data/custom_obj/character_block/" "character_block_trans.bmd" "Assets/CharacterBlock/character_block_trans.bmd"
+add_or_replace "data/custom_obj/character_block/" "character_block.btp"       "Assets/CharacterBlock/character_block.btp"
+add_or_replace "data/custom_obj/character_block/" "character_block_trans.btp" "Assets/CharacterBlock/character_block_trans.btp"
+add_or_replace "data/custom_obj/character_block/" "character_block_trans.bca" "Assets/CharacterBlock/character_block_trans.bca"
+add_or_replace "data/custom_obj/character_block/" "character_block.kcl"       "Assets/CharacterBlock/character_block.kcl"
+add_or_replace "data/custom_obj/character_block/" "stars_mario.spd"  "Assets/CharacterBlock/stars_mario.spd"
+add_or_replace "data/custom_obj/character_block/" "stars_luigi.spd"  "Assets/CharacterBlock/stars_luigi.spd"
+add_or_replace "data/custom_obj/character_block/" "stars_wario.spd"  "Assets/CharacterBlock/stars_wario.spd"
+add_or_replace "data/custom_obj/character_block/" "stars_yoshi.spd"  "Assets/CharacterBlock/stars_yoshi.spd"
+add_or_replace "data/custom_obj/character_block/" "dust_1_mario.spd" "Assets/CharacterBlock/dust_1_mario.spd"
+add_or_replace "data/custom_obj/character_block/" "dust_1_luigi.spd" "Assets/CharacterBlock/dust_1_luigi.spd"
+add_or_replace "data/custom_obj/character_block/" "dust_1_wario.spd" "Assets/CharacterBlock/dust_1_wario.spd"
+add_or_replace "data/custom_obj/character_block/" "dust_1_yoshi.spd" "Assets/CharacterBlock/dust_1_yoshi.spd"
+add_or_replace "data/custom_obj/character_block/" "dust_2_mario.spd" "Assets/CharacterBlock/dust_2_mario.spd"
+add_or_replace "data/custom_obj/character_block/" "dust_2_luigi.spd" "Assets/CharacterBlock/dust_2_luigi.spd"
+add_or_replace "data/custom_obj/character_block/" "dust_2_wario.spd" "Assets/CharacterBlock/dust_2_wario.spd"
+add_or_replace "data/custom_obj/character_block/" "dust_2_yoshi.spd" "Assets/CharacterBlock/dust_2_yoshi.spd"

@@ -1,42 +1,67 @@
-#ifndef CHARACTER_BLOCK_INCLUDED
-#define CHARACTER_BLOCK_INCLUDED
+#pragma once
 
-#include "include/SM64DS_2.h"
-
-struct CharacterBlock : public Platform
-{	
-	void UpdateModelTransform();
-
-	static CharacterBlock* Spawn();
-	virtual void Jiggle();
-	virtual void JumpedUnderBlock();
-	virtual bool CheckUnlock();
-	virtual int InitResources() override;
-	virtual int CleanupResources() override;
-	virtual int Behavior() override;
-	virtual int Render() override;
-	virtual ~CharacterBlock();
+struct CharacterBlock : Platform
+{
+	enum BlockTypes
+	{
+		BT_MARIO,
+		BT_LUIGI,
+		BT_WARIO,
+		BT_YOSHI,
+		
+		NUM_BLOCK_TYPES,
+	};
 	
-	int stage;
-	bool healPlayer;
-	Vector3 oldPos;
-	ModelAnim modelAnim;
-	ShadowVolume shadow;
+	enum JiggleState : u8
+	{
+		JS_NO_JIGGLE,
+		JS_JIGGLE_UP,
+		JS_JIGGLE_DOWN,
+		JS_JIGGLE_STOP,
+	};
+	
+	static constexpr s32 NUM_DUST_PARTICLES = 2;
+	
+	TextureSequence texSeq;
+	TextureSequence transTexSeq;
+	ModelAnim transModel;
+	ShadowModel shadow;
 	Matrix4x3 shadowMat;
-	
-	unsigned blockType;
-	unsigned myParticle;
-	unsigned startingCharacter;
+	Vector3 originalPos;
+	Fix12i floorPosY;
+	u8 blockType;
+	u32 myParticle;
+	u32 startingCharacter;
 	bool needsUnlock;
 	bool isUnlocked;
-	int soundIDs[4];
+	u8 jiggleState;
+	bool healPlayer;
 	
-	static SpawnInfo<CharacterBlock> spawnData;
-
-	static SharedFilePtr modelFiles[4];
-	static SharedFilePtr modelFilesTrans[4];
+	static SpawnInfo spawnData;
+	static SharedFilePtr modelFile;
+	static SharedFilePtr transModelFile;
+	static SharedFilePtr texSeqFile;
+	static SharedFilePtr transTexSeqFile;
+	static SharedFilePtr animFile;
 	static SharedFilePtr clsnFile;
-	static SharedFilePtr animFiles[2];
+	static SharedFilePtr starsParticleFiles[NUM_BLOCK_TYPES];
+	static SharedFilePtr dustParticleFiles[2][NUM_BLOCK_TYPES];
+	
+	static Particle::SysDef starsSysDefs[NUM_BLOCK_TYPES];
+	static Particle::SysDef dustSysDefs[2][NUM_BLOCK_TYPES];
+	
+	CharacterBlock();
+	virtual s32 InitResources() override;
+	virtual s32 CleanupResources() override;
+	virtual s32 Behavior() override;
+	virtual s32 Render() override;
+	virtual ~CharacterBlock() override;
+	virtual void OnHitFromUnderneath(Actor& attacker) override;
+	
+	void UpdateModelTransform();
+	void DropShadow();
+	Fix12i GetFloorPosY();
+	void Jiggle();
+	void JumpedUnderBlock();
+	bool CheckUnlock();
 };
-
-#endif

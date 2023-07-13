@@ -31,7 +31,7 @@ export LD      := $(PREFIX)ld
 #---------------------------------------------------------------------------------
 TARGET   := newcode
 BUILD    := build
-SOURCES  :=  Code source/N_YoshiNPC
+SOURCES  :=  Code source/P_CharacterBlock
 INCLUDES := include
 
 #---------------------------------------------------------------------------------

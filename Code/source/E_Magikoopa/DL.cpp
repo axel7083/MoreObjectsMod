@@ -24,8 +24,8 @@ void init()
 	Magikoopa::animFiles[Magikoopa::HURT]  .Construct("data/custom_obj/magikoopa/magikoopa_hurt.bca"ov0);
 	Magikoopa::animFiles[Magikoopa::DEFEAT].Construct("data/custom_obj/magikoopa/magikoopa_defeat.bca"ov0);
 	
-	Magikoopa::particleResFiles[Magikoopa::MAGIKOOPA].Construct("data/custom_obj/magikoopa/magikoopa_magic.spr"ov0);
-	Magikoopa::particleResFiles[Magikoopa::KAMELLA]  .Construct("data/custom_obj/magikoopa/kamella_magic.spr"ov0);
+	Magikoopa::magicParticleFiles[Magikoopa::MAGIKOOPA].Construct("data/custom_obj/magikoopa/magikoopa_magic.spr"ov0);
+	Magikoopa::magicParticleFiles[Magikoopa::KAMELLA]  .Construct("data/custom_obj/magikoopa/kamella_magic.spr"ov0);
 	
 	// enables the dynamic hook at 0x02017bfc, has no side effects
 	instructions[0] = 0xe1a00004;
