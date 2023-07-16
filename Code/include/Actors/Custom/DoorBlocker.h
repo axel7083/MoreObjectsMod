@@ -1,30 +1,22 @@
-#ifndef DOOR_BLOCKER_INCLUDED
-#define DOOR_BLOCKER_INCLUDED
+#pragma once
 
-#include "include/SM64DS_2.h"
-
-struct DoorBlocker : public Platform
+struct DoorBlocker : Platform
 {	
-	//ShadowVolume shadow;
-	//Matrix4x3 shadowMat;
 	Vector3 center;
-	uint8_t eventID;
+	u8 eventID;
 	bool gone;
 	bool camSet;
 	
-	void UpdateModelTransform();
-
-	static DoorBlocker* Spawn();
+	static SpawnInfo spawnData;
+	static SharedFilePtr modelFile;
+	static SharedFilePtr clsnFile;
+	
+	DoorBlocker();
 	virtual int InitResources() override;
 	virtual int CleanupResources() override;
 	virtual int Behavior() override;
 	virtual int Render() override;
-	virtual ~DoorBlocker();
-
-	static SharedFilePtr modelFile;
-	static SharedFilePtr clsnFile;
-
-	static SpawnInfo<DoorBlocker> spawnData;
+	virtual ~DoorBlocker() override;
+	
+	void UpdateModelTransform();
 };
-
-#endif

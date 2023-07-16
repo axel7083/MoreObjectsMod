@@ -31,7 +31,7 @@ export LD      := $(PREFIX)ld
 #---------------------------------------------------------------------------------
 TARGET   := newcode
 BUILD    := build
-SOURCES  :=  Code source/P_SaveBlock
+SOURCES  :=  Code source/P_DoorBlocker
 INCLUDES := include
 
 #---------------------------------------------------------------------------------
