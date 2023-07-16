@@ -1,27 +1,18 @@
-#ifndef TREE_SHADOW_INCLUDED
-#define TREE_SHADOW_INCLUDED
+#pragma once
 
-#include "include/SM64DS_2.h"
-
-struct TreeShadow : public Actor
+struct TreeShadow : Actor
 {
-	Model model;
-	ShadowVolume shadow;
+	ShadowModel shadow;
 	Matrix4x3 shadowMat;
-	unsigned opacity;
 	
-	void UpdateModelTransform();
+	static SpawnInfo spawnData;
 	
-	static TreeShadow* Spawn();
-	virtual int InitResources() override;
-	virtual int CleanupResources() override;
-	virtual int Behavior() override;
-	virtual int Render() override;
+	TreeShadow();
+	virtual s32 InitResources() override;
+	virtual s32 CleanupResources() override;
+	virtual s32 Behavior() override;
+	virtual s32 Render() override;
 	virtual ~TreeShadow() override;
 	
-	static SharedFilePtr modelFile;
-	
-	static SpawnInfo<TreeShadow> spawnData;
+	void DropShadow();
 };
-
-#endif

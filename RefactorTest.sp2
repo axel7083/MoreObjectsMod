@@ -110,3 +110,6 @@ add_or_replace "data/custom_obj/character_block/" "dust_2_mario.spd" "Assets/Cha
 add_or_replace "data/custom_obj/character_block/" "dust_2_luigi.spd" "Assets/CharacterBlock/dust_2_luigi.spd"
 add_or_replace "data/custom_obj/character_block/" "dust_2_wario.spd" "Assets/CharacterBlock/dust_2_wario.spd"
 add_or_replace "data/custom_obj/character_block/" "dust_2_yoshi.spd" "Assets/CharacterBlock/dust_2_yoshi.spd"
+
+# Tree Shadow
+add_or_replace "data/dynamic/" "tree_shadow.dylb" empty_file

@@ -410,6 +410,7 @@ enum ActorIDs
 	MAGIKOOPA_SHOT_ACTOR_ID                        = 405,
 	YOSHI_NPC_ACTOR_ID                             = 406,
 	CHARACTER_BLOCK_ACTOR_ID                       = 407,
+	TREE_SHADOW_ACTOR_ID                           = 408,
 };
 
 enum ObjectIDs
@@ -756,5 +757,6 @@ enum ObjectIDs
 	KAMELLA_OBJECT_ID                               = 339,
 	YOSHI_NPC_OBJECT_ID                             = 340,
 	CHARACTER_BLOCK_OBJECT_ID                       = 341,
+	TREE_SHADOW_OBJECT_ID                           = 342,
 	MPCHANGE_OBJECT_ID                              = 511,
 };
