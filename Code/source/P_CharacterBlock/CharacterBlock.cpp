@@ -215,7 +215,7 @@ void CharacterBlock::DropShadow()
 	
 	shadowMat = Matrix4x3::RotationY(ang.y);
 	shadowMat.c3.x = pos.x >> 3;
-	shadowMat.c3.y = (pos.y - 0x20000_f) >> 3;
+	shadowMat.c3.y = (pos.y - 32._f) >> 3;
 	shadowMat.c3.z = pos.z >> 3;
 	
 	DropShadowScaleXYZ(shadow, shadowMat, shadowScale, shadowDepth + 20._f, shadowScale, 15);

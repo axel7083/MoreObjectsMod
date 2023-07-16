@@ -13,14 +13,6 @@ SpawnInfo TreeShadow::spawnData =
 	4096._f
 };
 
-void TreeShadow::DropShadow()
-{
-	shadowMat = Matrix4x3::RotationY(ang.y);
-	shadowMat.c3 = pos >> 3;
-	
-	DropShadowRadHeight(shadow, shadowMat, 336._f, 311._f, 15);
-}
-
 s32 TreeShadow::InitResources()
 {
 	shadow.InitCylinder();
@@ -43,6 +35,14 @@ s32 TreeShadow::Behavior()
 s32 TreeShadow::Render()
 {
 	return 1;
+}
+
+void TreeShadow::DropShadow()
+{
+	shadowMat = Matrix4x3::RotationY(ang.y);
+	shadowMat.c3 = pos >> 3;
+	
+	DropShadowRadHeight(shadow, shadowMat, 336._f, 311._f, 15);
 }
 
 TreeShadow::TreeShadow() {}

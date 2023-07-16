@@ -31,7 +31,7 @@ export LD      := $(PREFIX)ld
 #---------------------------------------------------------------------------------
 TARGET   := newcode
 BUILD    := build
-SOURCES  :=  Code source/O_TreeShadow
+SOURCES  :=  Code source/P_SaveBlock
 INCLUDES := include
 
 #---------------------------------------------------------------------------------

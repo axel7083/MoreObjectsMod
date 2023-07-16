@@ -19,3 +19,4 @@ compile dl "data/dynamic/magikoopa.dylb"                "Code" "source/E_Magikoo
 compile dl "data/dynamic/yoshi_npc.dylb"                "Code" "source/N_YoshiNPC"
 compile dl "data/dynamic/character_block.dylb"          "Code" "source/P_CharacterBlock"
 compile dl "data/dynamic/tree_shadow.dylb"              "Code" "source/O_TreeShadow"
+compile dl "data/dynamic/save_block.dylb"               "Code" "source/P_SaveBlock"

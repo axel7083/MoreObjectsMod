@@ -113,3 +113,10 @@ add_or_replace "data/custom_obj/character_block/" "dust_2_yoshi.spd" "Assets/Cha
 
 # Tree Shadow
 add_or_replace "data/dynamic/" "tree_shadow.dylb" empty_file
+
+# Save Block
+add_or_replace "data/dynamic/" "save_block.dylb" empty_file
+add_dir "data/custom_obj/" "save_block"
+add_or_replace "data/custom_obj/save_block/" "save_block.bmd"       "Assets/SaveBlock/save_block.bmd"
+add_or_replace "data/custom_obj/save_block/" "save_block.btp"       "Assets/SaveBlock/save_block.btp"
+add_or_replace "data/custom_obj/save_block/" "save_block.kcl"       "Assets/SaveBlock/save_block.kcl"

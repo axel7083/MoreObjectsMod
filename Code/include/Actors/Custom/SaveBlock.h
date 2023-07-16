@@ -1,35 +1,36 @@
-#ifndef SAVE_BLOCK_INCLUDED
-#define SAVE_BLOCK_INCLUDED
+#pragma once
 
-#include "include/SM64DS_2.h"
-
-struct SaveBlock : public Platform
-{	
-	void UpdateModelTransform();
-
-	static SaveBlock* Spawn();
-	virtual void Jiggle();
-	virtual void JumpedUnderBlock();
+struct SaveBlock : Platform
+{
+	enum JiggleState : u8
+	{
+		JS_NO_JIGGLE,
+		JS_JIGGLE_UP,
+		JS_JIGGLE_DOWN,
+		JS_JIGGLE_STOP,
+	};
+	
+	TextureSequence texSeq;
+	ShadowModel shadow;
+	Matrix4x3 shadowMat;
+	Vector3 originalPos;
+	Fix12i floorPosY;
+	u8 jiggleState;
+	
+	static SpawnInfo spawnData;
+	static SharedFilePtr modelFile;
+	static SharedFilePtr texSeqFile;
+	static SharedFilePtr clsnFile;
+	
+	SaveBlock();
 	virtual int InitResources() override;
 	virtual int CleanupResources() override;
 	virtual int Behavior() override;
 	virtual int Render() override;
 	virtual ~SaveBlock() override;
+	virtual void OnHitFromUnderneath(Actor& attacker) override;
 	
-	int stage;
-	bool saveable;
-	Vector3 oldPos;
-	
-	Model model;
-	TextureSequence texSeq;
-	ShadowVolume shadow;
-	Matrix4x3 shadowMat;
-	
-	static SpawnInfo<SaveBlock> spawnData;
-
-	static SharedFilePtr modelFile;
-	static SharedFilePtr texSeqFile;
-	static SharedFilePtr clsnFile;
+	void DropShadow();
+	Fix12i GetFloorPosY();
+	void Jiggle();
 };
-
-#endif

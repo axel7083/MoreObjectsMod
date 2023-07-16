@@ -411,6 +411,7 @@ enum ActorIDs
 	YOSHI_NPC_ACTOR_ID                             = 406,
 	CHARACTER_BLOCK_ACTOR_ID                       = 407,
 	TREE_SHADOW_ACTOR_ID                           = 408,
+	SAVE_BLOCK_ACTOR_ID                            = 409,
 };
 
 enum ObjectIDs
@@ -758,5 +759,6 @@ enum ObjectIDs
 	YOSHI_NPC_OBJECT_ID                             = 340,
 	CHARACTER_BLOCK_OBJECT_ID                       = 341,
 	TREE_SHADOW_OBJECT_ID                           = 342,
+	SAVE_BLOCK_OBJECT_ID                            = 343,
 	MPCHANGE_OBJECT_ID                              = 511,
 };
