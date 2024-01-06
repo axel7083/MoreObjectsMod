@@ -25,3 +25,4 @@
 *ASM_HouseKeeper/newcode.bin
 *ASM_HouseKeeper/newcode.elf
 *ASM_HouseKeeper/newcode.sym
+Code/build/**/*

@@ -4,6 +4,7 @@ generate_sound_list "Code/include/List/SoundList.h"
 compile clean "Code"
 
 # Compile DLs
+compile dl "data/dynamic/cosmic_clones.dylb"            "Code" "source/O_CosmicClones"
 compile dl "data/dynamic/berry.dylb"                    "Code" "source/O_Berry"
 compile dl "data/dynamic/galaxy_shrink_platform.dylb"   "Code" "source/P_GalaxyShrinkPlatform"
 compile dl "data/dynamic/colored_coin.dylb"             "Code" "source/O_ColoredCoin"

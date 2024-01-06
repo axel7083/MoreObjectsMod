@@ -219,9 +219,9 @@ struct Player : Actor
 	u32 unk680;
 	Fix12i jumpPeakHeight; // 0x684
 	u32 msgID;
-	u32 unk68c;
-	u32 unk690;
-	u32 unk694;
+    Fix12i unk68c;
+    Fix12i unk690;
+    Fix12i unk694;
 	u32 unk698;
 	u32 unk69c;
 	u16 visibilityCounter; // the player is visible when this is even (except when the player is electrocuted the second bit is checked instead)

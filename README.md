@@ -1,6 +1,13 @@
 # More Objects Mod
 Toolkit and resources for SM64DS for some custom objects.
 
+## Using Dynamics libaries
+
+You need to download this repository to your computer. And have installed the latest version of [SM64DSe-Ultimate](https://github.com/Gota7/SM64DSe-Ultimate).
+
+Inside the editor go to `More -> Import Patch` and select the `refactorTest.sp2` file from this repository.
+Repeat the process once it finishes with `CompileTest.sp2`.
+
 ## Custom Objects
 * Galaxy Shrinking Platforms
 * Silver Coins

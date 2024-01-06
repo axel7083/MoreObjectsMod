@@ -28,7 +28,8 @@ struct Model : ModelBase		// internal: SimpleModel
 	virtual void UpdateVerts();
 	virtual void Virtual10(Matrix4x3& arg0);
 	virtual void Render(const Vector3* scale = nullptr);
-	
+
+    void SetPolygonMode(s32 polygonAttr);
 	void SetPolygonID(s32 polygonID);
 	void ShowMaterial(s32 boneID, s32 materialID);
 	void HideMaterial(s32 boneID, s32 materialID);

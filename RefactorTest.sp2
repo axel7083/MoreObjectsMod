@@ -20,6 +20,9 @@ add_or_replace "data/custom_obj/galaxy_shrink_platform/" "galaxy_shrink_platform
 add_or_replace "data/custom_obj/galaxy_shrink_platform/" "galaxy_shrink_platform.kcl" "Assets/GalaxyShrinkPlatform/galaxy_shrink_platform.kcl"
 add_or_replace "data/custom_obj/galaxy_shrink_platform/" "galaxy_shrink_platform_frame.bmd" "Assets/GalaxyShrinkPlatform/galaxy_shrink_platform_frame.bmd"
 
+# COSMIC CLONES
+add_or_replace "data/dynamic/" "cosmic_clones.dylb" empty_file
+
 # Colored Coin
 add_or_replace "data/dynamic/" "colored_coin.dylb" empty_file
 add_dir "data/custom_obj/" "colored_coin"
