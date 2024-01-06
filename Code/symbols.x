@@ -519,6 +519,7 @@ _ZN5Model9DoSetFileEPcii                                                        
 _ZN5Model11UpdateVertsEv                                                          = 0x02016c98;
 _ZN5Model9Virtual10ER9Matrix4x3                                                   = 0x02016bb8;
 _ZN5Model6RenderEPK7Vector3                                                       = 0x02016b78;
+_ZN5Model14SetPolygonModeEi                                                       = 0x02016a8c;
 _ZN5Model12SetPolygonIDEi                                                         = 0x02016abc;
 _ZN5Model12ShowMaterialEii                                                        = 0x02016a24;
 _ZN5Model12HideMaterialEii                                                        = 0x02016a58;
