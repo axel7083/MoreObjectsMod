@@ -1,11 +1,11 @@
 #ifndef MEGA_BLOCK_INCLUDED
 #define MEGA_BLOCK_INCLUDED
 
-#include "include/SM64DS_2.h"
+#include "SM64DS_2.h"
 
 struct MegaBlock : public Platform
 {
-	ShadowVolume shadow;
+    ShadowModel shadow;
 	Matrix4x3 shadowMat;
 	
 	uint8_t starID;
@@ -24,7 +24,7 @@ struct MegaBlock : public Platform
 	static SharedFilePtr modelFile;
 	static SharedFilePtr clsnFile;
 
-	static SpawnInfo<MegaBlock> spawnData;
+	static SpawnInfo spawnData;
 };
 
 #endif

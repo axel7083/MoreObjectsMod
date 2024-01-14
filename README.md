@@ -8,38 +8,50 @@ You need to download this repository to your computer. And have installed the la
 Inside the editor go to `More -> Import Patch` and select the `refactorTest.sp2` file from this repository.
 Repeat the process once it finishes with `CompileTest.sp2`.
 
+> ⚠️ The file `Code/include/List/FileList.h` and `Code/include/List/SoundList.h` are **generated** by the Editor when using the CompileTest.sp2 script.
+
+> 🚨 The `SM64DSe/objectdb.xml` is **not** updated therefore **cannot** be used.
+
 ## Custom Objects
-* Galaxy Shrinking Platforms
-* Silver Coins
-* Rideable Yoshis
-* Berries
-* Invisible Walls
-* 2D Level (With Camera Limiter)
-* Object Lighting Modifier
-* Toxic Levels
-* 6 Types of Colored Goombas
-* Noteblocks
-* Shy Guys
-* Magikoopa & Kamella
-* Launch Stars & Star Chips
-* Skybox Rotator
-* Gravity Modifier
-* Yoshi NPC's
-* Colored Warp Pipes
-* Character Blocks
-* Tree Shadows
-* Save Blocks
-* Door Blockers
-* Colored Coins
-* Colored Toads
-* Peach NPC
-* Blue Ice Block
-* Mega Block
-* Cutscene Loader
-* Custom Block
-* Treasure Chest
-* Thwomp & Magma Thwomp
-* And More To Come!
+
+- 🚧: WIP
+- ✅: Implemented as Dynamic Library
+- ❓: Unknown status
+
+| Name                                     | Status |
+|------------------------------------------|--------|
+| Galaxy Shrinking Platform                | ✅ |
+| CosmicClones                             | ✅ |
+| Rideable Yoshis                          | ✅ |
+| Berries                                  | ✅ |
+| Invisible Walls                          | ✅ |
+| 2D Level (With Camera Limiter)           | ❓ |
+| Silver Coins (Code/source/O_ColoredCoin) | ✅ |
+| Object Lighting Modifier                 | ✅ |
+| Toxic Levels                             | ✅ |
+| 6 Types of Colored Goombas               | 🚧 |
+| Noteblocks                               | ✅ |
+| Shy Guys                                 | ✅ |
+| Magikoopa & Kamella                      | ✅ |
+| Launch Stars & Star Chips                | ✅ |
+| Skybox Rotator                           | 🚧 |
+| Gravity Modifier                         | ❓ |
+| Yoshi NPC's                              | ✅ |
+| Colored Warp Pipes                       | 🚧 |
+| Character Blocks                         | ✅ |
+| Tree Shadows                             | ✅ |
+| Save Blocks                              | ✅ |
+| Door Blockers                            | ✅ |
+| Colored Coins                            | ✅ |
+| Colored Toads                            | ❓ |
+| Peach NPC                                | ❓ |
+| Blue Ice Block                           | ❓ |
+| Mega Block                               | ✅ |
+| Cutscene Loader                          | 🚧 |
+| Custom Block                             | 🚧 |
+| Treasure Chest                           | 🚧 |
+| Thwomp & Magma Thwomp                    | 🚧 |
+
 
 ## How It Works
 MOM works from two code segments: the overlay, and the housekeeper.

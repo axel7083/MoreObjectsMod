@@ -414,6 +414,7 @@ enum ActorIDs
 	SAVE_BLOCK_ACTOR_ID                            = 409,
 	DOOR_BLOCKER_ACTOR_ID                          = 410,
     SHADOW_CLONE_ACTOR_ID                          = 411,
+    MEGA_BLOCK_ACTOR_ID                            = 412,
 };
 
 enum ObjectIDs
@@ -764,5 +765,6 @@ enum ObjectIDs
 	SAVE_BLOCK_OBJECT_ID                            = 343,
 	DOOR_BLOCKER_OBJECT_ID                          = 344,
     SHADOW_CLONE_OBJECT_ID                          = 345,
+    MEGA_BLOCK_OBJECT_ID                            = 346,
 	MPCHANGE_OBJECT_ID                              = 511,
 };
