@@ -1,5 +1,5 @@
-#include "TreasureChest.h"
-
+#include "Actors/Custom/TreasureChest.h"
+#include "List/ActorList.h"
 namespace
 {
 	struct State
@@ -16,23 +16,14 @@ namespace
 		State{ &TreasureChest::State1_Init, &TreasureChest::State1_Main }, //opening
 		State{ &TreasureChest::State2_Init, &TreasureChest::State2_Main }, //opened
 	};
-	
-	enum Animations
-	{
-		OPEN,
-		
-		NUM_ANIMS
-	};
-	
-	const short TREASURE_CHEST_ID = 0x226;
 }
 
 SharedFilePtr TreasureChest::modelFile;
 SharedFilePtr TreasureChest::animFiles[NUM_ANIMS];
 
-SpawnInfo<TreasureChest> TreasureChest::spawnData =
+SpawnInfo TreasureChest::spawnData =
 {
-	&TreasureChest::Spawn,
+    []() -> ActorBase* { return new TreasureChest; },
 	0x000d,
 	0x00a0,
 	0x00000003,
@@ -44,10 +35,10 @@ SpawnInfo<TreasureChest> TreasureChest::spawnData =
 
 void TreasureChest::UpdateModelTransform()
 {
-	rigMdl.mat4x3.ThisFromRotationY(ang.y);
-	rigMdl.mat4x3.r0c3 = pos.x >> 3;
-	rigMdl.mat4x3.r1c3 = pos.y >> 3;
-	rigMdl.mat4x3.r2c3 = pos.z >> 3;
+    modelAnim.mat4x3 = Matrix4x3::RotationY(ang.y);
+	modelAnim.mat4x3.c3.x = pos.x >> 3;
+	modelAnim.mat4x3.c3.y = pos.y >> 3;
+	modelAnim.mat4x3.c3.z = pos.z >> 3;
 }
 
 TreasureChest* TreasureChest::Spawn()
@@ -57,14 +48,14 @@ TreasureChest* TreasureChest::Spawn()
 
 int TreasureChest::InitResources()
 {
-	Model::LoadFile(NUMBER_MODEL_PTR);
+	Model::LoadFile(RED_NUMBER_MODEL_PTR);
 	Model::LoadFile(BUBBLE_MODEL_PTR);
 	Model::LoadFile(modelFile);
-	rigMdl.SetFile(modelFile.filePtr, 1, -1);
+	modelAnim.SetFile(modelFile.BMD(), 1, -1);
 	
 	for (int i = 0; i < NUM_ANIMS; ++i)
-		BoneAnimation::LoadFile(animFiles[i]);
-	rigMdl.SetAnim(animFiles[OPEN].filePtr, Animation::NO_LOOP, 0x1000_f, 0);
+        Animation::LoadFile(animFiles[i]);
+	modelAnim.SetAnim(animFiles[OPEN].BCA(), Animation::NO_LOOP, 0x1000_f, 0);
 	
 	cylClsn.Init(this, 0x96000_f, 0x96000_f, 0x00200004, 0x00000000);
 	
@@ -84,7 +75,7 @@ int TreasureChest::CleanupResources()
 		animFiles[i].Release();
 	modelFile.Release();
 	BUBBLE_MODEL_PTR.Release();
-	NUMBER_MODEL_PTR.Release();
+    RED_NUMBER_MODEL_PTR.Release();
 	return 1;
 }
 
@@ -101,14 +92,14 @@ void TreasureChest::CallState()
 
 void TreasureChest::State0_Init()
 {
-	rigMdl.anim.currFrame = 0_f;
+    modelAnim.currFrame = 0._f;
 }
 void TreasureChest::State0_Main()
 {
 	//this->r10
 	DecIfAbove0_Short(cooldown);
 	if(cooldown == 0x58)
-		Sound::PlayBank2_2D(0x0e);
+		Sound::Play2D("NCS_SE_SYS_BUZZER"sfx);
 	
 	if(cylClsn.otherObjID == 0 || cooldown != 0)
 		return;
@@ -121,7 +112,7 @@ void TreasureChest::State0_Main()
 	int numOpenChests = 0; //r9
 	int count = 0; //r8
 	TreasureChest* currChest = nullptr; //r7
-	while((currChest = (TreasureChest*)FindWithActorID(TREASURE_CHEST_ID, currChest)))
+	while((currChest = (TreasureChest*)FindWithActorID(TREASURE_CHEST_DL_ACTOR_ID, currChest)))
 	{
 		++count;
 		if(currChest == this)
@@ -139,9 +130,9 @@ void TreasureChest::State0_Main()
 			spawnStar = true;
 		}
 		else
-			Sound::PlayBank2_2D(0x26);
+			Sound::Play2D("NCS_SE_SYS_CORRECT_CHIME"sfx);
 		
-		Sound::PlayBank3(player.isUnderwater ? 0x22 : 0x20, camSpacePos);
+		Sound::Play(player.isUnderwater ? "NCS_SE_SCT_BOXOPEN_WATER"sfx : "NCS_SE_SCT_BOXOPEN"sfx, camSpacePos);
 		ChangeState(1);
 	}
 	else
@@ -150,7 +141,7 @@ void TreasureChest::State0_Main()
 		player.Shock(!player.isMetalWario);
 		
 		currChest = nullptr;
-		while((currChest = (TreasureChest*)FindWithActorID(TREASURE_CHEST_ID, currChest)) != this)
+		while((currChest = (TreasureChest*)FindWithActorID(TREASURE_CHEST_DL_ACTOR_ID, currChest)) != this)
 			currChest->ChangeState(0);
 	}
 }
@@ -163,8 +154,9 @@ void TreasureChest::State1_Init()
 }
 void TreasureChest::State1_Main()
 {
-	rigMdl.anim.Advance();
-	if((int)rigMdl.anim.currFrame == 0x14) //468 after
+    modelAnim.Advance();
+
+	if((int)modelAnim.GetCurrFrame() == 0x14) //468 after
 	{
 		Player& player = *ClosestPlayer();
 		Vector3 spawnPos {pos.x, pos.y + 0xc8000_f, pos.z};
@@ -178,7 +170,7 @@ void TreasureChest::State1_Main()
 		}
 	}
 	
-	if(rigMdl.anim.Finished())
+	if(modelAnim.Finished())
 		ChangeState(2);
 }
 
@@ -193,7 +185,10 @@ void TreasureChest::State2_Main()
 		return;
 	
 	if(starID < 8) //360 else
-		UntrackAndSpawnStar(trackedStarID, starID, Vector3{pos.x, pos.y + 0xc8000_f, pos.z}, 4);
+    {
+        // TODO: figure out how to use UntrackAndSpawnStar
+        // UntrackAndSpawnStar(trackedStarID, starID, Vector3{pos.x, pos.y + 0xc8000_f, pos.z}, 4);
+    }
 	if(starID >= 0x10 && starID < 0x30)
 		Event::SetBit(starID - 0x10);
 	
@@ -210,7 +205,7 @@ int TreasureChest::Behavior()
 
 int TreasureChest::Render()
 {
-	rigMdl.Render(nullptr);
+	modelAnim.Render(nullptr);
 	return 1;
 }
 

@@ -1,13 +1,20 @@
 #ifndef TREASURE_CHEST_INCLUDED
 #define TREASURE_CHEST_INCLUDED
 
-#include "include/SM64DS_2.h"
+#include "SM64DS_2.h"
 
 //because Koopas and Treasure Chests are incompatible
 struct TreasureChest : public Actor
 {
-	ModelAnim rigMdl; //0x0d4
-	CylinderClsn cylClsn; //0x138
+    enum Animations
+    {
+        OPEN,
+
+        NUM_ANIMS
+    };
+
+    ModelAnim modelAnim; //0x0d4
+    MovingCylinderClsn cylClsn; //0x138
 	
 	unsigned state;
 	uint16_t cooldown;
@@ -37,7 +44,7 @@ struct TreasureChest : public Actor
 	static SharedFilePtr modelFile;
 	static SharedFilePtr animFiles[1];
 	
-	static SpawnInfo<TreasureChest> spawnData;
+	static SpawnInfo spawnData;
 };
 
 #endif

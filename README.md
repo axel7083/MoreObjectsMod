@@ -25,7 +25,6 @@ Repeat the process once it finishes with `CompileTest.sp2`.
 | Rideable Yoshis                          | ✅ |
 | Berries                                  | ✅ |
 | Invisible Walls                          | ✅ |
-| 2D Level (With Camera Limiter)           | ❓ |
 | Silver Coins (Code/source/O_ColoredCoin) | ✅ |
 | Object Lighting Modifier                 | ✅ |
 | Toxic Levels                             | ✅ |
@@ -49,9 +48,16 @@ Repeat the process once it finishes with `CompileTest.sp2`.
 | Mega Block                               | ✅ |
 | Cutscene Loader                          | 🚧 |
 | Custom Block                             | 🚧 |
-| Treasure Chest                           | 🚧 |
+| Treasure Chest                           | 🚩 |
 | Thwomp & Magma Thwomp                    | 🚧 |
+| 2D Level (With Camera Limiter)           | ❓ |
 
+
+### Not working objects
+
+| name | description                                                                                                                   |
+| --- |-------------------------------------------------------------------------------------------------------------------------------|
+| Treasure Chest (Code/source/O_TreasureChest) | Not working THUMB9: Undefined instruction: 0x0000BBF8 PC=0xE40000D4</br>ARM9: Undefined instruction: 0x0000BBF8 PC=0xE40000D4 |
 
 ## How It Works
 MOM works from two code segments: the overlay, and the housekeeper.

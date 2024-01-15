@@ -135,3 +135,9 @@ add_or_replace "data/dynamic/" "mega_block.dylb" empty_file
 add_dir "data/custom_obj/" "mega_block"
 add_or_replace "data/custom_obj/mega_block/" "star_block.bmd" "Assets/MegaBlock/star_block.bmd"
 add_or_replace "data/custom_obj/mega_block/" "star_block.kcl" "Assets/MegaBlock/star_block.kcl"
+
+# Treasure Chest
+add_or_replace "data/dynamic/" "treasure_chest.dylb" empty_file
+add_dir "data/custom_obj/" "treasure_chest"
+add_or_replace "data/custom_obj/treasure_chest/" "t_box.bmd" "Assets/TreasureChest/t_box.bmd"
+add_or_replace "data/custom_obj/treasure_chest/" "t_box_open.bca" "Assets/TreasureChest/t_box_open.bca"
