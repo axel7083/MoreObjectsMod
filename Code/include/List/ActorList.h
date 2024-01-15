@@ -418,6 +418,7 @@ enum ActorIDs
     TREASURE_CHEST_DL_ACTOR_ID                     = 413,
     SKYBOX_ROTATOR_ACTOR_ID                        = 414,
     COLORED_PIPE_ACTOR_ID                          = 415,
+    PEACH_NPC_ACTOR_ID                             = 416,
 };
 
 enum ObjectIDs
@@ -772,5 +773,6 @@ enum ObjectIDs
     TREASURE_CHEST_DL_OBJECT_ID                     = 347,
     SKYBOX_ROTATOR_OBJECT_ID                        = 348,
     COLORED_PIPE_OBJECT_ID                          = 349,
+    PEACH_NPC_OBJECT_ID                             = 350,
 	MPCHANGE_OBJECT_ID                              = 511,
 };

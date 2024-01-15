@@ -17,6 +17,7 @@ Repeat the process once it finishes with `CompileTest.sp2`.
 - 🚧: WIP
 - ✅: Implemented as Dynamic Library
 - ❓: Unknown status
+- 🚩: Compile but crash at runtime
 
 | Name                                     | Status |
 |------------------------------------------|--------|
@@ -36,14 +37,14 @@ Repeat the process once it finishes with `CompileTest.sp2`.
 | Skybox Rotator                           | ✅ |
 | Gravity Modifier                         | ❓ |
 | Yoshi NPC's                              | ✅ |
-| Colored Warp Pipes                       | 🚧 |
+| Colored Warp Pipes                       | ✅ |
 | Character Blocks                         | ✅ |
 | Tree Shadows                             | ✅ |
 | Save Blocks                              | ✅ |
 | Door Blockers                            | ✅ |
 | Colored Coins                            | ✅ |
 | Colored Toads                            | ❓ |
-| Peach NPC                                | ❓ |
+| Peach NPC                                | ✅ |
 | Blue Ice Block                           | ❓ |
 | Mega Block                               | ✅ |
 | Cutscene Loader                          | 🚧 |

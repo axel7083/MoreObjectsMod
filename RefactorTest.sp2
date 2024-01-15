@@ -150,3 +150,9 @@ add_or_replace "data/dynamic/" "colored_pipe.dylb" empty_file
 add_dir "data/custom_obj/" "colored_pipe"
 add_or_replace "data/custom_obj/colored_pipe/" "obj_dokan.bmd" "Assets/ColoredPipe/obj_dokan.bmd"
 add_or_replace "data/custom_obj/colored_pipe/" "obj_dokan.kcl" "Assets/ColoredPipe/obj_dokan.kcl"
+
+# Peach NPC
+add_or_replace "data/dynamic/" "peach_npc.dylb" empty_file
+add_dir "data/custom_obj/" "peach_npc"
+add_or_replace "data/custom_obj/peach_npc/" "peach_low.bmd" "Assets/PeachNPC/peach_low.bmd"
+add_or_replace "data/custom_obj/peach_npc/" "peach_wait.bca" "Assets/PeachNPC/peach_wait.bca"
