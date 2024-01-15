@@ -1,7 +1,7 @@
 #ifndef SKYBOXROTATOR_INCLUDED
 #define SKYBOXROTATOR_INCLUDED
 
-#include "include/SM64DS_2.h"
+#include "SM64DS_2.h"
 
 struct SkyboxRotator : public Actor
 {	
@@ -14,7 +14,7 @@ struct SkyboxRotator : public Actor
 	virtual int Render() override;
 	virtual ~SkyboxRotator();
 
-	static SpawnInfo<SkyboxRotator> spawnData;
+	static SpawnInfo spawnData;
 };
 
 #endif

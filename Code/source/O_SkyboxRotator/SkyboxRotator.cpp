@@ -1,4 +1,4 @@
-#include "SkyboxRotator.h"
+#include "Actors/Custom/SkyboxRotator.h"
 
 namespace {
 	uint16_t rotX = 0;
@@ -6,9 +6,9 @@ namespace {
 	uint16_t rotZ = 0;
 }
 
-SpawnInfo<SkyboxRotator> SkyboxRotator::spawnData =
+SpawnInfo SkyboxRotator::spawnData =
 {
-	&SkyboxRotator::Spawn,
+    []() -> ActorBase* { return new SkyboxRotator; },
 	0x0004,
 	0x0007,
 	0x00000000,
@@ -38,7 +38,7 @@ int SkyboxRotator::Behavior()
 
 	Stage* currStage = static_cast<Stage*>(ROOT_ACTOR_BASE);
 	if (currStage != nullptr) {
-		currStage->skyBox->mat4x3 = currStage->skyBox->mat4x3.FromRotationXYZExt(rotX, rotY, rotZ);
+		currStage->skyBox->mat4x3 = Matrix4x3::RotationXYZ(rotX, rotY, rotZ);
 		rotX += param1;
 		rotY += ang.x;
 		rotZ += ang.z;

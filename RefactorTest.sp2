@@ -141,3 +141,6 @@ add_or_replace "data/dynamic/" "treasure_chest.dylb" empty_file
 add_dir "data/custom_obj/" "treasure_chest"
 add_or_replace "data/custom_obj/treasure_chest/" "t_box.bmd" "Assets/TreasureChest/t_box.bmd"
 add_or_replace "data/custom_obj/treasure_chest/" "t_box_open.bca" "Assets/TreasureChest/t_box_open.bca"
+
+# Skybox Rotator
+add_or_replace "data/dynamic/" "skybox-rotator.dylb" empty_file

@@ -33,7 +33,7 @@ Repeat the process once it finishes with `CompileTest.sp2`.
 | Shy Guys                                 | ✅ |
 | Magikoopa & Kamella                      | ✅ |
 | Launch Stars & Star Chips                | ✅ |
-| Skybox Rotator                           | 🚧 |
+| Skybox Rotator                           | ✅ |
 | Gravity Modifier                         | ❓ |
 | Yoshi NPC's                              | ✅ |
 | Colored Warp Pipes                       | 🚧 |

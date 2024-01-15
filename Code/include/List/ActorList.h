@@ -415,6 +415,8 @@ enum ActorIDs
 	DOOR_BLOCKER_ACTOR_ID                          = 410,
     SHADOW_CLONE_ACTOR_ID                          = 411,
     MEGA_BLOCK_ACTOR_ID                            = 412,
+    TREASURE_CHEST_DL_ACTOR_ID                     = 413,
+    SKYBOX_ROTATOR_ACTOR_ID                        = 414,
 };
 
 enum ObjectIDs
@@ -766,5 +768,7 @@ enum ObjectIDs
 	DOOR_BLOCKER_OBJECT_ID                          = 344,
     SHADOW_CLONE_OBJECT_ID                          = 345,
     MEGA_BLOCK_OBJECT_ID                            = 346,
+    TREASURE_CHEST_DL_OBJECT_ID                     = 347,
+    SKYBOX_ROTATOR_OBJECT_ID                        = 348,
 	MPCHANGE_OBJECT_ID                              = 511,
 };
