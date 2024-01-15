@@ -1,24 +1,18 @@
-#include "ColoredPipe.h"
+#include "Actors/Custom/ColoredPipe.h"
 
 namespace
 {
-	FixedSizeCLPS_Block<1> clpsBlock =
-	{
-		{'C', 'L', 'P', 'S'},
-		8,
-		1,
-		{
-        	CLPS(0x0, 0x0, 0x3f, 0x0, 0x1, 0x0, 0, 0, 0, 0xff)
-        }
-	};
+    using clpsBlock = StaticCLPS_Block<
+            {  }
+    >;
 }
 
 SharedFilePtr ColoredPipe::modelFile;
 SharedFilePtr ColoredPipe::clsnFile;
 
-SpawnInfo<ColoredPipe> ColoredPipe::spawnData =
+SpawnInfo ColoredPipe::spawnData =
 {
-	&ColoredPipe::Spawn,
+    []() -> ActorBase* { return new ColoredPipe; },
 	0x0030,
 	0x0100,
 	0x00000002,
@@ -35,26 +29,27 @@ ColoredPipe* ColoredPipe::Spawn()
 
 void ColoredPipe::UpdateModelTransform()
 {
-	model.mat4x3.ThisFromRotationY(ang.y);
-	model.mat4x3.r0c3 = pos.x >> 3;
-	model.mat4x3.r1c3 = pos.y >> 3;
-	model.mat4x3.r2c3 = pos.z >> 3;
+	model.mat4x3 = Matrix4x3::RotationY(ang.y);
+	model.mat4x3.c3.x = pos.x >> 3;
+	model.mat4x3.c3.y = pos.y >> 3;
+	model.mat4x3.c3.z = pos.z >> 3;
 	
 	//Pipe rotation for parameters 2 & 3
-	model.mat4x3.ApplyInPlaceToRotationX(ang.x);
-	model.mat4x3.ApplyInPlaceToRotationZ(ang.z);
+
+    model.mat4x3 = model.mat4x3.RotateX(ang.x);
+    model.mat4x3 = model.mat4x3.RotateZ(ang.z);
 }
 
 int ColoredPipe::InitResources()
 {
 	
 	Model::LoadFile(modelFile);
-	model.SetFile(modelFile.filePtr, 1, -1);
+	model.SetFile(modelFile.BMD(), 1, -1);
 	model.data.materials[0].difAmb = 
 		model.data.materials[1].difAmb = (param1 & 0x7fff) << 16 | 0x8000;
 
-	char* clsnF = MovingMeshCollider::LoadFile(clsnFile);
-	clsn.SetFile(clsnF, clsnNextMat, 0x0163_f, ang.y, clpsBlock); //0x0175_f
+    MovingMeshCollider::LoadFile(clsnFile);
+	clsn.SetFile(clsnFile.KCL(), clsnNextMat, 0x0163_f, ang.y, clpsBlock::instance<>); //0x0175_f
 	
 	clsn.beforeClsnCallback = (decltype(clsn.beforeClsnCallback))0x02039348;
 

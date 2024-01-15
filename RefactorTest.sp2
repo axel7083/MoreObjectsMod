@@ -144,3 +144,9 @@ add_or_replace "data/custom_obj/treasure_chest/" "t_box_open.bca" "Assets/Treasu
 
 # Skybox Rotator
 add_or_replace "data/dynamic/" "skybox-rotator.dylb" empty_file
+
+# Colored Pipe
+add_or_replace "data/dynamic/" "colored_pipe.dylb" empty_file
+add_dir "data/custom_obj/" "colored_pipe"
+add_or_replace "data/custom_obj/colored_pipe/" "obj_dokan.bmd" "Assets/ColoredPipe/obj_dokan.bmd"
+add_or_replace "data/custom_obj/colored_pipe/" "obj_dokan.kcl" "Assets/ColoredPipe/obj_dokan.kcl"

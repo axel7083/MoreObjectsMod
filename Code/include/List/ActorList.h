@@ -417,6 +417,7 @@ enum ActorIDs
     MEGA_BLOCK_ACTOR_ID                            = 412,
     TREASURE_CHEST_DL_ACTOR_ID                     = 413,
     SKYBOX_ROTATOR_ACTOR_ID                        = 414,
+    COLORED_PIPE_ACTOR_ID                          = 415,
 };
 
 enum ObjectIDs
@@ -770,5 +771,6 @@ enum ObjectIDs
     MEGA_BLOCK_OBJECT_ID                            = 346,
     TREASURE_CHEST_DL_OBJECT_ID                     = 347,
     SKYBOX_ROTATOR_OBJECT_ID                        = 348,
+    COLORED_PIPE_OBJECT_ID                          = 349,
 	MPCHANGE_OBJECT_ID                              = 511,
 };

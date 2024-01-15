@@ -1,7 +1,7 @@
 #ifndef COLOREDPIPE_INCLUDED
 #define COLOREDPIPE_INCLUDED
 
-#include "include/SM64DS_2.h"
+#include "SM64DS_2.h"
 
 struct ColoredPipe : public Platform
 {	
@@ -17,7 +17,7 @@ struct ColoredPipe : public Platform
 	static SharedFilePtr modelFile;
 	static SharedFilePtr clsnFile;
 
-	static SpawnInfo<ColoredPipe> spawnData;
+	static SpawnInfo spawnData;
 };
 
 #endif

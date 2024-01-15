@@ -1,7 +1,7 @@
 #ifndef GOOMBA_COLORED_INCLUDED
 #define GOOMBA_COLORED_INCLUDED
 
-#include "include/SM64DS_2.h"
+#include "SM64DS_2.h"
 	
 struct Goomba : public CapEnemy
 {
