@@ -3799,70 +3799,14 @@ XXXX where
 
 XXXX: Extra sound when broken?
 0000 - None
-0001 - &quot;Small secret found&quot;
-0002+ - Same as 0001?</description>
-		<bankreq>none</bankreq>
-	</object>
-
-	<object id='285'>
-		<category>1</category>
-		<name>Ice Block</name>
-		<internalname>ICE_BLOCK_LL</internalname>
-		<actorid>18</actorid>
-		<description>Meltable by Yoshi's fire breath and smashable by giant players.
-If you put a Power Star inside it (by literally placing it inside it), the &quot;Power Star appear&quot; cutscene will play when the block is melted. No parameters are needed for this.</description>
-		<bankreq>2=5</bankreq>
-	</object>
-
-	<object id='286'>
-		<category>1</category>
-		<name></name>
-		<internalname>SHOOT_BOOK</internalname>
-		<actorid>325</actorid>
-		<description>Maybe the flying book that is shot out of bookcases in the libary room in BBH?</description>
-		<bankreq>7=13</bankreq>
-	</object>
-
-	<object id='287'>
-		<category>2</category>
-		<name>Killer Book</name>
-		<internalname>KILLER_BOOK</internalname>
-		<actorid>327</actorid>
-		<description>Chomps and flies at the player. This object is placed in a bookshelf in the game.</description>
-		<bankreq>7=13</bankreq>
-	</object>
-
-	<object id='288'>
-		<category>1</category>
-		<name>Flying Book Spawner</name>
-		<internalname>BOOK_GENERATOR</internalname>
-		<actorid>328</actorid>
-		<description></description>
-		<bankreq>7=13</bankreq>
-	</object>
-
-	<object id='289'>
-		<category>1</category>
-		<name>BOOK_SWITCH</name>
-		<internalname>BOOK_SWITCH</internalname>
-		<actorid>213</actorid>
-		<description>Maybe this is the actor for the book switches on the Secret Door Bookcase?</description>
-		<bankreq>7=13</bankreq>
-	</object>
-
-	<object id='290'>
-		<category>2</category>
-		<name>Chill Bully</name>
-		<internalname>ICE_DONKETU</internalname>
-		<actorid>217</actorid>
 		<description>Also requires 0=3 (contains Bully)
 
-A large Ice Bully that tries to push the player into cold water. When defeated, a Power Star appears.
+			A large Ice Bully that tries to push the player into cold water. When defeated, a Power Star appears.
 
-Parameter 1:
-XXYY
-XX - Nothing?
-YY - Star ID</description>
+			Parameter 1:
+			XXYY
+			XX - Nothing?
+			YY - Star ID</description>
 		<bankreq>7=20</bankreq>
 	</object>
 
@@ -3882,16 +3826,16 @@ YY - Star ID</description>
 		<actorid>13</actorid>
 		<description>A treasure chest.
 
-Parameter 1:
-XXYY where:
+			Parameter 1:
+			XXYY where:
 
-XX - The Star ID, for the first chests this is FF, for the final chest this should be the Star ID and match the Star ID of a Star Marker
-YY - The order of the current chest.
+			XX - The Star ID, for the first chests this is FF, for the final chest this should be the Star ID and match the Star ID of a Star Marker
+			YY - The order of the current chest.
 
-* Files:
-** /data/normal_obj/t_box
-*** t_box.bmd
-*** t_box_open.bca</description>
+			* Files:
+			** /data/normal_obj/t_box
+			*** t_box.bmd
+			*** t_box_open.bca</description>
 		<bankreq>0=3</bankreq>
 	</object>
 
@@ -3956,16 +3900,16 @@ YY - The order of the current chest.
 		<actorid>162</actorid>
 		<description>A square, mummified Thwomp. He could be useful for access to high platforms.
 
-Parameter 1:
-XXTT where
+			Parameter 1:
+			XXTT where
 
-TT: Type
-00 -  Smashes the ground occasionally, but unlike Thwomps it only &quot;stops at the top&quot; when it touches a ceiling.
-01 -  Moves back and forth in a line by jumping.
-(01+ - Appears to alternate between previous values)
+			TT: Type
+			00 -  Smashes the ground occasionally, but unlike Thwomps it only &quot;stops at the top&quot; when it touches a ceiling.
+			01 -  Moves back and forth in a line by jumping.
+			(01+ - Appears to alternate between previous values)
 
-==Other Requirements==
-* Must be in &quot;Shifting Sand Land - pyramid&quot; map</description>
+			==Other Requirements==
+			* Must be in &quot;Shifting Sand Land - pyramid&quot; map</description>
 		<bankreq>7=18</bankreq>
 	</object>
 
@@ -3985,9 +3929,9 @@ TT: Type
 		<actorid>190</actorid>
 		<description>A large purple enemy that tries to grab the player and throw them. It can also be grabbed and thrown. If grabbed underwater, the player can carry it like a green Koopa Shell. However, after a few seconds, the Chuckya will automatically &quot;throw&quot; itself and die. The player can also throw it underwater.
 
-==Misc. Info==
-===VS Mode Practice Behaviours==
-* On load: Freezes/Crashes</description>
+			==Misc. Info==
+			===VS Mode Practice Behaviours==
+			* On load: Freezes/Crashes</description>
 		<bankreq>0=1</bankreq>
 	</object>
 
@@ -3997,27 +3941,27 @@ TT: Type
 		<internalname>SCALEUP_KINOKO</internalname>
 		<actorid>277</actorid>
 		<description>A mushroom that makes the player huge, stomping everything in their way. If the player is huge and falls into water, the player acts as if they were Metal Wario. It looks glitchy if another player stomps on a huge player. If a mushroom is to be spawned from a tree, Nintendo places the &quot;create tag&quot; mushroom 0.2 y points above the &quot;tag&quot; mushroom.
-		
-TODO: figure out parameters
 
-Parameter 1:
-0000 - Like spawned from block (springs out, trundles around slowly and eventually disappears)
-0001 - Trundles around, trying to avoid player.
-0015 - Spawns when one Mushroom with Parameter 1 set to F6 is triggered. Mushroom flies towards the player, going through all obstacles.
-0017 - Spawns when one Mushroom with Parameter 1 set to F8 is triggered.
-0045 - Spawns when four Mushrooms with Parameter 1 set to F6 are triggered. Mushroom trundles around, trying to avoid player and eventually disappears.
-0085 - Spawns when eight Mushrooms with Parameter 1 set to FB are triggered. Mushroom trundles around, trying to avoid player and eventually disappears.
-00F1 - Not there?
-00F2 - Still, until approached; then it starts trundling back and forth very quickly, eventually disappering.
-00F3 - Still
-00F4 - Mushroom jumps when approached
-00F6 - Invisible tag for one Mushroom with Parameter 1 set to 0045 or 0015. If you have too many triggers it won't work.
-00F8 - Invisible tag for one Mushroom with Parameter 1 set to 0017. See 0017 for more info.
-00FB - Invisible tag for one Mushroom with Parameter 1 set to 0085. See 0085 for more info. Appears and acts like a coin.
+			TODO: figure out parameters
 
-* Files:
-** /data/normal_obj/scale_up_kinoko
-*** scale_up_kinoko.bmd</description>
+			Parameter 1:
+			0000 - Like spawned from block (springs out, trundles around slowly and eventually disappears)
+			0001 - Trundles around, trying to avoid player.
+			0015 - Spawns when one Mushroom with Parameter 1 set to F6 is triggered. Mushroom flies towards the player, going through all obstacles.
+			0017 - Spawns when one Mushroom with Parameter 1 set to F8 is triggered.
+			0045 - Spawns when four Mushrooms with Parameter 1 set to F6 are triggered. Mushroom trundles around, trying to avoid player and eventually disappears.
+			0085 - Spawns when eight Mushrooms with Parameter 1 set to FB are triggered. Mushroom trundles around, trying to avoid player and eventually disappears.
+			00F1 - Not there?
+			00F2 - Still, until approached; then it starts trundling back and forth very quickly, eventually disappering.
+			00F3 - Still
+			00F4 - Mushroom jumps when approached
+			00F6 - Invisible tag for one Mushroom with Parameter 1 set to 0045 or 0015. If you have too many triggers it won't work.
+			00F8 - Invisible tag for one Mushroom with Parameter 1 set to 0017. See 0017 for more info.
+			00FB - Invisible tag for one Mushroom with Parameter 1 set to 0085. See 0085 for more info. Appears and acts like a coin.
+
+			* Files:
+			** /data/normal_obj/scale_up_kinoko
+			*** scale_up_kinoko.bmd</description>
 		<bankreq>none</bankreq>
 	</object>
 
@@ -4037,13 +3981,13 @@ Parameter 1:
 		<actorid>329</actorid>
 		<description>When touched, a number appears. Touching 5 reveals a Star.
 
-Parameter 1:
-F followed by Star ID, eg. F05 for Star 5. 
+			Parameter 1:
+			F followed by Star ID, eg. F05 for Star 5.
 
-There should be a Star Marker with parameters 2 followed by Star ID eg. 25 for Star 5.
+			There should be a Star Marker with parameters 2 followed by Star ID eg. 25 for Star 5.
 
-==Misc. Info==
-* It is called SECRET_COIN because it it often put in the same place as coins.</description>
+			==Misc. Info==
+			* It is called SECRET_COIN because it it often put in the same place as coins.</description>
 		<bankreq>none</bankreq>
 	</object>
 
@@ -4054,27 +3998,27 @@ There should be a Star Marker with parameters 2 followed by Star ID eg. 25 for S
 		<actorid>10</actorid>
 		<description>Makes Blue Coins appear for a limited time.
 
-Parameter 1:
-LTXM where:
+			Parameter 1:
+			LTXM where:
 
-L: When the time remaining is [l]ow, start ticking faster
-0,F - Yes
-Other - No
+			L: When the time remaining is [l]ow, start ticking faster
+			0,F - Yes
+			Other - No
 
-T - [T]ime limit, n * 2 seconds?
+			T - [T]ime limit, n * 2 seconds?
 
-X - Unknown, 0
+			X - Unknown, 0
 
-M - Match this with the M of the Blue Coins you want to trigger. Using the same number with multiple switches won't work.
+			M - Match this with the M of the Blue Coins you want to trigger. Using the same number with multiple switches won't work.
 
-==Misc. Info==
-===Files===
-** /data/normal_obj/
-*** b_coin_switch.bmd
-*** b_coin_switch.kcl
+			==Misc. Info==
+			===Files===
+			** /data/normal_obj/
+			*** b_coin_switch.bmd
+			*** b_coin_switch.kcl
 
-===VS Mode Practice Behaviours==
-* On use: only plays &quot;running out of time&quot; ticking sound part, not the main part</description>
+			===VS Mode Practice Behaviours==
+			* On use: only plays &quot;running out of time&quot; ticking sound part, not the main part</description>
 		<bankreq>none</bankreq>
 	</object>
 
@@ -4085,7 +4029,7 @@ M - Match this with the M of the Blue Coins you want to trigger. Using the same 
 		<actorid>330</actorid>
 		<description>Shows a number that quickly disappears, just like the numbers that appear when collecting red coins.
 
-Alone, not a really useful object.</description>
+			Alone, not a really useful object.</description>
 		<bankreq>none</bankreq>
 		<param n='0'>
 			<name>Digit</name>
@@ -4149,14 +4093,14 @@ Alone, not a really useful object.</description>
 		<actorid>251</actorid>
 		<description>Giant fire-breathing Piranha Plant that grows into visibility when approached.
 
-Parameter 1:
-XXXP where
+			Parameter 1:
+			XXXP where
 
-P - Star ID. Match correctly with a Star Marker for a Power Star to spawn when five plants are defeated.
+			P - Star ID. Match correctly with a Star Marker for a Power Star to spawn when five plants are defeated.
 
-==Misc. Info==
-===VS Mode Practice Behaviours==
-* On load: Freezes/Crashes</description>
+			==Misc. Info==
+			===VS Mode Practice Behaviours==
+			* On load: Freezes/Crashes</description>
 		<bankreq>3=1</bankreq>
 	</object>
 
@@ -4167,9 +4111,9 @@ P - Star ID. Match correctly with a Star Marker for a Power Star to spawn when f
 		<actorid>252</actorid>
 		<description>Tiny fire-breathing Piranha Plant that grows into visibility when approached.
 
-==Misc. Info==
-===VS Mode Practice Behaviours==
-* On load: Freezes/Crashes</description>
+			==Misc. Info==
+			===VS Mode Practice Behaviours==
+			* On load: Freezes/Crashes</description>
 		<bankreq>3=1</bankreq>
 	</object>
 
@@ -4180,9 +4124,9 @@ P - Star ID. Match correctly with a Star Marker for a Power Star to spawn when f
 		<actorid>253</actorid>
 		<description>A Piranha Plant that grows into visibility when approached.
 
-==Misc. Info==
-===VS Mode Practice Behaviours==
-* On load: Freezes/Crashes</description>
+			==Misc. Info==
+			===VS Mode Practice Behaviours==
+			* On load: Freezes/Crashes</description>
 		<bankreq>3=1</bankreq>
 	</object>
 
@@ -4193,17 +4137,17 @@ P - Star ID. Match correctly with a Star Marker for a Power Star to spawn when f
 		<actorid>357</actorid>
 		<description>Makes ENEMY_CREATE function when player steps in the area it defines. Uses Y rotation as the height of its cylinder collider.
 
-Parameter 1:
-XY where:
+			Parameter 1:
+			XY where:
 
-X - 2: Spawn continuously whilst player within area
-Y - Event ID of this ENEMY_SWITCH; triggers the corresponding ENEMY_CREATE
+			X - 2: Spawn continuously whilst player within area
+			Y - Event ID of this ENEMY_SWITCH; triggers the corresponding ENEMY_CREATE
 
-Parameter 2:
-Size of area, default 1.
+			Parameter 2:
+			Size of area, default 1.
 
-Parameter 3:
-Spawn delay, in frames, 0 is the default, FFFF.</description>
+			Parameter 3:
+			Spawn delay, in frames, 0 is the default, FFFF.</description>
 		<bankreq>none</bankreq>
 	</object>
 
@@ -4214,17 +4158,17 @@ Spawn delay, in frames, 0 is the default, FFFF.</description>
 		<actorid>358</actorid>
 		<description>Spawns Bob-ombs when player steps into an ENEMY_SWITCH. Bob-ombs do not have to be in the loaded level overlays.
 
-Parameter 1:
-Unknown, FFC0
+			Parameter 1:
+			Unknown, FFC0
 
-Parameter 2:
-Unknown, 0
+			Parameter 2:
+			Unknown, 0
 
-Parameter 3:
-XXY where:
+			Parameter 3:
+			XXY where:
 
-XX - Unknown, 3E
-Y - Event ID of corresponding ENEMY_SWITCH</description>
+			XX - Unknown, 3E
+			Y - Event ID of corresponding ENEMY_SWITCH</description>
 		<bankreq>none</bankreq>
 	</object>
 
@@ -4262,10 +4206,10 @@ Y - Event ID of corresponding ENEMY_SWITCH</description>
 		<actorid>308</actorid>
 		<description>Will appear when the player is a certain distance from it, or closer. Respawns a few seconds after disappearing.
 
-TODO: Work out parameters
+			TODO: Work out parameters
 
-Parameter 1:
-FFXX Seems to always be FF14</description>
+			Parameter 1:
+			FFXX Seems to always be FF14</description>
 		<bankreq>5=3</bankreq>
 	</object>
 
@@ -4276,7 +4220,7 @@ FFXX Seems to always be FF14</description>
 		<actorid>281</actorid>
 		<description>Possibly a fire ring. This object's actor code is contained in an overlay that isn't loaded via the regular system. Possibly, it is loaded and used as a sub-object by another object, and isn't meant to be used alone.
 
-[b]Do not use, for it will crash the game.[/b]</description>
+			[b]Do not use, for it will crash the game.[/b]</description>
 		<bankreq>none</bankreq>
 	</object>
 
@@ -4295,18 +4239,18 @@ FFXX Seems to always be FF14</description>
 		<internalname>SET_SE</internalname>
 		<actorid>350</actorid>
 		<description>Plays sound effects when player gets close.
-Param 1:
-XY
-X - ?
-Y:
-1 - Birds
-2 - Birds
-3 - Different birds
-4 - Birds with very quiet waterfall
-5 - Bird with waterfall
-6 - Loud waterfall 
-7 - Nothing (Unused?)
-8 - Waterfall on right speaker</description>
+			Param 1:
+			XY
+			X - ?
+			Y:
+			1 - Birds
+			2 - Birds
+			3 - Different birds
+			4 - Birds with very quiet waterfall
+			5 - Bird with waterfall
+			6 - Loud waterfall
+			7 - Nothing (Unused?)
+			8 - Waterfall on right speaker</description>
 		<bankreq>none</bankreq>
 	</object>
 
@@ -4316,8 +4260,8 @@ Y:
 		<internalname>MUGEN_BGM</internalname>
 		<actorid>351</actorid>
 		<description>Changes background music. Need proper combination of current level music and a correct param
-to switch properly.
-For instance: Jolly Roger Bay's music + Param 1: 71 = Jolly Roger Overworld music</description>
+			to switch properly.
+			For instance: Jolly Roger Bay's music + Param 1: 71 = Jolly Roger Overworld music</description>
 		<bankreq>none</bankreq>
 	</object>
 
@@ -4328,29 +4272,29 @@ For instance: Jolly Roger Bay's music + Param 1: 71 = Jolly Roger Overworld musi
 		<actorid>359</actorid>
 		<description>Plays sound effects upon entering a level. Maybe spawned by other objects?
 
-TODO:
-Work out parameters.
+			TODO:
+			Work out parameters.
 
-Parameter 1:
-XXXS
+			Parameter 1:
+			XXXS
 
-XXX - Nothing?
+			XXX - Nothing?
 
-S (Sound):
-0 - Large Secret Found
-1 - Small Secret Found
-2 - Star Appears
-3 - Nothing? (Tox Box Test Map sound settings)
-4 - Get Star
-5 - Same as 3?
-6 - Same as 2?
-7 - Crash
-8 - Same as 3?
-F - Same as 3?
+			S (Sound):
+			0 - Large Secret Found
+			1 - Small Secret Found
+			2 - Star Appears
+			3 - Nothing? (Tox Box Test Map sound settings)
+			4 - Get Star
+			5 - Same as 3?
+			6 - Same as 2?
+			7 - Crash
+			8 - Same as 3?
+			F - Same as 3?
 
-==Misc. Info==
-===VS Mode Practice Behaviours==
-* On load: no sound (testing 0 and 4)?</description>
+			==Misc. Info==
+			===VS Mode Practice Behaviours==
+			* On load: no sound (testing 0 and 4)?</description>
 		<bankreq>none</bankreq>
 	</object>
 
@@ -4362,6 +4306,62 @@ F - Same as 3?
 		<description>Changes the minimap shown on the bottom screen when the user passes near it.</description>
 		<bankreq>none</bankreq>
 	</object>
+	If you put a Power Star inside it (by literally placing it inside it), the &quot;Power Star appear&quot; cutscene will play when the block is melted. No parameters are needed for this.</description>
+		0001 - &quot;Small secret found&quot;
+		0002+ - Same as 0001?</description>
+<bankreq>none</bankreq>
+		</object>
+
+<object id='285'>
+<category>1</category>
+<name>Ice Block</name>
+<internalname>ICE_BLOCK_LL</internalname>
+<actorid>18</actorid>
+<description>Meltable by Yoshi's fire breath and smashable by giant players.
+	<bankreq>2=5</bankreq>
+</object>
+
+<object id='286'>
+	<category>1</category>
+	<name></name>
+	<internalname>SHOOT_BOOK</internalname>
+	<actorid>325</actorid>
+	<description>Maybe the flying book that is shot out of bookcases in the libary room in BBH?</description>
+	<bankreq>7=13</bankreq>
+</object>
+
+<object id='287'>
+	<category>2</category>
+	<name>Killer Book</name>
+	<internalname>KILLER_BOOK</internalname>
+	<actorid>327</actorid>
+	<description>Chomps and flies at the player. This object is placed in a bookshelf in the game.</description>
+	<bankreq>7=13</bankreq>
+</object>
+
+<object id='288'>
+	<category>1</category>
+	<name>Flying Book Spawner</name>
+	<internalname>BOOK_GENERATOR</internalname>
+	<actorid>328</actorid>
+	<description></description>
+	<bankreq>7=13</bankreq>
+</object>
+
+<object id='289'>
+	<category>1</category>
+	<name>BOOK_SWITCH</name>
+	<internalname>BOOK_SWITCH</internalname>
+	<actorid>213</actorid>
+	<description>Maybe this is the actor for the book switches on the Secret Door Bookcase?</description>
+	<bankreq>7=13</bankreq>
+</object>
+
+<object id='290'>
+	<category>2</category>
+	<name>Chill Bully</name>
+	<internalname>ICE_DONKETU</internalname>
+	<actorid>217</actorid>
 
 	<object id='512'>
 		<category>1</category>

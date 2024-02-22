@@ -1,141 +1,116 @@
-#---------------------------------------------------------------------------------
+# Disable default suffixes
 .SUFFIXES:
-#---------------------------------------------------------------------------------
+
+TARGET_LO := newcode_lo
+TARGET_HI := newcode_hi
+
+ifndef SOURCE
 
 ifeq ($(strip $(DEVKITARM)),)
-$(error "Please set DEVKITARM in your environment. export DEVKITARM=<path to>devkitARM")
+	$(error "DEVKITARM variable not defined")
 endif
 
-#---------------------------------------------------------------------------------
-# path to tools
-#---------------------------------------------------------------------------------
-export PATH     := $(DEVKITARM)/bin:$(PATH)
+SOURCES := $(notdir $(wildcard source/*))
+ROM := "$(wildcard ../*.nds)"
 
-#---------------------------------------------------------------------------------
-# the prefix on the compiler executables
-#---------------------------------------------------------------------------------
+all: $(SOURCES)
+
+# Call make recursively for each DL
+$(SOURCES):
+	@echo building DL \'$@\' ...
+	@mkdir -p $(CURDIR)/build/$@
+	@make --no-print-directory SOURCE=$@ BUILD=build/$@
+
+.PHONY: clean
+
+clean:
+	@echo clean ...
+	@rm -fr build
+
+else
+# Now SOURCE is the source folder of a specific DL
+
+PORTLIBS := $(DEVKITPRO)/portlibs/arm
+PATH     := $(DEVKITARM)/bin:$(PORTLIBS)/bin:$(PATH)
+LIBNDS   := $(DEVKITPRO)/libnds
+
 PREFIX := arm-none-eabi-
 
-export CC      := $(PREFIX)gcc
-export CXX     := $(PREFIX)g++
-export OBJCOPY := $(PREFIX)objcopy
-export OBJDUMP := $(PREFIX)objdump
-export LD      := $(PREFIX)ld
+CC      := $(PREFIX)gcc
+CXX     := $(PREFIX)g++
+AS      := $(PREFIX)as
+AR      := $(PREFIX)ar
+OBJCOPY := $(PREFIX)objcopy
+OBJDUMP := $(PREFIX)objdump
+LD      := $(PREFIX)ld
 
+SOURCES  := ../glibc source/$(SOURCE)
+INCLUDES := ./include
 
-#---------------------------------------------------------------------------------
-# TARGET is the name of the output
-# BUILD is the directory where object files & intermediate files will be placed
-# SOURCES is a list of directories containing source code
-# INCLUDES is a list of directories containing extra header files
-#---------------------------------------------------------------------------------
-TARGET   := newcode
-BUILD    := build
-SOURCES  :=  Code source/P_DoorBlocker
-INCLUDES := include
+LIBS :=
+LIBDIRS := $(LIBNDS)  $(DEVKITARM) $(DEVKITARM)/arm-none-eabi
 
-#---------------------------------------------------------------------------------
-# options for code generation
-#---------------------------------------------------------------------------------
-CFLAGS := -Wall -Wextra -Werror -Wno-unused-result -Wno-unused-parameter -Wno-parentheses -Wno-literal-suffix \
-          -Os -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -fwrapv \
-          $(INCLUDE) -DARM9 -nodefaultlibs -I. -fno-builtin -c
+LIBPATHS := $(foreach dir,$(LIBDIRS),-L$(dir)/lib) -L$(DEVKITARM)/lib/gcc/arm-none-eabi/11.1.0
+INCLUDE  := $(foreach dir,$(INCLUDES),-iquote $(CURDIR)/$(dir)) \
+            $(foreach dir,$(LIBDIRS),-I$(dir)/include) -I$(CURDIR)/$(BUILD)
 
-CXXFLAGS := $(CFLAGS) -std=c++20 -fno-exceptions \
-            -fno-rtti -fno-threadsafe-statics -faligned-new=4
+ARCHFLAGS := -march=armv5te -mtune=arm946e-s
 
-ASFLAGS := -g
-LDFLAGS =  -T $(CURDIR)/../symbols.x -T $(CURDIR)/../linker.x -g -Map $(TARGET).map
+CFLAGS := -Wall -Wextra -Werror -Wno-unused-parameter -Wno-narrowing -Wno-literal-suffix \
+	-Wno-parentheses -Wno-volatile -Wno-invalid-offsetof -Wno-char-subscripts -Wno-trigraphs \
+	-Os $(ARCHFLAGS) -fomit-frame-pointer -fwrapv \
+	$(INCLUDE) -DARM9 -c
 
-ifdef CODEADDR
-  LDFLAGS += -Ttext $(CODEADDR)
-endif
+CXXFLAGS := $(CFLAGS) -std=c++23 -fno-exceptions -fno-rtti -fno-threadsafe-statics -faligned-new=4
 
-#---------------------------------------------------------------------------------
-# any extra libraries we wish to link with the project (order is important)
-#---------------------------------------------------------------------------------
-LIBS :=  -lc
-
-#---------------------------------------------------------------------------------
-# list of directories containing libraries, this must be the top level containing
-# include and lib
-#---------------------------------------------------------------------------------
-LIBDIRS := $(DEVKITARM) $(DEVKITARM)/arm-none-eabi 
-
-#---------------------------------------------------------------------------------
-ifneq ($(BUILD),$(notdir $(CURDIR)))
-#---------------------------------------------------------------------------------
-
-export OUTPUT := $(CURDIR)/$(TARGET)
+LDFLAGS = --gc-sections -T $(CURDIR)/symbols.x -T $(CURDIR)/linker.x
 
 export VPATH := $(foreach dir,$(SOURCES),$(CURDIR)/$(dir))
-
-export DEPSDIR := $(CURDIR)/$(BUILD)
+DEPSDIR := $(CURDIR)/$(BUILD)
 
 CFILES   := $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c)))
 CPPFILES := $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
 SFILES   := $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.s)))
 
-export OFILES := $(addsuffix .o,$(BINFILES)) \
-                 $(CPPFILES:.cpp=.o) $(CFILES:.c=.o) $(SFILES:.s=.o)
+OFILENAMES := $(CPPFILES:.cpp=.o) $(CFILES:.c=.o) $(SFILES:.s=.o)
+OFILES = $(foreach name,$(OFILENAMES),$(BUILD)/$(name))
 
-export INCLUDE := $(foreach dir,$(INCLUDES),-iquote $(CURDIR)/$(dir)) \
-                  $(foreach dir,$(LIBDIRS),-I$(dir)/include) -I$(CURDIR)/$(BUILD)
+OUTPUT_LO := $(CURDIR)/$(BUILD)/$(TARGET_LO)
+OUTPUT_HI := $(CURDIR)/$(BUILD)/$(TARGET_HI)
 
-export LIBPATHS := $(foreach dir,$(LIBDIRS),-L$(dir)/lib) -L$(DEVKITARM)/lib/gcc/arm-none-eabi/4.7.1
+BINFILES = $(OUTPUT_LO).bin $(OUTPUT_HI).bin
+SYMFILES = $(OUTPUT_LO).sym $(OUTPUT_HI).sym
 
+all: $(BINFILES) $(SYMFILES)
 
-.PHONY: $(BUILD) clean
-
-#---------------------------------------------------------------------------------
-$(BUILD):
-	@[ -d $@ ] || mkdir -p $@
-	@make --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
-
-#---------------------------------------------------------------------------------
-clean:
-	@echo clean ...
-	@rm -fr $(BUILD) $(TARGET).elf $(TARGET).bin $(TARGET).sym
-
-#---------------------------------------------------------------------------------
-else
-
-#---------------------------------------------------------------------------------
-# main targets
-#---------------------------------------------------------------------------------
-
-all: $(OUTPUT).bin $(OUTPUT).sym
-
-$(OUTPUT).bin : $(OUTPUT).elf
+$(CURDIR)/$(BUILD)/%.bin : $(CURDIR)/$(BUILD)/%.elf
 	$(OBJCOPY) -O binary $< $@
 	@echo built ... $(notdir $@)
 
-$(OUTPUT).sym : $(OUTPUT).elf
+$(CURDIR)/$(BUILD)/%.sym : $(CURDIR)/$(BUILD)/%.elf
 	$(OBJDUMP) -t $< > $@
 	@echo written the symbol table ... $(notdir $@)
 
-#---------------------------------------------------------------------------------
-%.elf: $(OFILES)
+$(OUTPUT_LO).elf: $(OFILES)
 	@echo linking $(notdir $@)
-	$(LD)  $(LDFLAGS) $(OFILES) $(LIBPATHS) $(LIBS) -o $@
+	$(LD) $(LDFLAGS) -Ttext 0x02400000 $(OFILES) $(LIBPATHS) $(LIBS) -o $@
 
-#---------------------------------------------------------------------------------
-%.o: %.cpp
+$(OUTPUT_HI).elf: $(OFILES)
+	@echo linking $(notdir $@)
+	$(LD) $(LDFLAGS) -Ttext 0x02400004 $(OFILES) $(LIBPATHS) $(LIBS) -o $@
+
+$(BUILD)/%.o: %.cpp
 	@echo $(notdir $<)
-	$(CXX) -MMD -MP -MF $(DEPSDIR)/$*.d $(CXXFLAGS) -Wa,-adl=$(addsuffix .lst, $(basename $@)) -c $< -o $@ $(ERROR_FILTER)
+	$(CXX) -MMD -MP -MF $(DEPSDIR)/$*.d $(CXXFLAGS) -c $< -o $@ $(ERROR_FILTER)
 
-#---------------------------------------------------------------------------------
-%.o: %.c
+$(BUILD)/%.o: %.c
 	@echo $(notdir $<)
 	$(CC) -MMD -MP -MF $(DEPSDIR)/$*.d $(CFLAGS) -c $< -o $@ $(ERROR_FILTER)
 
-#---------------------------------------------------------------------------------
-%.o: %.s
+$(BUILD)/%.o: %.s
 	@echo $(notdir $<)
-	$(CC) -MMD -MP -MF $(DEPSDIR)/$*.d -x assembler-with-cpp $(ASFLAGS) -c $< -o $@ $(ERROR_FILTER)
+	$(CC) -MMD -MP -MF $(DEPSDIR)/$*.d -x assembler-with-cpp $(ARCHFLAGS) -c $< -o $@ $(ERROR_FILTER)
 
 -include $(DEPSDIR)/*.d
 
-#---------------------------------------------------------------------------------------
 endif
-#---------------------------------------------------------------------------------------

@@ -6,7 +6,7 @@ compile clean "Code"
 # Compile DLs
 compile dl "data/dynamic/peach_npc.dylb"                "Code" "source/N_PeachNPC"
 compile dl "data/dynamic/colored_pipe.dylb"             "Code" "source/P_ColoredPipe"
-compile dl "data/dynamic/skybox-rotator.dylb"           "Code" "source/O_SkyboxRotator"
+compile dl "data/dynamic/skybox_rotator.dylb"           "Code" "source/O_SkyboxRotator"
 compile dl "data/dynamic/treasure_chest.dylb"           "Code" "source/O_TreasureChest"
 compile dl "data/dynamic/mega_block.dylb"               "Code" "source/P_MegaBlock"
 compile dl "data/dynamic/cosmic_clones.dylb"            "Code" "source/O_CosmicClones"
