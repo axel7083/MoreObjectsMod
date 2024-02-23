@@ -44,7 +44,7 @@ OBJCOPY := $(PREFIX)objcopy
 OBJDUMP := $(PREFIX)objdump
 LD      := $(PREFIX)ld
 
-SOURCES  := ../glibc source/$(SOURCE)
+SOURCES  := ./glibc source/$(SOURCE)
 INCLUDES := ./include
 
 LIBS :=
@@ -59,11 +59,11 @@ ARCHFLAGS := -march=armv5te -mtune=arm946e-s
 CFLAGS := -Wall -Wextra -Werror -Wno-unused-parameter -Wno-narrowing -Wno-literal-suffix \
 	-Wno-parentheses -Wno-volatile -Wno-invalid-offsetof -Wno-char-subscripts -Wno-trigraphs \
 	-Os $(ARCHFLAGS) -fomit-frame-pointer -fwrapv \
-	$(INCLUDE) -DARM9 -c
+	$(INCLUDE) -DARM9 -nodefaultlibs -I. -fno-builtin -c
 
 CXXFLAGS := $(CFLAGS) -std=c++23 -fno-exceptions -fno-rtti -fno-threadsafe-statics -faligned-new=4
 
-LDFLAGS = --gc-sections -T $(CURDIR)/symbols.x -T $(CURDIR)/linker.x
+LDFLAGS = --gc-sections -T ./symbols.x -T $(CURDIR)/linker.x
 
 export VPATH := $(foreach dir,$(SOURCES),$(CURDIR)/$(dir))
 DEPSDIR := $(CURDIR)/$(BUILD)

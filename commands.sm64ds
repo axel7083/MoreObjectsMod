@@ -1,1 +1,113 @@
-SM64DSe.exe fs cp <ROM> .\sound_data.sdat rom://file/data/sound_data.sdat
+# Replace sound library
+fs cp ./sound_data.sdat rom://file/data/sound_data.sdat
+
+# Berry
+fs cp Assets/Berry/berry.bmd rom://file/data/custom_obj/berry/berry.bmd --recursive --create
+fs cp Assets/Berry/berry_stem.bmd rom://file/data/custom_obj/berry/berry_stem.bmd --create
+
+# Galaxy Shrink Platform
+fs cp Assets/GalaxyShrinkPlatform/galaxy_shrink_platform.bmd rom://file/data/custom_obj/galaxy_shrink_platform/galaxy_shrink_platform.bmd --recursive --create
+fs cp Assets/GalaxyShrinkPlatform/galaxy_shrink_platform.kcl rom://file/data/custom_obj/galaxy_shrink_platform/galaxy_shrink_platform.kcl --create
+fs cp Assets/GalaxyShrinkPlatform/galaxy_shrink_platform_frame.bmd rom://file/data/custom_obj/galaxy_shrink_platform/galaxy_shrink_platform_frame.bmd --create
+
+# Colored Coin
+fs cp Assets/ColoredCoin/colored_coin.bmd rom://file/data/custom_obj/colored_coin/colored_coin.bmd --recursive --create
+
+# Invisible Wall
+fs cp Assets/InvisibleWall/invisible_wall.kcl rom://file/data/custom_obj/invisible_wall/invisible_wall.kcl --recursive --create
+fs cp Assets/InvisibleWall/invisible_wall.bmd rom://file/data/custom_obj/invisible_wall/invisible_wall.bmd --create
+
+# Rideable Yoshi
+fs cp Assets/RideableYoshi/ride_yoshi.bca rom://file/data/player/ride_yoshi.bca --recursive --create
+
+# Note Block
+fs cp Assets/NoteBlock/note_block.bmd rom://file/data/custom_obj/note_block/note_block.bmd --recursive --create
+fs cp Assets/NoteBlock/note_block.kcl rom://file/data/custom_obj/note_block/note_block.kcl --create
+
+# Shy Guy
+fs cp Assets/ShyGuy/shy_guy.bmd rom://file/data/custom_obj/shy_guy/shy_guy.bmd  --recursive --create
+fs cp Assets/ShyGuy/shy_guy_wait.bca rom://file/data/custom_obj/shy_guy/shy_guy_wait.bca --create
+fs cp Assets/ShyGuy/shy_guy_walk.bca rom://file/data/custom_obj/shy_guy/shy_guy_walk.bca --create
+fs cp Assets/ShyGuy/shy_guy_run.bca rom://file/data/custom_obj/shy_guy/shy_guy_run.bca --create
+fs cp Assets/ShyGuy/shy_guy_freeze.bca rom://file/data/custom_obj/shy_guy/shy_guy_freeze.bca --create
+
+# Launch Star
+fs cp Assets/LaunchStar/launch_star.bmd rom://file/data/custom_obj/launch_star/launch_star.bmd  --recursive --create
+fs cp Assets/LaunchStar/launch_star_wait.bca rom://file/data/custom_obj/launch_star/launch_star_wait.bca --create
+fs cp Assets/LaunchStar/launch_star_launch.bca rom://file/data/custom_obj/launch_star/launch_star_launch.bca --create
+
+# Star Chip
+fs cp Assets/StarChip/star_chip.bmd rom://file/data/custom_obj/star_chip/star_chip.bmd --recursive --create
+
+# Magikoopa
+fs cp Assets/Magikoopa/magikoopa.bmd rom://file/data/custom_obj/magikoopa/magikoopa.bmd --recursive --create
+fs cp Assets/Magikoopa/kamella.bmd rom://file/data/custom_obj/magikoopa/kamella.bmd --create
+fs cp Assets/Magikoopa/magikoopa_appear.bca rom://file/data/custom_obj/magikoopa/magikoopa_appear.bca --create
+fs cp Assets/Magikoopa/magikoopa_wave.bca rom://file/data/custom_obj/magikoopa/magikoopa_wave.bca --create
+fs cp Assets/Magikoopa/magikoopa_shoot.bca rom://file/data/custom_obj/magikoopa/magikoopa_shoot.bca --create
+fs cp Assets/Magikoopa/magikoopa_poof.bca rom://file/data/custom_obj/magikoopa/magikoopa_poof.bca --create
+fs cp Assets/Magikoopa/magikoopa_wait.bca rom://file/data/custom_obj/magikoopa/magikoopa_wait.bca --create
+fs cp Assets/Magikoopa/magikoopa_hurt.bca rom://file/data/custom_obj/magikoopa/magikoopa_hurt.bca --create
+fs cp Assets/Magikoopa/magikoopa_defeat.bca rom://file/data/custom_obj/magikoopa/magikoopa_defeat.bca --create
+fs cp Assets/Magikoopa/magikoopa_magic.spt rom://file/data/custom_obj/magikoopa/magikoopa_magic.spt --create
+fs cp Assets/Magikoopa/magikoopa_magic.spr rom://file/data/custom_obj/magikoopa/magikoopa_magic.spr --create
+fs cp Assets/Magikoopa/kamella_magic.spr rom://file/data/custom_obj/magikoopa/kamella_magic.spr --create
+
+# Yoshi NPC
+fs cp Assets/YoshiNPC/yoshi_npc.bmd rom://file/data/custom_obj/yoshi_npc/yoshi_npc.bmd --recursive --create
+fs cp Assets/YoshiNPC/yoshi_npc_wait.bca rom://file/data/custom_obj/yoshi_npc/yoshi_npc_wait.bca  --recursive --create
+
+# Character Block
+fs cp Assets/CharacterBlock/character_block.bmd rom://file/data/custom_obj/character_block/character_block.bmd --recursive --create
+fs cp Assets/CharacterBlock/character_block_trans.bmd rom://file/data/custom_obj/character_block/character_block_trans.bmd --create
+fs cp Assets/CharacterBlock/character_block.btp rom://file/data/custom_obj/character_block/character_block.btp --create
+fs cp Assets/CharacterBlock/character_block_trans.btp rom://file/data/custom_obj/character_block/character_block_trans.btp --create
+fs cp Assets/CharacterBlock/character_block_trans.bca rom://file/data/custom_obj/character_block/character_block_trans.bca --create
+fs cp Assets/CharacterBlock/character_block.kcl rom://file/data/custom_obj/character_block/character_block.kcl --create
+fs cp Assets/CharacterBlock/stars_mario.spd rom://file/data/custom_obj/character_block/stars_mario.spd --create
+fs cp Assets/CharacterBlock/stars_luigi.spd rom://file/data/custom_obj/character_block/stars_luigi.spd --create
+fs cp Assets/CharacterBlock/stars_wario.spd rom://file/data/custom_obj/character_block/stars_wario.spd --create
+fs cp Assets/CharacterBlock/stars_yoshi.spd rom://file/data/custom_obj/character_block/stars_yoshi.spd --create
+fs cp Assets/CharacterBlock/dust_1_mario.spd rom://file/data/custom_obj/character_block/dust_1_mario.spd --create
+fs cp Assets/CharacterBlock/dust_1_luigi.spd rom://file/data/custom_obj/character_block/dust_1_luigi.spd --create
+fs cp Assets/CharacterBlock/dust_1_wario.spd rom://file/data/custom_obj/character_block/dust_1_wario.spd --create
+fs cp Assets/CharacterBlock/dust_1_yoshi.spd rom://file/data/custom_obj/character_block/dust_1_yoshi.spd --create
+fs cp Assets/CharacterBlock/dust_2_mario.spd rom://file/data/custom_obj/character_block/dust_2_mario.spd --create
+fs cp Assets/CharacterBlock/dust_2_luigi.spd rom://file/data/custom_obj/character_block/dust_2_luigi.spd --create
+fs cp Assets/CharacterBlock/dust_2_wario.spd rom://file/data/custom_obj/character_block/dust_2_wario.spd --create
+fs cp Assets/CharacterBlock/dust_2_yoshi.spd rom://file/data/custom_obj/character_block/dust_2_yoshi.spd --create
+
+# Save Block
+fs cp Assets/SaveBlock/save_block.bmd rom://file/data/custom_obj/save_block/save_block.bmd --recursive --create
+fs cp Assets/SaveBlock/save_block.btp rom://file/data/custom_obj/save_block/save_block.btp --create
+fs cp Assets/SaveBlock/save_block.kcl rom://file/data/custom_obj/save_block/save_block.kcl --create
+
+# Door Blocker
+fs cp Assets/DoorBlocker/door_blocker.bmd rom://file/data/custom_obj/door_blocker/door_blocker.bmd --recursive --create
+fs cp Assets/DoorBlocker/door_blocker.kcl rom://file/data/custom_obj/door_blocker/door_blocker.kcl --create
+
+# Mega Block
+fs cp Assets/MegaBlock/star_block.bmd rom://file/data/custom_obj/mega_block/star_block.bmd --recursive --create
+fs cp Assets/MegaBlock/star_block.kcl rom://file/data/custom_obj/mega_block/star_block.kcl --create
+
+# Treasure Chest
+fs cp Assets/TreasureChest/t_box.bmd rom://file/data/custom_obj/treasure_chest/t_box.bmd --recursive --create
+fs cp Assets/TreasureChest/t_box_open.bca rom://file/data/custom_obj/treasure_chest/t_box_open.bca --create
+
+# Colored Pipe
+fs cp Assets/ColoredPipe/obj_dokan.bmd rom://file/data/custom_obj/colored_pipe/obj_dokan.bmd --recursive --create
+fs cp Assets/ColoredPipe/obj_dokan.kcl rom://file/data/custom_obj/colored_pipe/obj_dokan.kcl --create
+
+# Peach NPC
+fs cp Assets/PeachNPC/peach_low.bmd rom://file/data/custom_obj/peach_npc/peach_low.bmd --recursive --create
+fs cp Assets/PeachNPC/peach_wait.bca rom://file/data/custom_obj/peach_npc/peach_wait.bca --create
+
+# Generating headers
+generate filesystem Code/include/List/FileList.h
+generate sound Code/include/List/SoundList.h
+
+# Compile the Code target
+compile TARGET Code
+
+# Inserts DLs
+insertDLs Code/build Code/targets.json --create --recursive

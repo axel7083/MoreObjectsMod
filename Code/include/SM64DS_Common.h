@@ -82,7 +82,7 @@ struct Fix
 
 	template<FixUR U> friend constexpr
 	CRTP<T>& operator+=(CRTP<T>& f0, CRTP<U> f1) { f0.val += f1.val; return f0; }
- 
+
 	template<FixUR U> friend constexpr
 	CRTP<T>& operator-=(CRTP<T>& f0, CRTP<U> f1) { f0.val -= f1.val; return f0; }
 
@@ -113,7 +113,7 @@ struct Fix
 	{
 		const u64 product = static_cast<s64>(f0.val) * f1.val;
 		Promoted result;
-		
+
 		asm(R"(
 			movs %[rs], %[lo], lsr %[s0]
 			adc  %[rs], %[rs], %[hi], lsl %[s1]
@@ -123,10 +123,10 @@ struct Fix
 		[hi] "r" (static_cast<u32>(product >> 32)),
 		[s0] "I" (q),
 		[s1] "I" (32 - q) : "cc");
-		
+
 		return result;
 	}
-	
+
 	template<FixUR U> friend inline
 	CRTP<T>& operator*=(CRTP<T>& f0, CRTP<U> f1) { return f0 = f0 * f1; }
 
@@ -144,19 +144,19 @@ struct Fix
 
 	template<FixUR U> friend constexpr
 	bool operator>=(CRTP<T> f0, CRTP<U> f1) { return f0.val >= f1.val; }
-	
+
 	static constexpr CRTP<T> max {std::numeric_limits<T>::max(), as_raw};
 	static constexpr CRTP<T> min {std::numeric_limits<T>::min(), as_raw};
-	
+
 	static constexpr CRTP<T> pi = []
 	{
 		const int shift = 8 * static_cast<int>(sizeof(T)) - q;
-		
+
 		int64_t raw = 0x3243f6a89ll;
-		
+
 		if (q < 32)
 			raw += 1 << (31 - q);
-		
+
 		return CRTP<T> {raw >> shift, as_raw};
 	}();
 
@@ -233,30 +233,30 @@ struct SharedFilePtr;
 bool ApproachLinear(Vector3& pos, const Vector3& dest, Fix12i step);
 
 extern "C"
-{	
+{
 	extern u16 POWERS_OF_TEN[3]; //100, 10, 1
 	extern char DIGIT_ENC_ARR[10];
 
 	extern u16 HEALTH_ARR[4];
 	extern s32 UNUSED_RAM[0xec00];
-	
+
 	extern s32 RNG_STATE; //x => x * 0x0019660d + 0x3c6ef35f
-	
+
 	extern Matrix4x3 MATRIX_SCRATCH_PAPER;
 	extern u32 FRAME_COUNTER;
 
 	extern const Fix12s SINE_TABLE[0x2000];
 	extern const Fix12s ATAN_TABLE[0x400];
-	
+
 	void UnloadOverlay(s32 ovID);
 	void LoadOverlay(s32 ovID);
 	char* LoadFile(s32 ov0FileID);
 	void LoadTextNarcs();
 	bool LoadArchive(u32 archiveID);
 	void UnloadArchive(s32 archiveID);
-	
+
 	[[noreturn]] void Crash();
-	
+
 	s16 ApproachAngle(s16& angle, s32 targetAngle, s32 invFactor, s32 maxDelta, s32 minDelta); // the old LeanPlayerForwardWhileRunning
 	u16 AngleDiff(s16 ang0, s16 ang1) __attribute__((const)); // from 0 to 0x8000 inclusive (0° - 180°)
 	void Vec3_RotateYAndTranslate(Vector3& res, const Vector3& translation, s16 angY, const Vector3& v); //res and v cannot alias.
@@ -278,11 +278,11 @@ extern "C"
 	void Matrix4x3_ApplyInPlaceToRotationXYZExt(Matrix4x3& mF, s16 angX, s16 angY, s16 angZ);
 	void Matrix4x3_ApplyInPlaceToTranslation(Matrix4x3& mF, Fix12i x, Fix12i y, Fix12i z);
 	void Matrix4x3_ApplyInPlaceToScale(Matrix4x3& mF, Fix12i x, Fix12i y, Fix12i z);
-	
+
 	void Quaternion_FromVector3(Quaternion& qF, const Vector3& v0, const Vector3& v1);
 	void Quaternion_Normalize(Quaternion& q);
 	void Quaternion_SLerp(const Quaternion& q1, const Quaternion& q2, Fix12i weight, Quaternion& qF);
-	
+
 	Fix12i Vec3_HorzDist(const Vector3& v0, const Vector3& v1) __attribute__((pure));
 	Fix12i Vec3_HorzLen(const Vector3& v0) __attribute__((pure));
 	Fix12i Vec3_Dist(const Vector3& v0, const Vector3& v1) __attribute__((pure));
@@ -296,7 +296,7 @@ extern "C"
 	void Vec3_MulScalar(Vector3& res, const Vector3& v, Fix12i scalar);
 	void Vec3_Sub(Vector3& res, const Vector3& v0, const Vector3& v1); // not as efficient as SubVec3
 	void Vec3_Add(Vector3& res, const Vector3& v0, const Vector3& v1); // not as efficient as AddVec3
-	
+
 	void Matrix3x3_LoadIdentity(Matrix3x3& mF);
 	void MulVec3Mat3x3(const Vector3& v, const Matrix3x3& m, Vector3& res);
 	void MulMat3x3Mat3x3(const Matrix3x3& m1, const Matrix3x3& m0, Matrix3x3& mF); //m0 is applied to m1, so it's m0*m1=mF
@@ -313,21 +313,36 @@ extern "C"
 	void SubVec3(const Vector3& v0, const Vector3& v1, Vector3& res);
 	Fix12i LenVec3(const Vector3& v);
 	Fix12i DotVec3(const Vector3& v0, const Vector3& v1) __attribute__((pure));
-	
+
 	void Matrix3x3_SetRotationX(Matrix3x3& m, Fix12i sinTheta, Fix12i cosTheta) __attribute__((long_call, target("thumb"))); //Resets m to an X rotation matrix
 	void Matrix3x3_SetRotationY(Matrix3x3& m, Fix12i sinTheta, Fix12i cosTheta) __attribute__((long_call, target("thumb"))); //Resets m to a Y rotation matrix
 	void Matrix3x3_SetRotationZ(Matrix3x3& m, Fix12i sinTheta, Fix12i cosTheta) __attribute__((long_call, target("thumb"))); //Resets m to a Z rotation matrix
-	
+
 	void MultiStore_Int(s32 val, void* dest, s32 byteSize);
 	void MultiCopy_Int(void* source, void* dest, s32 byteSize);
-	
+
 	u16 Color_Interp(u16* dummyArg, u16 startColor, u16 endColor, Fix12i time) __attribute__((const));
-	
+
 	Fix12i Math_Function_0203b14c(Fix12i& arg1, Fix12i arg2, Fix12i arg3, Fix12i arg4, Fix12i arg5);
 	void Math_Function_0203b0fc(Fix12i& arg1, Fix12i arg2, Fix12i arg3, Fix12i arg4);
-	
+
 	void Vec3_Interp(Vector3& vF, const Vector3& v1, const Vector3& v2, Fix12i t);
 	void Vec3_InterpCubic(Vector3& vF, const Vector3& v0, const Vector3& v1, const Vector3& v2, const Vector3& v3, Fix12i t);
+
+    void CpuFill8(void* dest, int val, size_t size);
+    void CpuCopy8(const void* src, void* dest, size_t size);
+
+    void CpuFill16    (short val, void* dest, int numBytes);
+    void CpuFill32    (int   val, void* dest, int numBytes);
+    void CpuFill32Fast(int   val, void* dest, int numBytes);
+
+    void CpuCopy16    (const void* src, void* dest, int numBytes);
+    void CpuCopy32    (const void* src, void* dest, int numBytes);
+    void CpuCopy32Fast(const void* src, void* dest, int numBytes);
+
+    void Copy32Bytes(const void* src, void* dest);
+    void Copy36Bytes(const void* src, void* dest);
+    void Copy48Bytes(const void* src, void* dest);
 }
 
 [[gnu::always_inline]]
@@ -349,11 +364,11 @@ inline s16 RandomAng(s16 maxAng)
 consteval s32 CountSetBits(u32 num)
 {
 	s32 setBits = 0;
-	
+
 	for (s32 i = 0; i < 32; i++)
 		if ((num & (1 << i)) != 0)
 			setBits++;
-	
+
 	return setBits;
 }
 
@@ -453,7 +468,7 @@ struct Vector3
 				else
 				{
 					Eval<resMayAlias>(res);
-					CrossVec3(res, v, res);	
+					CrossVec3(res, v, res);
 				}
 			});
 		}
@@ -814,7 +829,7 @@ struct Vector3
 			else
 			{
 				proxy.template Eval<resMayAlias>(res);
-				CrossVec3(*this, res, res);	
+				CrossVec3(*this, res, res);
 			}
 		});
 	}
@@ -822,7 +837,7 @@ struct Vector3
 	[[gnu::always_inline]]
 	void Normalize() & { NormalizeVec3(*this, *this); }
 	void NormalizeTwice() & { Normalize(); Normalize(); }
-	
+
 	[[gnu::always_inline]]
 	bool NormalizeIfNonZero() & { return NormalizeVec3IfNonZero(*this); }
 
@@ -960,7 +975,7 @@ struct Matrix3x3 // Matrix is column-major!
 					MulVec3Mat3x3(v, std::move(*this), res);
 			});
 		}
-		
+
 		template<class G> [[gnu::always_inline, nodiscard]]
 		auto operator()(Vector3::Proxy<G>&& proxy) &&
 		{
@@ -997,7 +1012,7 @@ struct Matrix3x3 // Matrix is column-major!
 
 	template<class F> [[gnu::always_inline]]
 	Matrix3x3& operator=(Proxy<F>&& proxy) & { proxy.template Eval<true>(*this); return *this; }
-	
+
 	static const Matrix3x3 IDENTITY;
 
 	[[gnu::always_inline, nodiscard]]
@@ -1052,7 +1067,7 @@ struct Matrix3x3 // Matrix is column-major!
 			else
 			{
 				proxy.template Eval<resMayAlias>(res);
-				MulMat3x3Mat3x3(res, *this, res);	
+				MulMat3x3Mat3x3(res, *this, res);
 			}
 		});
 	}
@@ -1089,7 +1104,7 @@ struct Matrix3x3 // Matrix is column-major!
 	{
 		return operator()(std::forward<T>(x));
 	}
-	
+
 	class TransposeProxy
 	{
 		const Matrix3x3& original;
@@ -1175,7 +1190,7 @@ struct Matrix3x3 // Matrix is column-major!
 		)"
 		: "=r" (trash) : "0" (this) : "r1", "r2", "r3", "r4", "r5", "r6", "r7");
 	}
-	
+
 	[[gnu::always_inline, nodiscard]]
 	static auto Quat(const Quaternion& quaternion)
 	{
@@ -1296,7 +1311,7 @@ struct Matrix4x3 : private Matrix3x3 // Matrix is column-major!
 					MulVec3Mat4x3(v, std::move(*this), res);
 			});
 		}
-		
+
 		template<class G> [[gnu::always_inline, nodiscard]]
 		auto operator()(Vector3::Proxy<G>&& proxy) &&
 		{
@@ -1361,7 +1376,7 @@ struct Matrix4x3 : private Matrix3x3 // Matrix is column-major!
 	Matrix4x3& RotateXYZ(s16 angX, s16 angY, s16 angZ) & { Matrix4x3_ApplyInPlaceToRotationXYZExt(*this, angX, angY, angZ); return *this; }
 	Matrix4x3& Translate(Fix12i x, Fix12i y, Fix12i z) & { Matrix4x3_ApplyInPlaceToTranslation(*this, x, y, z); return *this; }
 	Matrix4x3& ApplyScale(Fix12i x, Fix12i y, Fix12i z) & { Matrix4x3_ApplyInPlaceToScale(*this, x, y, z); return *this; }
-	
+
 	[[gnu::always_inline, nodiscard]]
 	auto Inverse() const
 	{
@@ -1521,7 +1536,7 @@ struct Matrix4x3 : private Matrix3x3 // Matrix is column-major!
 			Matrix4x3_FromRotationXYZExt(res, angX, angY, angZ);
 		});
 	}
-	
+
 	[[gnu::always_inline, nodiscard]]
 	static auto Quat(const Quaternion& quaternion)
 	{
@@ -1548,7 +1563,7 @@ struct Matrix4x3 : private Matrix3x3 // Matrix is column-major!
 				AssureUnaliased(res.c0) = std::forward<C0>(c0);
 				AssureUnaliased(res.c1) = std::forward<C1>(c1);
 				AssureUnaliased(res.c2) = std::forward<C2>(c2);
-				AssureUnaliased(res.c3) = std::forward<C3>(c3);	
+				AssureUnaliased(res.c3) = std::forward<C3>(c3);
 			}
 		});
 	}
@@ -1560,7 +1575,7 @@ struct Quaternion
 	Fix12i y;
 	Fix12i z;
 	Fix12i w;
-	
+
 	template<class F>
 	class Proxy
 	{
@@ -1576,7 +1591,7 @@ struct Quaternion
 		template<bool resMayAlias> [[gnu::always_inline]]
 		void Eval(Quaternion& res) { eval.template operator()<resMayAlias>(res); }
 	};
-	
+
 	constexpr Quaternion() = default;
 	constexpr Quaternion(auto x, auto y, auto z, auto w) : x(x), y(y), z(z), w(w) {}
 
@@ -1585,7 +1600,7 @@ struct Quaternion
 
 	template<class F> [[gnu::always_inline]]
 	Quaternion& operator=(Proxy<F>&& proxy) & { proxy.template Eval<true>(*this); return *this; }
-	
+
 	[[gnu::always_inline, nodiscard]]
 	static auto Vec3(const Vector3& v0, const Vector3& v1)
 	{
@@ -1594,16 +1609,16 @@ struct Quaternion
 			Quaternion_FromVector3(res, v0, v1);
 		});
 	}
-	
+
 	[[gnu::always_inline]]
 	void Normalize() & { Quaternion_Normalize(*this); }
-	
+
 	[[gnu::always_inline]]
 	void SLerp(const Quaternion& q1, const Quaternion& q2, Fix12i weight)
 	{
 		Quaternion_SLerp(q1, q2, weight, *this);
 	}
-	
+
 	[[gnu::always_inline]]
 	void SExpDecay(const Quaternion& q, Fix12i weight)
 	{
@@ -1656,7 +1671,7 @@ inline const ostream& operator<<(const ostream& os, Fix12<T> fix)
 	else
 	{
 		os.set_buffer("-0x%r0%_f");
-		os.flush(-fix.val); 
+		os.flush(-fix.val);
 	}
 
 	return os;

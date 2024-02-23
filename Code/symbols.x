@@ -1444,3 +1444,15 @@ reg_G3X_DISP3DCNT                                                               
 reg_GX_POWCNT                                                                     = 0x04000304;
 reg_GXS_DB_DISPCNT                                                                = 0x04001000;
 reg_GXs_BLDCNT                                                                    = 0x04001050;
+
+CpuFill16                                                                         = 0x0205A448;
+CpuCopy16                                                                         = 0x0205A460;
+CpuFill32                                                                         = 0x0205a47c;
+CpuCopy32                                                                         = 0x0205a490;
+CpuFill32Fast                                                                     = 0x0205A4A8;
+CpuCopy32Fast                                                                     = 0x0205A4F4;
+Copy32Bytes                                                                       = 0x0205A52C;
+Copy36Bytes                                                                       = 0x0205A548;
+Copy48Bytes                                                                       = 0x0205A564;
+CpuFill8                                                                          = 0x0205a588;
+CpuCopy8                                                                          = 0x0205a61c;
