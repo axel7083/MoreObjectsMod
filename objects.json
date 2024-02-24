@@ -171,7 +171,7 @@
     "actorid": 412,
     "category": 1,
     "name": "Mega Block (dl)",
-    "internalname": "@CUSTOM%data/custom_obj/mega_block/mega_block.bmd",
+    "internalname": "@CUSTOM%data/custom_obj/mega_block/star_block.bmd",
     "description": "A big block with a star symbol on it's sides. This block can be destroyed by using a Mega Mushroom.\n\nParameter 1:\nXXXS\n\nS: Star ID\n\nCreated by: Josh65536\nPorted by: Splatterboy",
     "dlreq": "@CUSTOM%data/dynamic/mega_block.dylb"
   },
