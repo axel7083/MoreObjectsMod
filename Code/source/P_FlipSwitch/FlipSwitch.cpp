@@ -36,7 +36,8 @@ int FlipSwitch::InitResources()
 	clsn.SetFile(clsnFile.KCL(), clsnNextMat, 1._f, ang.y, clpsBlock::instance<>);
 
     fsState = FS_INTERROGATION;
-    materialApplied = false;
+    dirtyMaterial = true;
+    counter = 0;
 
     clsn.beforeClsnCallback = &MeshColliderBase::UpdatePosWithTransform;
     clsn.afterClsnCallback = &FlipSwitch::AfterClsnCallback;
@@ -61,28 +62,30 @@ int FlipSwitch::Behavior()
 {
     if (IsClsnInRange(0._f, 0._f)) {
         UpdateClsnPosAndRot();
-        UpdateMaterial();
+        if(dirtyMaterial) {
+            UpdateMaterial();
+        }
+
+        if(counter > 0)
+            counter--;
     }
 	return 1;
 }
 
 void FlipSwitch::UpdateMaterial() {
-    if(!materialApplied) {
-        switch(fsState) {
-            case FS_INTERROGATION:
-                model.data.materials->teximageParam = model.data.modelFile->textures[1].cmd2aPart1 | model.data.modelFile->materials[1].cmd2aPart2;
-                model.data.materials->paletteInfo = model.data.modelFile->palettes[1].vramOffset >> 4;
-                break;
-            case FS_EXCLAMATION:
-                model.data.materials->teximageParam = model.data.modelFile->textures[0].cmd2aPart1 | model.data.modelFile->materials[0].cmd2aPart2;
-                model.data.materials->paletteInfo = model.data.modelFile->palettes[0].vramOffset >> 4;
-                break;
-            default:
-                break;
-        }
-        materialApplied = true;
+    switch(fsState) {
+        case FS_INTERROGATION:
+            model.data.materials->teximageParam = model.data.modelFile->textures[1].cmd2aPart1 | model.data.modelFile->materials[1].cmd2aPart2;
+            model.data.materials->paletteInfo = model.data.modelFile->palettes[1].vramOffset >> 4;
+            break;
+        case FS_EXCLAMATION:
+            model.data.materials->teximageParam = model.data.modelFile->textures[0].cmd2aPart1 | model.data.modelFile->materials[0].cmd2aPart2;
+            model.data.materials->paletteInfo = model.data.modelFile->palettes[0].vramOffset >> 4;
+            break;
+        default:
+            break;
     }
-
+    dirtyMaterial = false;
 }
 
 int FlipSwitch::Render()
@@ -93,10 +96,30 @@ int FlipSwitch::Render()
 
 void FlipSwitch::AfterClsn(Actor& otherActor)
 {
-    if(fsState == FS_INTERROGATION) {
-        fsState = FS_EXCLAMATION;
-        materialApplied = false;
+    if (otherActor.actorID != PLAYER_ACTOR_ID)
+        return;
+
+    Player& player = (Player&)otherActor;
+
+    // Do not count if the player is edge graping
+    if (player.IsState(*(Player::State*)Player::ST_LEDGE_GRAB))
+        return;
+
+    if(counter == 1) {
+        counter = 2;
+        return;
     }
+
+    counter = 2;
+    switch (fsState) {
+        case FS_INTERROGATION:
+            fsState = FS_EXCLAMATION;
+            break;
+        case FS_EXCLAMATION:
+            fsState = FS_INTERROGATION;
+            break;
+    }
+    dirtyMaterial = true;
 }
 
 void FlipSwitch::AfterClsnCallback(MeshColliderBase& clsn, Actor& clsnActor, Actor& otherActor)

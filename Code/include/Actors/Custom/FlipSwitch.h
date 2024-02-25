@@ -12,7 +12,9 @@ struct FlipSwitch : public Platform
         JS_VALIDATED,
     };
 
-    bool materialApplied;
+    int counter;
+
+    bool dirtyMaterial;
     u8 fsState;
 
     static FlipSwitch* Spawn();
@@ -29,6 +31,7 @@ struct FlipSwitch : public Platform
 
     void AfterClsn(Actor& otherActor);
     void UpdateMaterial();
+    static void BeforeClsnCallback(MeshColliderBase& clsn, Actor& clsnActor, Actor& otherActor);
     static void AfterClsnCallback(MeshColliderBase& clsn, Actor& clsnActor, Actor& otherActor);
 };
 
