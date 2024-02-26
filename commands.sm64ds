@@ -104,7 +104,6 @@ fs cp Assets/PeachNPC/peach_wait.bca rom://file/data/custom_obj/peach_npc/peach_
 
 # FlipSwitch
 fs cp Assets/FlipSwitch/flip_switch_platform.bmd rom://file/data/custom_obj/flip_switch/flip_switch_platform.bmd --recursive --create
-fs cp Assets/FlipSwitch/flip_switch_platform.kcl rom://file/data/custom_obj/flip_switch/flip_switch_platform.kcl --create
 
 # Generating headers
 generate filesystem Code/include/List/FileList.h

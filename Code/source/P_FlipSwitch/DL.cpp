@@ -8,9 +8,7 @@ void init()
 	ACTOR_SPAWN_TABLE[FLIP_SWITCH_ACTOR_ID] = &FlipSwitch::spawnData;
 
     FlipSwitch::modelFile .Construct("data/custom_obj/flip_switch/flip_switch_platform.bmd"ov0);
-    FlipSwitch::clsnFile  .Construct("data/custom_obj/flip_switch/flip_switch_platform.kcl"ov0);
-
-    cout << "Hello from init FlipSwitch\n";
+    FlipSwitch::clsnFile.Construct("data/custom_obj/galaxy_shrink_platform/galaxy_shrink_platform.kcl"ov0);
 }
 
 void cleanup()
