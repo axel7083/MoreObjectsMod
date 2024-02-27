@@ -134,7 +134,6 @@ void GalaxyShrinkPlatform::AfterClsn(Actor& otherActor)
 	if (otherActor.actorID == PLAYER_ACTOR_ID)
 	{
 		shrinking = true;
-		
 		Sound::Play("NCS_SE_GALAXY_SHRINKING_PLATFORM"sfx, camSpacePos);
 	}
 }

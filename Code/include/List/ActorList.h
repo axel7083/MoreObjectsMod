@@ -419,6 +419,7 @@ enum ActorIDs
     SKYBOX_ROTATOR_ACTOR_ID                        = 414,
     COLORED_PIPE_ACTOR_ID                          = 415,
     PEACH_NPC_ACTOR_ID                             = 416,
+    FLIP_SWITCH_ACTOR_ID                           = 417,
 };
 
 enum ObjectIDs
@@ -774,5 +775,6 @@ enum ObjectIDs
     SKYBOX_ROTATOR_OBJECT_ID                        = 348,
     COLORED_PIPE_OBJECT_ID                          = 349,
     PEACH_NPC_OBJECT_ID                             = 350,
-	MPCHANGE_OBJECT_ID                              = 511,
+    FLIP_SWITCH_OBJECT_ID                           = 351,
+    MPCHANGE_OBJECT_ID                              = 511,
 };

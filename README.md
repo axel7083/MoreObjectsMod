@@ -23,40 +23,40 @@ Repeat the process once it finishes with `CompileTest.sp2`.
 - ❓: Unknown status
 - 🚩: Compile but crash at runtime
 
-| Name                                     | Status |
-|------------------------------------------|--------|
-| Galaxy Shrinking Platform                | ✅ |
-| CosmicClones                             | ✅ |
-| Rideable Yoshis                          | ✅ |
-| Berries                                  | ✅ |
-| Invisible Walls                          | ✅ |
-| Silver Coins (Code/source/O_ColoredCoin) | ✅ |
-| Object Lighting Modifier                 | ✅ |
-| Toxic Levels                             | ✅ |
-| 6 Types of Colored Goombas               | 🚧 |
-| Noteblocks                               | ✅ |
-| Shy Guys                                 | ✅ |
-| Magikoopa & Kamella                      | ✅ |
-| Launch Stars & Star Chips                | ✅ |
-| Skybox Rotator                           | ✅ |
-| Gravity Modifier                         | ❓ |
-| Yoshi NPC's                              | ✅ |
-| Colored Warp Pipes                       | ✅ |
-| Character Blocks                         | ✅ |
-| Tree Shadows                             | ✅ |
-| Save Blocks                              | ✅ |
-| Door Blockers                            | ✅ |
-| Colored Coins                            | ✅ |
-| Colored Toads                            | ❓ |
-| Peach NPC                                | ✅ |
-| Blue Ice Block                           | ❓ |
-| Mega Block                               | ✅ |
-| Cutscene Loader                          | 🚧 |
-| Custom Block                             | 🚧 |
-| Treasure Chest                           | 🚩 |
-| Thwomp & Magma Thwomp                    | 🚧 |
-| 2D Level (With Camera Limiter)           | ❓ |
-
+| Name                                                     | Screenshot | Status |
+|----------------------------------------------------------|------------|--------|
+| Galaxy Shrinking Platform                                |            | ✅ |
+| CosmicClones                                             |            | ✅ |
+| Rideable Yoshis                                          |            | ✅ |
+| Berries                                                  |            | ✅ |
+| Invisible Walls                                          |            | ✅ |
+| Silver Coins (Code/source/O_ColoredCoin)                 |            | ✅ |
+| Object Lighting Modifier                                 |            | ✅ |
+| Toxic Levels                                             |            | ✅ |
+| 6 Types of Colored Goombas                               |            | 🚧 |
+| Noteblocks                                               |            | ✅ |
+| Shy Guys                                                 |            | ✅ |
+| Magikoopa & Kamella                                      |            | ✅ |
+| Launch Stars & Star Chips                                |            | ✅ |
+| Skybox Rotator                                           |            | ✅ |
+| Gravity Modifier                                         |            | ❓ |
+| Yoshi NPC's                                              |            | ✅ |
+| Colored Warp Pipes                                       |            | ✅ |
+| Character Blocks                                         |            | ✅ |
+| Tree Shadows                                             |            | ✅ |
+| Save Blocks                                              |            | ✅ |
+| Door Blockers                                            |            | ✅ |
+| Colored Coins                                            |            | ✅ |
+| Colored Toads                                            |            | ❓ |
+| Peach NPC                                                |            | ✅ |
+| Blue Ice Block                                           |            | ❓ |
+| Mega Block                                               |            | ✅ |
+| Cutscene Loader                                          |            | 🚧 |
+| Custom Block                                             |            | 🚧 |
+| Treasure Chest                                           |            | 🚩 |
+| Thwomp & Magma Thwomp                                    |            | 🚧 |
+| 2D Level (With Camera Limiter)                           |            | ❓ |
+| FlipSwitch  | ![FlipSwitch.png](Screenshots/FlipSwitch.png) | ✅ |
 
 ### Not working objects
 
@@ -64,12 +64,6 @@ Repeat the process once it finishes with `CompileTest.sp2`.
 | --- |-------------------------------------------------------------------------------------------------------------------------------|
 | Treasure Chest (Code/source/O_TreasureChest) | Not working THUMB9: Undefined instruction: 0x0000BBF8 PC=0xE40000D4</br>ARM9: Undefined instruction: 0x0000BBF8 PC=0xE40000D4 |
 
-## How It Works
-MOM works from two code segments: the overlay, and the housekeeper.
-
-The custom overlay contains all the code for custom objects in an unused section of RAM, and modifies the object and actor tables of the game to allow for custom objects.
-
-The housekeeper hacks the original game's code to allow for loading the MOM overlay, and for using hooks and replacements to allow for cool game mechanics such as 2D levels.
 
 ## Credits
 Gota7 - Mod, custom objects, sound and resource management.

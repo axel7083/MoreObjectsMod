@@ -102,6 +102,9 @@ fs cp Assets/ColoredPipe/obj_dokan.kcl rom://file/data/custom_obj/colored_pipe/o
 fs cp Assets/PeachNPC/peach_low.bmd rom://file/data/custom_obj/peach_npc/peach_low.bmd --recursive --create
 fs cp Assets/PeachNPC/peach_wait.bca rom://file/data/custom_obj/peach_npc/peach_wait.bca --create
 
+# FlipSwitch
+fs cp Assets/FlipSwitch/flip_switch_platform.bmd rom://file/data/custom_obj/flip_switch/flip_switch_platform.bmd --recursive --create
+
 # Generating headers
 generate filesystem Code/include/List/FileList.h
 generate sound Code/include/List/SoundList.h

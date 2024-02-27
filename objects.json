@@ -200,5 +200,14 @@
     "internalname": "@CUSTOM%data/custom_obj/peach_npc/peach_low.bmd",
     "description": "A custom Peach NPC that can have a message before and after an event.\nNote: Power Star only spawns after the event is triggered (unless the event is set to F)\n\nParameter 1: SMMM\n\nS: Star ID (F = no star)\nM: Message ID of initial message\n\nParameter 2: ETTT\n\nE: Event ID (F = no event)\nT: Message ID of final message\n\nCreated by: Splatterboy",
     "dlreq": "@CUSTOM%data/dynamic/peach_npc.dylb"
+  },
+  {
+    "id": 351,
+    "actorid": 417,
+    "category": 1,
+    "name": "FlipSwitch (dl)",
+    "internalname": "@CUSTOM%data/custom_obj/flip_switch/flip_switch_platform.bmd",
+    "description": "",
+    "dlreq": "@CUSTOM%data/dynamic/flip_switch.dylb"
   }
 ]
