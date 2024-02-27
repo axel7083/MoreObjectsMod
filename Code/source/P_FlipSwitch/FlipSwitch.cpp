@@ -42,6 +42,7 @@ int FlipSwitch::InitResources()
 
     // Set properties
     eventID = param1 & 0xff;
+
     isBig = true;
     fsState = FS_INTERROGATION;
     dirtyMaterial = true;

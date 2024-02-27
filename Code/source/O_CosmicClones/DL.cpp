@@ -1,6 +1,6 @@
 // Author: SplattyDS
 #include "SM64DS_2.h"
-#include "ShadowClone.h"
+#include "../../include/Actors/Custom/ShadowClone.h"
 
 void init()
 {

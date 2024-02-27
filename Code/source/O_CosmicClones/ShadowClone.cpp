@@ -1,6 +1,6 @@
 // Author: SplattyDS
 #include "SM64DS_2.h"
-#include "ShadowClone.h"
+#include "../../include/Actors/Custom/ShadowClone.h"
 
 asm("marioBodyModelFile = 0x0210ec50");
 asm("marioHeadModelFile = 0x0210e690");
@@ -89,7 +89,8 @@ s32 ShadowClone::InitResources()
 	
 	disabledTimer = 120;
 	areaID = -1;
-	
+    // Get the eventID
+    eventID = param1 & 0xff;
 	return 1;
 }
 
@@ -111,6 +112,11 @@ s32 ShadowClone::CleanupResources()
 
 s32 ShadowClone::Behavior()
 {
+    if(eventID < NUM_EVENTS && Event::GetBit(eventID)) {
+        cout << "Suppose to be off" << "\n";
+        return 1;
+    }
+
 	ReplaceLastFrame();
 	
 	if (++lastFrame >= TOTAL_FRAMES)
@@ -178,6 +184,10 @@ s32 ShadowClone::Behavior()
 
 s32 ShadowClone::Render()
 {
+    if(eventID < NUM_EVENTS && Event::GetBit(eventID)) {
+        return 1;
+    }
+
 	for (s32 i = 0; i < NUM_CLONES; i++)
 	{
 		if (!active[i])

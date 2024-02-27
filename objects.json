@@ -163,7 +163,7 @@
     "actorid": 411,
     "category": 1,
     "name": "Shadow Clone (dl)",
-    "description": "Place one object in a level, when starting cosmic clones will appear.\n\nCreated by: Splatterboy",
+    "description": "Place one object in a level (near the player), when starting cosmic clones will appear. They will disappear when the configured Event id is set.\n\nParameter 1:\nXXEE\n\nE: Event ID\n\nCreated by: Splatterboy",
     "dlreq": "@CUSTOM%data/dynamic/cosmic_clones.dylb"
   },
   {

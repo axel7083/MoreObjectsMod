@@ -22,6 +22,8 @@ struct ShadowClone : Actor
 	static constexpr s32 NUM_CLONES = 3;
 	static constexpr s32 FRAMES_BETWEEN_CLONES = 20;
 	static constexpr s32 TOTAL_FRAMES = NUM_CLONES * FRAMES_BETWEEN_CLONES;
+
+    u8 eventID;
 	
 	ModelAnim bodyModel;
 	Model headModel;
