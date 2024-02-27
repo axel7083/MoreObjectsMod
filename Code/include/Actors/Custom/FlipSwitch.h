@@ -40,7 +40,7 @@ struct FlipSwitch : public Platform
     u8 eventID;
 
     // static members to share information between instances
-    static constexpr s32 NUM_COUNTERS = 1;
+    static constexpr s32 NUM_COUNTERS = 2; // Allowing 2 counter, meaning supporting two sets of tiles with their own events for each
     static Counter flipSwitchCounters[NUM_COUNTERS];
 
     void RegisterEventID();

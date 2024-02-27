@@ -46,6 +46,7 @@ int FlipSwitch::InitResources()
     fsState = FS_INTERROGATION;
     dirtyMaterial = true;
     counter = 0;
+    clsnPlayer = nullptr;
 
     // Loading the collider (reusing the collider of GalaxyShrink)
 	MovingMeshCollider::LoadFile(clsnFile);
@@ -93,7 +94,7 @@ int FlipSwitch::Behavior()
             UpdateMaterial();
         }
 
-        if (clsnPlayer->IsState(*(Player::State*)Player::ST_JUMP)) {
+        if (clsnPlayer != nullptr && clsnPlayer->IsState(*(Player::State*)Player::ST_JUMP)) {
             return 1;
         }
 
@@ -150,7 +151,6 @@ void FlipSwitch::AfterClsn(Actor& otherActor)
 
     counter = 2;
     u8& flipSwitchCounter = GetCounter().count;
-    cout << "flipSwitchCounter is " << flipSwitchCounter << "\n";
 
     switch (fsState) {
         case FS_INTERROGATION:
@@ -166,7 +166,6 @@ void FlipSwitch::AfterClsn(Actor& otherActor)
     }
 
     if(flipSwitchCounter == 0) {
-        cout << "flipSwitchCounter has reached 0\nSetBit " << eventID << "\n";
         Event::SetBit(eventID);
     }
 
