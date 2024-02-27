@@ -207,7 +207,7 @@
     "category": 1,
     "name": "FlipSwitch (dl)",
     "internalname": "@CUSTOM%data/custom_obj/flip_switch/flip_switch_platform.bmd",
-    "description": "",
+    "description": "A FlipSwitch platform. When all platform are in exclamation state, it trigger the configured EventID\n\nParameter 1:\nXXEE\n\nE: Event ID\n\nCreated by: axel7083",
     "dlreq": "@CUSTOM%data/dynamic/flip_switch.dylb"
   }
 ]
