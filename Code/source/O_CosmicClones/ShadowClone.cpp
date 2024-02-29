@@ -1,6 +1,6 @@
 // Author: SplattyDS
 #include "SM64DS_2.h"
-#include "../../include/Actors/Custom/ShadowClone.h"
+#include "Actors/Custom/ShadowClone.h"
 
 asm("marioBodyModelFile = 0x0210ec50");
 asm("marioHeadModelFile = 0x0210e690");
