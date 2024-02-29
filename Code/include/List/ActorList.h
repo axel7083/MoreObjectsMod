@@ -420,6 +420,7 @@ enum ActorIDs
     COLORED_PIPE_ACTOR_ID                          = 415,
     PEACH_NPC_ACTOR_ID                             = 416,
     FLIP_SWITCH_ACTOR_ID                           = 417,
+    BOO_MARIO_ACTOR_ID                             = 418,
 };
 
 enum ObjectIDs
@@ -776,5 +777,6 @@ enum ObjectIDs
     COLORED_PIPE_OBJECT_ID                          = 349,
     PEACH_NPC_OBJECT_ID                             = 350,
     FLIP_SWITCH_OBJECT_ID                           = 351,
+    BOO_MARIO_OBJECT_ID                             = 352,
     MPCHANGE_OBJECT_ID                              = 511,
 };
