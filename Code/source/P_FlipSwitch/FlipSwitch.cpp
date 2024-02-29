@@ -157,10 +157,12 @@ void FlipSwitch::AfterClsn(Actor& otherActor)
         case FS_INTERROGATION:
             fsState = FS_EXCLAMATION;
             flipSwitchCounter--;
+            Sound::Play("NCS_SE_SYS_COUNTUP"sfx, camSpacePos);
             break;
         case FS_EXCLAMATION:
             fsState = FS_INTERROGATION;
             flipSwitchCounter++;
+            Sound::Play("NCS_SE_SYS_COUNTUP"sfx, camSpacePos);
             break;
         default:
             return;
@@ -168,6 +170,7 @@ void FlipSwitch::AfterClsn(Actor& otherActor)
 
     if(flipSwitchCounter == 0) {
         Event::SetBit(eventID);
+        Sound::Play("NCS_SE_SYS_SMALL_HAPPY"sfx, camSpacePos);
     }
 
     dirtyMaterial = true;
