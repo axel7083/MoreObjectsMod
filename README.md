@@ -28,13 +28,13 @@ Repeat the process once it finishes with `CompileTest.sp2`.
 | Galaxy Shrinking Platform                                |            | ✅ |
 | CosmicClones                                             |            | ✅ |
 | Rideable Yoshis                                          |            | ✅ |
-| Berries                                                  |            | ✅ |
+| Berries                                                  | <img width="152" alt="image" src="https://github.com/axel7083/MoreObjectsMod/assets/42176370/580861ed-3474-4c1d-8e29-2de31a7f1dd0">  | ✅ |
 | Invisible Walls                                          |            | ✅ |
 | Silver Coins (Code/source/O_ColoredCoin)                 |            | ✅ |
 | Object Lighting Modifier                                 |            | ✅ |
 | Toxic Levels                                             |            | ✅ |
 | 6 Types of Colored Goombas                               |            | 🚧 |
-| Noteblocks                                               |            | ✅ |
+| Noteblocks                                               | <img width="145" alt="image" src="https://github.com/axel7083/MoreObjectsMod/assets/42176370/fb7dc267-8036-4c7f-9503-253d2e3efb5f"> | ✅ |
 | Shy Guys                                                 |            | ✅ |
 | Magikoopa & Kamella                                      |            | ✅ |
 | Launch Stars & Star Chips                                |            | ✅ |
@@ -48,7 +48,7 @@ Repeat the process once it finishes with `CompileTest.sp2`.
 | Door Blockers                                            |            | ✅ |
 | Colored Coins                                            |            | ✅ |
 | Colored Toads                                            |            | ❓ |
-| Peach NPC                                                |            | ✅ |
+| Peach NPC                                                | <img width="178" alt="image" src="https://github.com/axel7083/MoreObjectsMod/assets/42176370/b2a8134f-19e8-4778-aab0-7035d7d53188"> | ✅ |
 | Blue Ice Block                                           |            | ❓ |
 | Mega Block                                               |            | ✅ |
 | Cutscene Loader                                          |            | 🚧 |
