@@ -27,7 +27,7 @@ Repeat the process once it finishes with `CompileTest.sp2`.
 |----------------------------------------------------------|------------|--------|
 | Galaxy Shrinking Platform                                |            | ✅ |
 | CosmicClones                                             |            | ✅ |
-| Rideable Yoshis                                          |            | ✅ |
+| Rideable Yoshis                                          | <img width="147" alt="image" src="https://github.com/axel7083/MoreObjectsMod/assets/42176370/33ee90a0-f957-493d-9cc3-f30cf78529d4"> | ✅ |
 | Berries                                                  | <img width="152" alt="image" src="https://github.com/axel7083/MoreObjectsMod/assets/42176370/580861ed-3474-4c1d-8e29-2de31a7f1dd0">  | ✅ |
 | Invisible Walls                                          |            | ✅ |
 | Silver Coins (Code/source/O_ColoredCoin)                 |            | ✅ |
@@ -41,12 +41,12 @@ Repeat the process once it finishes with `CompileTest.sp2`.
 | Skybox Rotator                                           |            | ✅ |
 | Gravity Modifier                                         |            | ❓ |
 | Yoshi NPC's                                              |            | ✅ |
-| Colored Warp Pipes                                       |            | ✅ |
-| Character Blocks                                         |            | ✅ |
+| Colored Warp Pipes                                       | <img width="160" alt="image" src="https://github.com/axel7083/MoreObjectsMod/assets/42176370/d35cef1b-3dfb-435d-9236-1bb8a528b31d"> | ✅ |
+| Character Blocks                                         | <img width="239" alt="image" src="https://github.com/axel7083/MoreObjectsMod/assets/42176370/d76becd5-e655-4fc9-afeb-ccd3e6ff0c40"> | ✅ |
 | Tree Shadows                                             |            | ✅ |
 | Save Blocks                                              |            | ✅ |
 | Door Blockers                                            |            | ✅ |
-| Colored Coins                                            |            | ✅ |
+| Colored Coins                                            | <img width="185" alt="image" src="https://github.com/axel7083/MoreObjectsMod/assets/42176370/b5530b1e-a175-4350-b197-bd54237520ba"> | ✅ |
 | Colored Toads                                            |            | ❓ |
 | Peach NPC                                                | <img width="178" alt="image" src="https://github.com/axel7083/MoreObjectsMod/assets/42176370/b2a8134f-19e8-4778-aab0-7035d7d53188"> | ✅ |
 | Blue Ice Block                                           |            | ❓ |
