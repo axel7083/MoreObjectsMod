@@ -33,17 +33,14 @@ int Lantern::InitResources()
     // Set properties
     eventID = param1 & 0xff;
 
-    cout << "event id " << eventID;
-
     cylClsn.Init(this, 120._f,120._f, CylinderClsn::ENEMY | CylinderClsn::INTANGIBLE, CylinderClsn::HIT_BY_FIRE);
 
     MovingMeshCollider::LoadFile(clsnFile);
-    clsn.SetFile(clsnFile.KCL(), clsnNextMat, 0.1_f, ang.y, clpsBlock::instance<>);
+    clsn.SetFile(clsnFile.KCL(), clsnNextMat, 8._f, ang.y, clpsBlock::instance<>);
 
     this->onFire = false;
 
     if (eventID > NUM_EVENTS) {
-        cout << "invalid event id";
         return 0;
     }
 
@@ -79,7 +76,6 @@ int Lantern::Behavior()
     if (IsClsnInRange(0._f, 0._f))
     {
         if ((cylClsn.hitFlags & CylinderClsn::HIT_BY_FIRE) && !this->onFire) {
-            cout << "on fire";
             Vector3 firePos = { pos.x, pos.y + 200._f, pos.z };
             Actor::Spawn(OBJ_RED_FIRE_ACTOR_ID, 0x1, firePos, &ang, areaID, -1);
             this->onFire = true;
