@@ -150,15 +150,15 @@ struct Player : Actor
 	MovingCylinderClsnWithPos cylClsn;
 	MovingCylinderClsnWithPos cylClsn2;
 	Actor* shellPtr;
-	Actor* actorInHands;
+	Actor* actorInHands; // 0x358
 	u32 unk35c;
-	Actor* actorInMouth;
+	Actor* actorInMouth; // 0x360
 	u32 unk364;
-	ActorBase* speaker;
-	u32 unk36c;
-	State* currState;
-	State* prevState;
-	State* nextState;
+	ActorBase* speaker; // 0x368
+	u32 unk36c; // 0x36c
+	State* S; // 0x370
+	State* prevState; // 0x374
+	State* nextState; // 0x378
 	u32 unk37c;
 	WithMeshClsn wmClsn;
 	Vector3 unk53c;
@@ -285,7 +285,7 @@ struct Player : Actor
 	bool isMega;
 	u8 unk704;
 	u8 unk705;
-	bool isUnderwater;
+	bool isUnderwater; // 0x706
 	u8 unk707;
 	u8 unk708;
 	u8 unk709;
