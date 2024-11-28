@@ -21,5 +21,6 @@
   "O_TreeShadow":  "data/dynamic/tree_shadow.dylb",
   "P_SaveBlock": "data/dynamic/save_block.dylb",
   "P_DoorBlocker": "data/dynamic/door_blocker.dylb",
-  "P_FlipSwitch": "data/dynamic/flip_switch.dylb"
+  "P_FlipSwitch": "data/dynamic/flip_switch.dylb",
+  "P_Lantern": "data/dynamic/lantern.dylb"
 }
